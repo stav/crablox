@@ -199,3 +199,17 @@ README
 └─▪ python -m crablox.main
 
   Hello, world!
+
+┌─(venv)[stav][legion][±][master ↑1 U:2 ?:3 ✗][~/.../crablox/crablox]
+└─▪ python -m main
+
+  Link: http://localhost:5001
+  INFO:     Will watch for changes in these directories: ['/home/stav/Work/Python/FastHTML/crablox/crablox']
+  INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
+  INFO:     Started reloader process [275362] using WatchFiles
+  INFO:     Started server process [275379]
+  INFO:     Waiting for application startup.
+  INFO:     Application startup complete.
+  INFO:     127.0.0.1:36000 - "GET / HTTP/1.1" 200 OK
+  INFO:     ('127.0.0.1', 36016) - "WebSocket /live-reload" [accepted]
+  INFO:     connection open
