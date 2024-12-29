@@ -3,6 +3,7 @@
     "venv/**",
     ".gitignore",
     ".vscode/settings.json",
+    "requirements.txt",
     "README",
   ]
 }
