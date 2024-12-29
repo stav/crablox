@@ -1,0 +1,8 @@
+{
+  "cSpell.ignorePaths": [
+    "venv/**",
+    ".gitignore",
+    ".vscode/settings.json",
+    "README",
+  ]
+}
