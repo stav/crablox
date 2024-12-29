@@ -194,3 +194,8 @@ README
   -rw-r--r-- 1 stav stav   820 Dec 29 17:13 requirements.txt
   drwxr-xr-x 5 stav stav  4096 Dec 29 15:44 venv/
   drwxr-xr-x 2 stav stav  4096 Dec 29 17:13 .vscode/
+
+┌─(venv)[stav][legion][±][master ?:1 ✗][~/.../FastHTML/crablox]
+└─▪ python -m crablox.main
+
+  Hello, world!
