@@ -1,5 +1,5 @@
 from blocks import block
-from bot import get_css_sel
+from bot import get_css_sel, get_text
 
 
 def index_block(rt):
@@ -28,4 +28,21 @@ def Example():
     return get_css_sel(
         "https://example.com/",
         "body>div",
+    )
+
+
+def tradesties_block(rt):
+
+    path = "/tradesties"
+
+    @rt(path)
+    def get():
+        return Tradesties()
+
+    return block(path, "tradesties", "Tradesties")
+
+
+def Tradesties():
+    return get_text(
+        "https://tradestie.com/api/v1/apps/reddit",
     )

@@ -7,3 +7,8 @@ def get_css_sel(url: str, sel: str):
     soup = BeautifulSoup(response.content, "html.parser")
     element = soup.select_one(sel)
     return element
+
+
+def get_text(url: str):
+    response = requests.get(url)
+    return response.text
