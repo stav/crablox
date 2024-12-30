@@ -2,11 +2,12 @@
   "cSpell.ignorePaths": [
     "venv/**",
     ".gitignore",
-    ".vscode/settings.json",
+    ".vscode/**",
     "requirements.txt",
     "README",
   ],
   "cSpell.words": [
+    "Crablox",
     "fasthtml",
     "hdrs",
     "tradesties"

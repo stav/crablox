@@ -1,5 +1,6 @@
 from blocks import block
 from bot import get_css_sel, get_text
+from .um.h_ics import index_block as um_index_block
 
 
 def index_block(rt):
