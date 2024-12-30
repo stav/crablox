@@ -1,7 +1,7 @@
 from fasthtml.common import fast_app, Titled, serve
 
 from style import styles
-from blocks import block
+from plays import index_block
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles])
 
@@ -14,17 +14,6 @@ def index():
             index_block(rt),
         ),
     )
-
-
-def index_block(rt):
-
-    path = "/index"
-
-    @rt(path)
-    def get():
-        return "Hello, World!"
-
-    return block(path, "hello", "Hello")
 
 
 serve()
