@@ -1,7 +1,7 @@
 from fasthtml.common import fast_app, Titled, serve
 
 from style import styles
-from plays import index_block
+from plays import index_block, example_block
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles])
 
@@ -12,6 +12,7 @@ def index():
         Titled(
             "Say Hello to Crablox",
             index_block(rt),
+            example_block(rt),
         ),
     )
 
