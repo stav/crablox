@@ -7,7 +7,7 @@ styles = Style(
         max-width: 95%;
     }
     .wlv-container {
-        display: inline flow-root;
+        display: inline-block;
         border: 1px solid #ccc;
         padding: 1em;
         margin: 0.5em;
