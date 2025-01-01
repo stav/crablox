@@ -13,9 +13,17 @@ styles = Style(
         margin: 0.5em;
         max-width: 100%;
     }
+    .wlv-details {
+        display: none;
+    }
+    .wlv-toggle {
+        display: none;
+        background-color: #43c436;
+    }
     .wlv-close {
         display: none;
         margin-left: 1em;
+        background-color: #c44336;
     }
 """
 )

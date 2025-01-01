@@ -36,7 +36,7 @@ def render(url: str, series: tuple, header: str, func: callable):
 
     card = Card(
         Pre(rows),
-        style="display: none",
+        cls="wlv-details",
         header=header,
         footer=A(url, href=url),
     )
