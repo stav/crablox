@@ -3,6 +3,7 @@ from bot import get_rows_format_2
 from .render import render
 from . import wrap
 
+id = "um-prices"
 url = "http://www.sca.isr.umich.edu/files/tbcpx1px5.csv"
 
 
@@ -14,12 +15,12 @@ def prices_block(rt):
     def get():
         return Prices()
 
-    return block(path, "prices", "UM Prices")
+    return block(path, id, "UM Prices")
 
 
 def Prices():
     return wrap(
-        "um-prices",
+        id,
         *render(
             url,
             ("Next Year", "Next 5 Years"),

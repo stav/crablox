@@ -4,10 +4,11 @@ from fasthtml.common import Button, Card, Div
 def block(path, id, title):
 
     close_trigger = f"document.getElementById('wlv-{id}').innerHTML = ''; document.getElementById('wlv-{id}-close').style.display = 'none';"
-    open_trigger = f"document.getElementById('wlv-{id}-close').style.display = 'inline-block';"
+    open_trigger = (
+        f"document.getElementById('wlv-{id}-close').style.display = 'inline-block';"
+    )
 
     return (
-
         Card(
             Div(id=f"wlv-{id}"),
             cls="wlv-container",

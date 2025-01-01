@@ -3,6 +3,7 @@ from bot import get_rows_format_1
 from .render import render
 from . import wrap
 
+id = "um-index"
 url = "http://www.sca.isr.umich.edu/files/tbcics.csv"
 
 
@@ -14,12 +15,12 @@ def index_block(rt):
     def get():
         return Index()
 
-    return block(path, "index", "UM Index")
+    return block(path, id, "UM Index")
 
 
 def Index():
     return wrap(
-        "um-index",
+        id,
         *render(
             url,
             ("Index",),

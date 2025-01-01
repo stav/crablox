@@ -3,6 +3,7 @@ from bot import get_rows_format_2
 from .render import render
 from . import wrap
 
+id = "um-components"
 url = "http://www.sca.isr.umich.edu/files/tbciccice.csv"
 
 
@@ -14,12 +15,12 @@ def components_block(rt):
     def get():
         return Components()
 
-    return block(path, "components", "UM Components")
+    return block(path, id, "UM Components")
 
 
 def Components():
     return wrap(
-        "um-components",
+        id,
         *render(
             url,
             ("Current", "Expected"),
