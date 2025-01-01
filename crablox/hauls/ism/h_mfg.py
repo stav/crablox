@@ -10,7 +10,7 @@ def mfg_pmi_block(rt):
     def get():
         return Manufacturing()
 
-    return block(path, "ism-mfg-pmi", "ISM Manufacturing PMI")
+    return block(path, "IsmMfgPmi", "ISM Manufacturing PMI")
 
 
 def Manufacturing():

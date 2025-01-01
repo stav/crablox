@@ -24,7 +24,7 @@ def hello_block(rt):
     def get():
         return "Hello, World!"
 
-    return block(path, "hello", "Hello")
+    return block(path, "Hello", "Hello")
 
 
 def example_block(rt):
@@ -35,7 +35,7 @@ def example_block(rt):
     def get():
         return Example()
 
-    return block(path, "example", "Example")
+    return block(path, "Example", "Example")
 
 
 def Example():
@@ -53,7 +53,7 @@ def tradesties_block(rt):
     def get():
         return Tradesties()
 
-    return block(path, "tradesties", "Tradesties")
+    return block(path, "Tradesties", "Tradesties")
 
 
 def Tradesties():

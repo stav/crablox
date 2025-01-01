@@ -6,7 +6,7 @@ styles = Style(
     .container {
         max-width: 95%;
     }
-    .wlv-container {
+    .wlv-block {
         display: inline-block;
         border: 1px solid #ccc;
         padding: 1em;

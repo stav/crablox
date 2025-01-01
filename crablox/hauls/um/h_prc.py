@@ -3,7 +3,7 @@ from bot import get_rows_format_2
 from .render import render
 from . import wrap
 
-id = "um-prices"
+id = "UmPrices"
 url = "http://www.sca.isr.umich.edu/files/tbcpx1px5.csv"
 
 
