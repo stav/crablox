@@ -17,7 +17,13 @@ def block(path, id, title):
         }}
         function wlv{id}OpenBlock() {{
             document.getElementById('wlv-{id}-close-button').style.display = 'inline-block';
-            document.getElementById('wlv-{id}-toggle-button').style.display = 'inline-block';
+            htmx.ajax("GET", "{path}", {{"target": "#wlv-{id}-data"}}).then((e) => {{
+                const el = document.querySelector("#{id} article");
+                console.log('loaded', e, el);
+                if (el) {{
+                    document.getElementById('wlv-{id}-toggle-button').style.display = 'inline-block';
+                }}
+            }});
         }}
         """
     )
@@ -29,8 +35,8 @@ def block(path, id, title):
             header=Div(
                 Button(
                     title,
-                    hx_get=path,
-                    hx_target=f"#wlv-{id}-data",
+                    # hx_get=path,
+                    # hx_target=f"#wlv-{id}-data",
                     onclick=f"wlv{id}OpenBlock()",
                 ),
                 Button(
