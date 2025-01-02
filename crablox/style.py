@@ -13,6 +13,9 @@ styles = Style(
         margin: 0.5em;
         max-width: 100%;
     }
+    .wlv-data {
+        max-width: 600px;
+    }
     .wlv-details {
         display: none;
     }

@@ -30,7 +30,7 @@ def block(path, id, title):
 
     return (
         Card(
-            Div(id=f"wlv-{id}-data"),
+            Div(id=f"wlv-{id}-data", cls="wlv-data"),
             cls="wlv-block",
             header=Div(
                 Button(
