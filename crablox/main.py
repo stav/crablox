@@ -12,9 +12,15 @@ from hauls import (
     ism_mfg_block,
     ism_srv_block,
     bld_permits_block,
+    bls_esr_block,
 )
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles, altair_headers])
+
+
+@app.route("/static/{path:path}")
+async def static(request, path):
+    return await app.static_file(path, root="./static")
 
 
 @rt
@@ -31,6 +37,7 @@ def index():
             um_components_block(rt),
             um_prices_block(rt),
             bld_permits_block(rt),
+            bls_esr_block(rt),
         ),
     )
 
