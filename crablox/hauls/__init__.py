@@ -5,6 +5,7 @@ from .um.h_prc import prices_block as um_prices_block
 from .um.h_cmp import components_block as um_components_block
 from .ism.h_mfg import mfg_pmi_block as ism_mfg_block
 from .ism.h_srv import srv_pmi_block as ism_srv_block
+from .h_bld_permits import bld_permits_block
 
 __all__ = [
     "hello_block",
@@ -15,6 +16,7 @@ __all__ = [
     "tradesties_block",
     "ism_mfg_block",
     "ism_srv_block",
+    "bld_permits_block",
 ]
 
 

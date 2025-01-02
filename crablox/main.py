@@ -11,6 +11,7 @@ from hauls import (
     um_components_block,
     ism_mfg_block,
     ism_srv_block,
+    bld_permits_block,
 )
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles, altair_headers])
@@ -29,6 +30,7 @@ def index():
             um_index_block(rt),
             um_components_block(rt),
             um_prices_block(rt),
+            bld_permits_block(rt),
         ),
     )
 
