@@ -213,3 +213,10 @@ README
   INFO:     127.0.0.1:36000 - "GET / HTTP/1.1" 200 OK
   INFO:     ('127.0.0.1', 36016) - "WebSocket /live-reload" [accepted]
   INFO:     connection open
+
+Sites
+
+* https://docs.fastht.ml/
+* https://gallery.fastht.ml/
+* https://mikelev.in/futureproof/unpacking-fasthtml-databases/
+* https://github.com/AnswerDotAI/fasthtml-example
