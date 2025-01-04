@@ -1,24 +1,14 @@
-from blocks import block
 from bot import get_rows_format_2
 from .render import render
 from . import wrap
 
 id = "UmComponents"
 url = "http://www.sca.isr.umich.edu/files/tbciccice.csv"
+path = "/um/components"
+title = "UM Components"
 
 
-def components_block(rt):
-
-    path = "/um/components"
-
-    @rt(path)
-    def get():
-        return Components()
-
-    return block(path, id, "UM Components")
-
-
-def Components():
+def content():
     return wrap(
         id,
         *render(

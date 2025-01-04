@@ -1,23 +1,12 @@
 from fasthtml.common import A, Card, Div, Li, Ul
 from fasthtml.svg import Defs, ClipPath, Rect, G, Path, Text, Tspan, Svg, Desc
 
-from blocks import block
-
 id = "BuildingPermits"
+path = "/building_permits"
+title = "Building Permits"
 
 
-def bld_permits_block(rt):
-
-    path = "/building_permits"
-
-    @rt(path)
-    def get():
-        return BuildingPermits()
-
-    return block(path, id, "Building Permits")
-
-
-def BuildingPermits():
+def content():
 
     url1 = "https://www.census.gov/construction/nrc/pdf/newresconst.pdf"
     url2 = "https://tradingeconomics.com/united-states/building-permits"

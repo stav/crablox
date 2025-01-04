@@ -1,7 +1,7 @@
 from fasthtml.common import Button, Card, Div, Script
 
 
-def block(path, id, title):
+def stack(path, id, title=None):
 
     script = Script(
         f"""
@@ -19,7 +19,6 @@ def block(path, id, title):
             document.getElementById('wlv-{id}-close-button').style.display = 'inline-block';
             htmx.ajax("GET", "{path}", {{"target": "#wlv-{id}-data"}}).then((e) => {{
                 const el = document.querySelector("#{id} article");
-                console.log('loaded', e, el);
                 if (el) {{
                     document.getElementById('wlv-{id}-toggle-button').style.display = 'inline-block';
                 }}
@@ -34,7 +33,7 @@ def block(path, id, title):
             cls="wlv-block",
             header=Div(
                 Button(
-                    title,
+                    title or id,
                     # hx_get=path,
                     # hx_target=f"#wlv-{id}-data",
                     onclick=f"wlv{id}OpenBlock()",

@@ -1,24 +1,20 @@
-from blocks import block
+from blocks import stack
 from bot import get_css_sel, get_text
-from .um.h_ics import index_block as um_index_block
-from .um.h_prc import prices_block as um_prices_block
-from .um.h_cmp import components_block as um_components_block
-from .ism.h_mfg import mfg_pmi_block as ism_mfg_block
-from .ism.h_srv import srv_pmi_block as ism_srv_block
-from .bls.h_esr import bls_esr_block
-from .h_bld_permits import bld_permits_block
 
-__all__ = [
-    "hello_block",
-    "example_block",
-    "um_index_block",
-    "um_prices_block",
-    "um_components_block",
-    "tradesties_block",
-    "ism_mfg_block",
-    "ism_srv_block",
-    "bld_permits_block",
-    "bls_esr_block",
+import hauls.h_bld_permits
+from .bls import h_esr
+from .ism import h_mfg, h_srv
+from .um import h_ics, h_prc, h_cmp
+
+
+blocks = [
+    h_mfg,
+    h_srv,
+    h_ics,
+    h_cmp,
+    h_prc,
+    hauls.h_bld_permits,
+    h_esr,
 ]
 
 
@@ -30,7 +26,7 @@ def hello_block(rt):
     def get():
         return "Hello, World!"
 
-    return block(path, "Hello", "Hello")
+    return stack(path, "Hello")
 
 
 def example_block(rt):
@@ -41,7 +37,7 @@ def example_block(rt):
     def get():
         return Example()
 
-    return block(path, "Example", "Example")
+    return stack(path, "Example")
 
 
 def Example():
@@ -59,7 +55,7 @@ def tradesties_block(rt):
     def get():
         return Tradesties()
 
-    return block(path, "Tradesties", "Tradesties")
+    return stack(path, "Tradesties")
 
 
 def Tradesties():

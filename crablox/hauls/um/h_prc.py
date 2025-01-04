@@ -1,24 +1,14 @@
-from blocks import block
 from bot import get_rows_format_2
 from .render import render
 from . import wrap
 
 id = "UmPrices"
 url = "http://www.sca.isr.umich.edu/files/tbcpx1px5.csv"
+path = "/um/prices"
+title = "UM Prices"
 
 
-def prices_block(rt):
-
-    path = "/um/prices"
-
-    @rt(path)
-    def get():
-        return Prices()
-
-    return block(path, id, "UM Prices")
-
-
-def Prices():
+def content():
     return wrap(
         id,
         *render(

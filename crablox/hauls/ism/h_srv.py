@@ -1,23 +1,12 @@
 from fasthtml.common import A, Card, Div, Li, Ul
 from fasthtml.svg import Defs, ClipPath, Rect, G, Path, Text, Tspan, Svg, Desc
 
-from blocks import block
-
 id = "IsmSrvPmi"
+path = "/ism/srv"
+title = "ISM Service PMI"
 
 
-def srv_pmi_block(rt):
-
-    path = "/ism/srv"
-
-    @rt(path)
-    def get():
-        return Service()
-
-    return block(path, id, "ISM Service PMI")
-
-
-def Service():
+def content():
 
     url1 = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/"
     url2 = "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
@@ -27,13 +16,14 @@ def Service():
         footer=Ul(
             Li(A(url1, href=url1, target="_blank")),
             Li(A(url2, href=url2, target="_blank")),
-        )
+        ),
     )
     return Div(
         card,
         svg_chart2,
         id=id,
     )
+
 
 # https://h2f.answer.ai/
 svg_chart2 = Svg(

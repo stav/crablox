@@ -1,22 +1,11 @@
 from fasthtml.common import A, Card, Div, Img, Li, Ul
 
-from blocks import block
-
 id = "BLS_ESR"
+path = "/esr"
+title = "Employment Situation Report"
 
 
-def bls_esr_block(rt):
-
-    path = "/esr"
-
-    @rt(path)
-    def get():
-        return EmploymentSituation()
-
-    return block(path, id, "Employment Situation Report")
-
-
-def EmploymentSituation():
+def content():
 
     url1 = "https://tradingeconomics.com/united-states/non-farm-payrolls"
     url2 = "https://www.bls.gov/news.release/empsit.nr0.htm"
