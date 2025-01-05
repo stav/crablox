@@ -7,7 +7,7 @@ import hauls
 from blocks import stack
 from style import styles
 
-app, rt = fast_app(live=True, debug=True, hdrs=[styles, altair_headers])
+app, rt = fast_app(hdrs=[styles, altair_headers])
 
 
 @app.route("/static/{path}")
