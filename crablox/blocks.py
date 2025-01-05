@@ -3,27 +3,17 @@ from fasthtml.common import Button, Card, Div, Script
 
 def stack(path, id, title=None):
 
-    script = Script(
+    load_script = Script(
         f"""
-        function wlv{id}CloseBlock() {{
-            document.getElementById('wlv-{id}-data').innerHTML = '';
-            document.getElementById('wlv-{id}-close-button').style.display = 'none';
-            document.getElementById('wlv-{id}-toggle-button').style.display = 'none';
-        }}
-        function wlv{id}ToggleDetails() {{
-            const el = document.querySelector("#{id} article");
-            const display = el.style.display;
-            el.style.display = (display === 'none' || display === '') ? 'inline-block' : 'none';
-        }}
-        function wlv{id}OpenBlock() {{
-            document.getElementById('wlv-{id}-close-button').style.display = 'inline-block';
-            htmx.ajax("GET", "{path}", {{"target": "#wlv-{id}-data"}}).then((e) => {{
-                const el = document.querySelector("#{id} article");
-                if (el) {{
-                    document.getElementById('wlv-{id}-toggle-button').style.display = 'inline-block';
-                }}
-            }});
-        }}
+        document.addEventListener("DOMContentLoaded", function() {{
+            const func = 'crbOpenBlock("{id}", "{path}")';
+            console.log('Opening 1:', func, crbOpenBlock)
+            crbOpenBlock("{id}", "{path}");
+            // setTimeout(function() {{
+            //     console.log('Opening 2:', func, crbOpenBlock, {id})
+            //     crbOpenBlock("{id}", "{path}");
+            // }}, 3000);
+        }});
         """
     )
 
@@ -34,23 +24,24 @@ def stack(path, id, title=None):
             header=Div(
                 Button(
                     title or id,
+                    # We're not using hx_get because we want a callback to enable the toggle button.
                     # hx_get=path,
                     # hx_target=f"#wlv-{id}-data",
-                    onclick=f"wlv{id}OpenBlock()",
+                    onclick=f"crbOpenBlock('{id}', '{path}')",
                 ),
                 Button(
                     "Details",
                     id=f"wlv-{id}-toggle-button",
                     cls="wlv-toggle",
-                    onclick=f"wlv{id}ToggleDetails()",
+                    onclick=f"crbToggleDetails('{id}')",
                 ),
                 Button(
                     "X",
                     id=f"wlv-{id}-close-button",
                     cls="wlv-close",
-                    onclick=f"wlv{id}CloseBlock()",
+                    onclick=f"crbCloseBlock('{id}')",
                 ),
             ),
         ),
-        script,
+        # load_script,
     )

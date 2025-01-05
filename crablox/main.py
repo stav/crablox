@@ -1,7 +1,7 @@
 import os
 from types import ModuleType
 
-from fasthtml.common import fast_app, Titled, serve
+from fasthtml.common import fast_app, Titled, ScriptX, serve
 
 import hauls
 from blocks import stack
@@ -52,6 +52,7 @@ def block_stacker():
 
 @rt
 def index():
+    path = 'crablox/main.js'
     return (
         Titled(
             "Indicator Megaboard Dashboard",
@@ -60,6 +61,7 @@ def index():
             # hauls.tradesties_block(rt),
             *block_stacker(),
         ),
+        ScriptX(path),
     )
 
 
