@@ -30,10 +30,11 @@ def create_route(block: ModuleType):
     """
     Creates a route for the given block.
 
-    This function takes a block object and creates a route using the block's path.
-    It defines a GET request handler that returns the contents of the block. This
-    function is a wrapper around the `rt` decorator to create a scope for the block
-    object at runtime.
+    This function is a wrapper around the `rt` decorator to create a scope for
+    the block object at runtime.
+
+    This wrapper creates a route using the block's path. This route is a GET
+    request handler that returns the contents of the block.
 
     Args:
         block: A module object representing a block with: path, id, title, content()
@@ -49,11 +50,8 @@ def create_route(block: ModuleType):
 
 def block_stacker():
     """
-    Generator function that processes blocks from hauls and yields stacked blocks.
-
-    For each block in hauls.blocks, this function:
-    1. Creates a route for the block using the create_route function.
-    2. Yields the result of stacking the block using the stack function with the block's path, id, and title.
+    Generator function that processes hauls and yields a container for each
+    block's: path, id, and title.
 
     Yields:
         The result of the stack function for each block.
@@ -67,7 +65,7 @@ def block_stacker():
 def index():
     return (
         Titled(
-            "Say Hello to Crablox",
+            "Indicator Megaboard Dashboard",
             # hauls.hello_block(rt),
             # hauls.example_block(rt),
             # hauls.tradesties_block(rt),
