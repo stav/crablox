@@ -1,20 +1,18 @@
 from blocks import stack
 from bot import get_css_sel, get_text
 
-import hauls.h_bld_permits
-from .bls import h_esr
-from .ism import h_mfg, h_srv
-from .um import h_ics, h_prc, h_cmp
+from . import h_bls_esr, h_ism_mfg, h_ism_srv, h_bld_permits
+from .um import h_um_cmp, h_um_ics, h_um_prc
 
 
 blocks = [
-    h_mfg,
-    h_srv,
-    h_ics,
-    h_cmp,
-    h_prc,
-    hauls.h_bld_permits,
-    h_esr,
+    h_ism_mfg,
+    h_ism_srv,
+    h_um_ics,
+    h_um_cmp,
+    h_um_prc,
+    h_bld_permits,
+    h_bls_esr,
 ]
 
 
