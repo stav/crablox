@@ -214,6 +214,17 @@ README
   INFO:     ('127.0.0.1', 36016) - "WebSocket /live-reload" [accepted]
   INFO:     connection open
 
+┌─(venv)[stav][legion][±][re-binding {1} U:1 ✗][~/.../FastHTML/crablox]
+└─▪ pip install pipupgrade setuptools
+
+  Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
+  Collecting setuptools
+    Downloading setuptools-75.7.0-py3-none-any.whl.metadata (6.7 kB)
+  Downloading setuptools-75.7.0-py3-none-any.whl (1.2 MB)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 4.5 MB/s eta 0:00:00
+  Installing collected packages: setuptools
+  Successfully installed setuptools-75.7.0
+
 Sites
 
 * https://docs.fastht.ml/
