@@ -196,7 +196,7 @@ README
   drwxr-xr-x 2 stav stav  4096 Dec 29 17:13 .vscode/
 
 ┌─(venv)[stav][legion][±][master ?:1 ✗][~/.../FastHTML/crablox]
-└─▪ python crablox/main.py
+└─▪ ENV=devel python crablox/main.py
 
   Link: http://localhost:5001
   INFO:     Will watch for changes in these directories: ['/home/stav/Work/Python/FastHTML/crablox/crablox']

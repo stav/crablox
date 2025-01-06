@@ -1,16 +1,18 @@
+import os
 from types import ModuleType
 
 from fasthtml.common import fast_app, Titled, serve
-from fh_altair import altair_headers
 
 import hauls
 from blocks import stack
-from style import styles
 
-app, rt = fast_app(
-    hdrs=[styles, altair_headers],
-    static_path="./crablox",
-)
+env = os.getenv('ENV', 'production')
+if env == 'production':
+    from config.prod import fast_config
+else:
+    from config.dev import fast_config
+
+app, rt = fast_app(**fast_config)
 
 
 def create_route(block: ModuleType):
