@@ -1,7 +1,7 @@
 from blocks import stack
 from bot import get_css_sel, get_text
 
-from . import h_bls_esr, h_ism_mfg, h_ism_srv, h_bld_permits
+from . import h_bls_esr, h_ism_mfg, h_ism_srv, h_bld_permits, h_cmc_btc
 from .um import h_um_cmp, h_um_ics, h_um_prc
 
 
@@ -13,6 +13,7 @@ blocks = [
     h_um_prc,
     h_bld_permits,
     h_bls_esr,
+    h_cmc_btc,
 ]
 
 
