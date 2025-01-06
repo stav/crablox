@@ -7,23 +7,10 @@ import hauls
 from blocks import stack
 from style import styles
 
-app, rt = fast_app(hdrs=[styles, altair_headers])
-
-
-@app.route("/static/{path}")
-async def static(_request, path: str):
-    """
-    Serve a static file from the './static' directory.
-
-    Args:
-        request: The HTTP request object.
-        path (str): The relative path to the static file within the './static' directory.
-
-    Returns:
-        The static file response.
-
-    """
-    return await app.static_file(path, root="./static")
+app, rt = fast_app(
+    hdrs=[styles, altair_headers],
+    static_path="./crablox",
+)
 
 
 def create_route(block: ModuleType):
