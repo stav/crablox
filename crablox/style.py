@@ -18,6 +18,7 @@ styles = Style(
     }
     .wlv-details {
         display: none;
+        max-width: 400px;
     }
     .wlv-toggle {
         display: none;

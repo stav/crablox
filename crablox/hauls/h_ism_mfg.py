@@ -1,9 +1,8 @@
-from fasthtml.common import A, Card, Div, Li, Ul
-from fasthtml.svg import Defs, ClipPath, Rect, G, Path, Text, Tspan, Svg, Desc
+from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
-title = "ISM Manufacturing PMI"
+title = "ISM Mfg 49.3"
 
 
 def content():
@@ -11,653 +10,63 @@ def content():
     url1 = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/"
     url2 = "https://tradingeconomics.com/united-states/business-confidence#stats"
 
-    card = Card(
+    details = Card(
+        H1("49.3"),
+        H2("📊 ISM Manufacturing PMI Rises More than Expectation"),
+        """
+        🔑 Headline: 49.3 (up from 48.4 in November)
+        📈 Direction: Still contracting but approaching the expansion threshold of 50
+        🚀 Rate of Change: Softest contraction pace since March's expansion
+
+        Key Components:
+        📦 New Orders: Strong uptick to 52.5 (highest in 11 months)
+        👥 Employment: Declined to 45.3 from 48.1
+        Complete Sector Comments 🏭:
+
+        ✅ Growth Sectors:
+
+            Primary Metals: "There is definitely an uptick this month, though not a stable one"
+
+            Electrical Equipment: "The increase in new orders has our plants at full capacity"
+
+            Miscellaneous Manufacturing: "Combo of seasonal factors plus increased demand outlook for 2025"
+
+        ⚠️ Neutral/Mixed:
+
+            Food & Beverage: "We're seeing a softening in sales. This is concerning as it's our peak season"
+
+            Computer & Electronic: "We are constrained by technical labor, despite higher-than-normal backlog"
+
+            Plastics & Rubber: "Orders have increased slightly due to seasonal reasons"
+
+        🔻 Contracting Sectors:
+
+            Transportation Equipment: "Automotive and powersport volume decreases"
+
+            Chemical Products: "Slightly lower due to seasonality and end-of-year destocking"
+
+            Machinery: "Significant slowdown in production requirements in the last two months of the year"
+
+            Fabricated Metal Products: "Order levels well below forecast projections"
+
+        The mix of comments suggests some sectors seeing genuine improvement while others face seasonal and structural challenges.
+        """,
+        Img(
+            src="/static/ism-mfg-glance-2024-nov.png",
+            alt="Employment Situation Chart",
+        ),
         cls="wlv-details",
+        header="ISM Manufacturing PMI",
         footer=Ul(
             Li(A(url1, href=url1, target="_blank")),
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
     return Div(
-        card,
-        svg_chart2,
+        details,
+        Img(
+            src="/static/ism-mfg-pmi.png",
+            alt="Employment Situation Chart",
+        ),
         id=id,
     )
-
-
-# https://h2f.answer.ai/
-svg_chart2 = Svg(
-    Desc("Created with Highcharts 10.1.0"),
-    Defs(
-        ClipPath(
-            Rect(x="0", y="0", width="531", height="295", fill="none"),
-            id="highcharts-ja62una-79-",
-        ),
-        ClipPath(
-            Rect(x="0", y="0", width="531", height="295", fill="none"),
-            id="highcharts-ja62una-92-",
-        ),
-        ClipPath(
-            Rect(x="0", y="0", width="531", height="295", fill="none"),
-            id="highcharts-ja62una-95-",
-        ),
-        ClipPath(
-            Rect(x="25", y="40", width="531", height="295", fill="none"),
-            id="highcharts-ja62una-96-",
-        ),
-    ),
-    Rect(
-        fill="#ffffff",
-        x="0",
-        y="0",
-        width="600",
-        height="410",
-        rx="0",
-        ry="0",
-        cls="highcharts-background",
-    ),
-    Rect(
-        fill="none",
-        x="25",
-        y="40",
-        width="531",
-        height="295",
-        cls="highcharts-plot-background",
-    ),
-    G(
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 85.5 40 L 85.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 165.5 40 L 165.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 247.5 40 L 247.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 329.5 40 L 329.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 412.5 40 L 412.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 494.5 40 L 494.5 335",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        data_z_index="1",
-        cls="highcharts-grid highcharts-xaxis-grid",
-    ),
-    G(
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 335.5 L 556 335.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 295.5 L 556 295.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 241.5 L 556 241.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 188.5 L 556 188.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 134.5 L 556 134.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 80.5 L 556 80.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="1",
-            stroke_dasharray="1,1",
-            data_z_index="1",
-            d="M 25 39.5 L 556 39.5",
-            opacity="1",
-            cls="highcharts-grid-line",
-        ),
-        data_z_index="1",
-        cls="highcharts-grid highcharts-yaxis-grid",
-    ),
-    Rect(
-        fill="none",
-        data_z_index="1",
-        x="25",
-        y="40",
-        width="531",
-        height="295",
-        cls="highcharts-plot-border",
-    ),
-    G(
-        Path(
-            fill="none",
-            stroke="rgb(51, 51, 51)",
-            stroke_width="1",
-            stroke_dasharray="8,3",
-            d="M 25 210.5 L 556 210.5",
-            cls="highcharts-plot-line",
-        ),
-        data_z_index="1",
-        cls="highcharts-plot-lines-1",
-    ),
-    Text(
-        "MEAN",
-        x="566",
-        text_anchor="end",
-        data_z_index="1",
-        transform="translate(0,0)",
-        style="color: rgb(51, 51, 51); font-size: 10px; transform: translateX(-30%); fill: rgb(51, 51, 51);",
-        y="207",
-        cls="highcharts-plot-line-label",
-    ),
-    G(
-        Path(
-            fill="rgb(68, 170, 213)",
-            fill_opacity=" 0.1",
-            d="M 25 284.5 L 556 284.5 L 556 136.5 L 25 136.5 Z",
-            cls="highcharts-plot-band",
-        ),
-        data_z_index="1",
-        cls="highcharts-plot-bands-1",
-    ),
-    Text(
-        "VARIANCE",
-        x="566",
-        text_anchor="end",
-        data_z_index="1",
-        transform="translate(0,0)",
-        style="color: rgb(51, 51, 51); font-size: 10px; transform: translate(-8%, 50%); fill: rgb(51, 51, 51);",
-        y="143",
-        cls="highcharts-plot-band-label",
-    ),
-    G(data_z_index="1", cls="highcharts-grid highcharts-yaxis-grid"),
-    G(
-        Path(
-            fill="none",
-            stroke="#E6E6E6",
-            stroke_width="1",
-            data_z_index="7",
-            d="M 25 335.5 L 556 335.5",
-            cls="highcharts-axis-line",
-        ),
-        data_z_index="2",
-        cls="highcharts-axis highcharts-xaxis",
-    ),
-    G(
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 335.25 L 566 335.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 295.25 L 566 295.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 241.25 L 566 241.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 188.25 L 566 188.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 134.25 L 566 134.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 80.25 L 566 80.25",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E7E7E7",
-            stroke_width="0.5",
-            d="M 556 39.75 L 566 39.75",
-            opacity="1",
-            cls="highcharts-tick",
-        ),
-        Path(
-            fill="none",
-            stroke="#E6E6E6",
-            stroke_width="1",
-            data_z_index="7",
-            d="M 556.5 40 L 556.5 335",
-            cls="highcharts-axis-line",
-        ),
-        data_z_index="2",
-        cls="highcharts-axis highcharts-yaxis",
-    ),
-    G(
-        Path(
-            fill="none",
-            stroke="#E6E6E6",
-            stroke_width="1",
-            data_z_index="7",
-            d="M 24.5 40 L 24.5 335",
-            cls="highcharts-axis-line",
-        ),
-        data_z_index="2",
-        cls="highcharts-axis highcharts-yaxis",
-    ),
-    G(
-        G(
-            Rect(
-                x="4",
-                y="236",
-                width="31",
-                height="60",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="46",
-                y="102",
-                width="31",
-                height="194",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="87",
-                y="189",
-                width="31",
-                height="107",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="126",
-                y="21",
-                width="31",
-                height="275",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="168",
-                y="95",
-                width="31",
-                height="201",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="208",
-                y="128",
-                width="31",
-                height="168",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="250",
-                y="142",
-                width="31",
-                height="154",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="290",
-                y="256",
-                width="31",
-                height="40",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="331",
-                y="229",
-                width="31",
-                height="67",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="373",
-                y="229",
-                width="31",
-                height="67",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="413",
-                y="276",
-                width="31",
-                height="20",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            Rect(
-                x="455",
-                y="149",
-                width="31",
-                height="147",
-                fill="#4f81bd",
-                opacity="1",
-                cls="highcharts-point",
-            ),
-            data_z_index="4",
-            opacity="1",
-            transform="translate(25,40) scale(1 1)",
-            clip_path="url(#highcharts-ja62una-92-)",
-            cls="highcharts-series highcharts-series-0 highcharts-column-series",
-        ),
-        G(
-            data_z_index="4",
-            opacity="1",
-            transform="translate(25,40) scale(1 1)",
-            clip_path="none",
-            cls="highcharts-markers highcharts-series-0 highcharts-column-series",
-        ),
-        G(
-            Path(
-                fill="none",
-                d="M 19.443181818182 123.07239184874999 L 511.55681818182 225.35735389980601",
-                data_z_index="1",
-                stroke="rgb(51, 51, 51)",
-                stroke_width="1",
-                stroke_linejoin="round",
-                stroke_linecap="round",
-                cls="highcharts-graph",
-            ),
-            data_z_index="4",
-            opacity="1",
-            transform="translate(25,40) scale(1 1)",
-            clip_path="url(#highcharts-ja62una-95-)",
-            cls="highcharts-series highcharts-series-1 highcharts-line-series",
-        ),
-        G(
-            data_z_index="4",
-            opacity="1",
-            transform="translate(25,40) scale(1 1)",
-            clip_path="none",
-            cls="highcharts-markers highcharts-series-1 highcharts-line-series",
-        ),
-        data_z_index="3",
-        cls="highcharts-series-group",
-    ),
-    Text(
-        "US Business Confidence",
-        Tspan("- points", style="font-size: 10px;"),
-        x="24",
-        text_anchor="start",
-        data_z_index="4",
-        style="color: rgb(51, 51, 51); font-size: 1em; fill: rgb(51, 51, 51); font-family: Helvetica;",
-        y="20",
-        cls="highcharts-title",
-    ),
-    Text(
-        "Source: tradingeconomics.com | Institute for Supply Management",
-        x="590",
-        text_anchor="end",
-        data_z_index="4",
-        style="color: rgb(51, 51, 51); fill: rgb(51, 51, 51); font-size: 0.8em; font-family: Helvetica;",
-        y="402",
-        cls="highcharts-subtitle",
-    ),
-    Text(
-        x="10",
-        text_anchor="start",
-        data_z_index="4",
-        style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);",
-        y="407",
-        cls="highcharts-caption",
-    ),
-    G(
-        Text(
-            "2024",
-            x="86.011363636364",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        Text(
-            "Mar",
-            x="166.46590909091",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        Text(
-            "May",
-            x="248.26136363636",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        Text(
-            "Jul",
-            x="330.05681818182",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        Text(
-            "Sep",
-            x="413.19318181818",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        Text(
-            "Nov",
-            x="494.98863636363",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="middle",
-            transform="translate(0,0)",
-            y="350",
-            opacity="1",
-        ),
-        data_z_index="7",
-        cls="highcharts-axis-labels highcharts-xaxis-labels",
-    ),
-    G(
-        Text(
-            Tspan("46.2", cls="yLabels_"),
-            x="0",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            visibility="hidden",
-        ),
-        Text(
-            Tspan("46.8", cls="yLabels_"),
-            x="561",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            y="298",
-            opacity="1",
-        ),
-        Text(
-            Tspan("47.6", cls="yLabels_"),
-            x="561",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            y="244",
-            opacity="1",
-        ),
-        Text(
-            Tspan("48.4", cls="yLabels_"),
-            x="561",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            y="191",
-            opacity="1",
-        ),
-        Text(
-            Tspan("49.2", cls="yLabels_"),
-            x="561",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            y="137",
-            opacity="1",
-        ),
-        Text(
-            Tspan("50.0", cls="yLabels_"),
-            x="561",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            y="83",
-            opacity="1",
-        ),
-        Text(
-            Tspan("50.6", cls="yLabels_"),
-            x="0",
-            style="color: rgb(51, 51, 51); cursor: default; font-size: 1em; font-family: Helvetica; fill: rgb(51, 51, 51);",
-            text_anchor="start",
-            transform="translate(0,0)",
-            visibility="hidden",
-        ),
-        data_z_index="7",
-        cls="highcharts-axis-labels highcharts-yaxis-labels",
-    ),
-    G(data_z_index="7", cls="highcharts-axis-labels highcharts-yaxis-labels"),
-    G(
-        data_z_index="99",
-        clip_path="url(#highcharts-ja62una-96-)",
-        cls="highcharts-control-points",
-    ),
-    **{"xmlns:xlink": "http://www.w3.org/1999/xlink"},
-    version="1.1",
-    style='font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif; font-size: 12px;',
-    xmlns="http://www.w3.org/2000/svg",
-    width="600",
-    height="410",
-    viewbox="0 0 600 410",
-    cls="highcharts-root"
-)
