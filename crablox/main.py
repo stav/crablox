@@ -1,13 +1,14 @@
 import os
+import json
 from types import ModuleType
 
-from fasthtml.common import fast_app, Titled, ScriptX, serve
+from fasthtml.common import fast_app, Titled, Script, ScriptX, serve
 
 import hauls
 from blocks import stack
 
-env = os.getenv('ENV', 'production')
-if env == 'production':
+env = os.getenv("ENV", "production")
+if env == "production":
     from config.prod import fast_config
 else:
     from config.dev import fast_config
@@ -52,7 +53,9 @@ def block_stacker():
 
 @rt
 def index():
-    path = 'crablox/main.js'
+    script_path = "crablox/main.js"
+    block_ids = [(block.id, block.path) for block in hauls.blocks]
+    block_ids_json = json.dumps(block_ids)
     return (
         Titled(
             "Indicator Megaboard Dashboard",
@@ -61,7 +64,18 @@ def index():
             # hauls.tradesties_block(rt),
             *block_stacker(),
         ),
-        ScriptX(path),
+        ScriptX(script_path),
+        # Script(
+        #     f"""
+        #     window.onload = () => {{
+        #         var bs = {block_ids_json};
+        #         console.log(typeof bs, bs);
+        #         bs.forEach(function(b) {{
+        #             crbOpenBlock(b[0], b[1]);
+        #         }});
+        #     }}
+        #     """
+        # ),
     )
 
 

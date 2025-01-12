@@ -11,16 +11,16 @@ function crbToggleDetails (id) {
   el.style.display =
     display === 'none' || display === '' ? 'inline-block' : 'none'
 }
-function crbOpenBlock (id, path) {
+async function crbOpenBlock (id, path) {
   console.log('OPEN - crbOpenBlock()', id, path)
 
   // Reveal close button
   const cb = document.getElementById(`wlv-${id}-close-button`)
-  console.log('>a', id, cb.style.display, cb)
+  // console.log('>a', id, cb.style.display, cb)
   cb.style.display = 'inline-block'
-  console.log('>b', id, cb.style.display, cb)
+  // console.log('>b', id, cb.style.display, cb)
 
-  const target = `#wlv-${id}-data`;
+  const target = `#wlv-${id}-data`
   const data = document.querySelector(target)
   console.log('>c', target, data)
 
@@ -28,12 +28,11 @@ function crbOpenBlock (id, path) {
   //  1. Do an API GET for the given path,
   //  2. Target the id's data element,
   //  3. Wait for the callback to reveal the toggle button
-  htmx.ajax('GET', path, { target }).then(e => {
-    const el = document.querySelector(`#${id} article`)
-    console.log('CALLback', id, el)
-    if (el) {
-      document.getElementById(`wlv-${id}-toggle-button`).style.display =
-        'inline-block'
-    }
-  })
+  await htmx.ajax('GET', path, { target })
+  const el = document.querySelector(`#${id} article`)
+  console.log('CALLback', id, el)
+  if (el) {
+    document.getElementById(`wlv-${id}-toggle-button`).style.display =
+      'inline-block'
+  }
 }

@@ -7,12 +7,12 @@ def stack(path, id, title=None):
         f"""
         document.addEventListener("DOMContentLoaded", function() {{
             const func = 'crbOpenBlock("{id}", "{path}")';
-            console.log('Opening 1:', func, crbOpenBlock)
-            crbOpenBlock("{id}", "{path}");
-            // setTimeout(function() {{
-            //     console.log('Opening 2:', func, crbOpenBlock, {id})
-            //     crbOpenBlock("{id}", "{path}");
-            // }}, 3000);
+            // console.log('Opening 1:', func, crbOpenBlock)
+            // crbOpenBlock("{id}", "{path}");
+            setTimeout(async function() {{
+                console.log('Opening 2:', func, crbOpenBlock, "{id}")
+                await crbOpenBlock("{id}", "{path}");
+            }}, 1000);
         }});
         """
     )
@@ -43,5 +43,5 @@ def stack(path, id, title=None):
                 ),
             ),
         ),
-        # load_script,
+        load_script,
     )

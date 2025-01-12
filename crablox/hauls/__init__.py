@@ -6,14 +6,14 @@ from .um import h_um_cmp, h_um_ics, h_um_prc
 
 
 blocks = [
-    h_ism_mfg,
+    # h_ism_mfg,
     h_ism_srv,
     h_um_ics,
     h_um_cmp,
     h_um_prc,
     h_bld_permits,
     h_bls_esr,
-    h_cmc_btc,
+    # h_cmc_btc,
 ]
 
 
