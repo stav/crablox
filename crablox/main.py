@@ -6,13 +6,14 @@ from fasthtml.common import fast_app, Titled, ScriptX, serve
 import hauls
 from blocks import stack
 
-env = os.getenv('ENV', 'production')
+env = os.getenv('CRB', 'production')
 if env == 'production':
     from config.prod import fast_config
 else:
     from config.dev import fast_config
 
 app, rt = fast_app(**fast_config)
+print(f'Using "{env}" environment for {app}')
 
 
 def create_route(block: ModuleType):

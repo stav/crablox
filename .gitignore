@@ -175,3 +175,4 @@ cython_debug/
 
 # Meta
 .meta-info
+config.ini

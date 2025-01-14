@@ -1,12 +1,22 @@
+import configparser
 import requests
+import os
 from fasthtml.common import H1
 
 id = "CMC_BTC"
 path = "/btc"
 title = "BTC Market Price"
 
+# Read config file for api key
+file_path = os.path.abspath(__file__)
+parent_dir = os.path.dirname(file_path)
+mixed_path = os.path.join(parent_dir, "..", "..", "config.ini")
+config_file_path = os.path.abspath(mixed_path)
+config = configparser.ConfigParser()
+config.read(config_file_path)
+API_KEY = config["CMC"]["API_KEY"]
+
 URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
-API_KEY = "136881d4-5d87-4fdc-9664-dd81ed465113"
 PARAMS = {"symbol": "BTC", "convert": "USD"}
 HEADERS = {
     "Accepts": "application/json",
@@ -17,7 +27,11 @@ HEADERS = {
 def get_btc_price():
     response = requests.get(URL, headers=HEADERS, params=PARAMS)
     data = response.json()
-    return data["data"]["BTC"]["quote"]["USD"]["price"]
+    try:
+        return data["data"]["BTC"]["quote"]["USD"]["price"]
+    except Exception as e:
+        print("ERROR::", e, data)
+        return 0
 
 
 def content():

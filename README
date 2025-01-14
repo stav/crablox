@@ -195,19 +195,30 @@ README
   drwxr-xr-x 5 stav stav  4096 Dec 29 15:44 venv/
   drwxr-xr-x 2 stav stav  4096 Dec 29 17:13 .vscode/
 
-┌─(venv)[stav][legion][±][master ?:1 ✗][~/.../FastHTML/crablox]
-└─▪ ENV=devel python crablox/main.py
+Development
 
+┌─(venv)[stav][legion][±][master ?:1 ✗][~/.../FastHTML/crablox]
+└─▪ CRB=devel python crablox/main.py
+
+Production
+
+(venv) stav@bullet:.../services.pmx.mega/crablox$
+PORT=5001 python crablox/main.py
+
+Explicit
+
+$ export PORT=5001; export CRB=devel; python crablox/main.py
+
+  Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7f61c44c7d40>
   Link: http://localhost:5001
-  INFO:     Will watch for changes in these directories: ['/home/stav/Work/Python/FastHTML/crablox/crablox']
+  INFO:     Will watch for changes in these directories: ['FastHTML/crablox']
   INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
-  INFO:     Started reloader process [275362] using WatchFiles
-  INFO:     Started server process [275379]
+  INFO:     Started reloader process [1235952] using WatchFiles
+  Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7ff8def092b0>
+  Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7ff8afae18e0>
+  INFO:     Started server process [1235969]
   INFO:     Waiting for application startup.
   INFO:     Application startup complete.
-  INFO:     127.0.0.1:36000 - "GET / HTTP/1.1" 200 OK
-  INFO:     ('127.0.0.1', 36016) - "WebSocket /live-reload" [accepted]
-  INFO:     connection open
 
 ┌─(venv)[stav][legion][±][re-binding {1} U:1 ✗][~/.../FastHTML/crablox]
 └─▪ pip install pipupgrade setuptools
