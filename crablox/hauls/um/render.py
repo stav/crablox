@@ -35,11 +35,15 @@ def render(url: str, series: tuple, header: str, func: callable):
     chart = generate_chart(rows, *series)
 
     card = Card(
-        A("http://www.sca.isr.umich.edu/", href="http://www.sca.isr.umich.edu/"),
+        A(url, href=url, target="_blank"),
         Pre(rows),
         cls="wlv-details",
         header=header,
-        footer=A(url, href=url),
+        footer=A(
+            "http://www.sca.isr.umich.edu/",
+            href="http://www.sca.isr.umich.edu/",
+            target="_blank",
+        ),
     )
 
     return card, chart
