@@ -3,15 +3,16 @@ from fasthtml.common import Button, Card, Div, Script
 
 def stack(path, id, title=None):
 
+    client_open_func = f"crbOpenBlock('{id}', '{path}')"
+
     load_script = Script(
         f"""
-        document.addEventListener("DOMContentLoaded", function() {{
-            const func = 'crbOpenBlock("{id}", "{path}")';
-            console.log('Opening 1:', func, crbOpenBlock)
-            crbOpenBlock("{id}", "{path}");
+        document.addEventListener("DOMContentLoaded", async function() {{
+            console.log('Opening 1:', "{client_open_func}", crbOpenBlock)
+            await {client_open_func};
             // setTimeout(function() {{
-            //     console.log('Opening 2:', func, crbOpenBlock, {id})
-            //     crbOpenBlock("{id}", "{path}");
+            //     console.log('Opening 2:', "{client_open_func}", crbOpenBlock)
+            //     {client_open_func};
             // }}, 3000);
         }});
         """
@@ -27,7 +28,7 @@ def stack(path, id, title=None):
                     # We're not using hx_get because we want a callback to enable the toggle button.
                     # hx_get=path,
                     # hx_target=f"#wlv-{id}-data",
-                    onclick=f"crbOpenBlock('{id}', '{path}')",
+                    onclick=client_open_func,
                 ),
                 Button(
                     "Details",
