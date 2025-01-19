@@ -6,8 +6,8 @@ from fasthtml.common import fast_app, Titled, ScriptX, serve
 import hauls
 from blocks import stack
 
-env = os.getenv('CRB', 'production')
-if env == 'production':
+env = os.getenv("CRB", "production")
+if env == "production":
     from config.prod import fast_config
 else:
     from config.dev import fast_config
@@ -53,7 +53,7 @@ def block_stacker():
 
 @rt
 def index():
-    path = 'crablox/main.js'
+    path = "crablox/main.js"
     return (
         Titled(
             "Indicator Megaboard Dashboard",
