@@ -23,9 +23,13 @@ def content():
             """
         ),
         P(
-            Img(
-                src="/static/US_Building_Permits-vs-Housing_starts.png",
-                alt="Building permits Vs Housing starts Chart",
+            A(
+                Img(
+                    src="/static/US_Building_Permits-vs-Housing_starts.png",
+                    alt="Building permits Vs Housing starts Chart",
+                ),
+                href="/static/US_Building_Permits-vs-Housing_starts.png",
+                target="_blank",
             ),
         ),
         P(

@@ -115,11 +115,13 @@ Explicit environment variables:
 
 ### Production
 
+Copy `config.ini`.
+
     (venv) stav@bullet:.../services.pmx.mega/crablox$ python --version
-    Python 3.11.2
+    └─▪ Python 3.11.2
 
     (venv) stav@bullet:.../services.pmx.mega/crablox$
-    PORT=5001 python crablox/main.py
+    └─▪ PORT=5001 python crablox/main.py
 
 ## Sites
 
