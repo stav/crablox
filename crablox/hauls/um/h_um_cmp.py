@@ -9,12 +9,10 @@ title = "UM Components"
 
 
 def content():
-    return wrap(
-        id,
-        *render(
-            url,
-            ("Current", "Expected"),
-            "Components of the Index of Consumer Sentiment",
-            get_rows_format_2,
-        )
+    details, chart = render(
+        url,
+        ("Current", "Expected"),
+        "Components of the Index of Consumer Sentiment",
+        get_rows_format_2,
     )
+    return chart

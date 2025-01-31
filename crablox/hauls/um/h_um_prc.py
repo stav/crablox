@@ -9,12 +9,10 @@ title = "UM Prices"
 
 
 def content():
-    return wrap(
-        id,
-        *render(
-            url,
-            ("Next Year", "Next 5 Years"),
-            "Expected Change in Prices",
-            get_rows_format_2,
-        )
+    details, chart = render(
+        url,
+        ("Next Year", "Next 5 Years"),
+        "Expected Change in Prices",
+        get_rows_format_2,
     )
+    return chart

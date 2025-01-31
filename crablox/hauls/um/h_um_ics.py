@@ -1,8 +1,10 @@
 from fasthtml.common import Div, H3, H5, Img, P
 
 from bot import get_rows_format_1
-from .render import render
 from . import wrap
+from .render import render
+from .h_um_cmp import content as cmp_content
+from .h_um_prc import content as prc_content
 
 id = "UmIndex"
 url = "http://www.sca.isr.umich.edu/files/tbcics.csv"
@@ -37,5 +39,7 @@ def content():
             ("Index",),
             details,
             get_rows_format_1,
-        )
+        ),
+        cmp_content(),
+        prc_content(),
     )
