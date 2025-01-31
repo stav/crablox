@@ -87,6 +87,11 @@ Development environment is on Python version 3.12 which removed setuptools.
       Installing collected packages: setuptools
       Successfully installed setuptools-75.7.0
 
+Source the virtual environment:
+
+    ┌─[stav][legion][±][master ✓][~/.../FastHTML/crablox]
+    └─▪ . venv/bin/activate
+
 Explicit environment variables:
 
     $ export PORT=5001; export CRB=devel; python crablox/main.py
