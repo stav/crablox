@@ -20,7 +20,7 @@ function crbOpenBlock (id, path) {
   cb.style.display = 'inline-block'
   console.log('>b', id, cb.style.display, cb)
 
-  const target = `#wlv-${id}-data`;
+  const target = `#wlv-${id}-data`
   const data = document.querySelector(target)
   console.log('>c', target, data)
 
@@ -37,3 +37,18 @@ function crbOpenBlock (id, path) {
     }
   })
 }
+
+// https://www.bualabs.com/archives/5073/displaying-cloudinary-images-in-fasthtml-ep-3/
+function openLightbox (imageUrl) {
+  document.getElementById('lightbox-img').src = imageUrl
+  document.getElementById('lightbox').style.display = 'flex'
+}
+function closeLightbox () {
+  document.getElementById('lightbox').style.display = 'none'
+}
+document.addEventListener('keydown', function (event) {
+  console.log(event.key)
+  if (event.key === 'Escape') {
+    closeLightbox()
+  }
+})

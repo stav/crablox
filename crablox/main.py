@@ -1,7 +1,7 @@
 import os
 from types import ModuleType
 
-from fasthtml.common import fast_app, Titled, ScriptX, serve
+from fasthtml.common import fast_app, Titled, ScriptX, serve, Div, Img
 
 import hauls
 from blocks import stack
@@ -61,6 +61,12 @@ def index():
             # hauls.example_block(rt),
             # hauls.tradesties_block(rt),
             *block_stacker(),
+        ),
+        Div(
+            Div(Img(id="lightbox-img", cls="lightbox-image")),
+            Div("X", cls="lightbox-close", onclick="closeLightbox()"),
+            cls="lightbox",
+            id="lightbox",
         ),
         ScriptX(path),
     )

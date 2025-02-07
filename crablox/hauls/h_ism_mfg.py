@@ -67,6 +67,8 @@ def content():
         Img(
             src="/static/ism-mfg-pmi.png",
             alt="Employment Situation Chart",
+            cls="cbx_image",
+            onclick="openLightbox('/static/ism-mfg-pmi.png')",
         ),
         id=id,
     )
