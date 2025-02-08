@@ -1,8 +1,8 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2
+from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
-title = "ISM Mfg 49.3"
+title = "ISM Mfg 50.9"
 
 
 def content():
@@ -11,50 +11,47 @@ def content():
     url2 = "https://tradingeconomics.com/united-states/business-confidence#stats"
 
     details = Card(
-        H1("49.3"),
-        H2("📊 ISM Manufacturing PMI Rises More than Expectation"),
-        """
-        🔑 Headline: 49.3 (up from 48.4 in November)
-        📈 Direction: Still contracting but approaching the expansion threshold of 50
-        🚀 Rate of Change: Softest contraction pace since March's expansion
-
-        Key Components:
-        📦 New Orders: Strong uptick to 52.5 (highest in 11 months)
-        👥 Employment: Declined to 45.3 from 48.1
-        Complete Sector Comments 🏭:
-
-        ✅ Growth Sectors:
-
-            Primary Metals: "There is definitely an uptick this month, though not a stable one"
-
-            Electrical Equipment: "The increase in new orders has our plants at full capacity"
-
-            Miscellaneous Manufacturing: "Combo of seasonal factors plus increased demand outlook for 2025"
-
-        ⚠️ Neutral/Mixed:
-
-            Food & Beverage: "We're seeing a softening in sales. This is concerning as it's our peak season"
-
-            Computer & Electronic: "We are constrained by technical labor, despite higher-than-normal backlog"
-
-            Plastics & Rubber: "Orders have increased slightly due to seasonal reasons"
-
-        🔻 Contracting Sectors:
-
-            Transportation Equipment: "Automotive and powersport volume decreases"
-
-            Chemical Products: "Slightly lower due to seasonality and end-of-year destocking"
-
-            Machinery: "Significant slowdown in production requirements in the last two months of the year"
-
-            Fabricated Metal Products: "Order levels well below forecast projections"
-
-        The mix of comments suggests some sectors seeing genuine improvement while others face seasonal and structural challenges.
-        """,
-        Img(
-            src="/static/ism-mfg-glance-2024-nov.png",
-            alt="Employment Situation Chart",
+        H1("50.9"),
+        H2("📊 Manufacturing sector expands for first time in 26 months!"),
+        P("🔑 Headline: 50.9 (up from 49.2 in December)"),
+        P("📈 Direction: Expanding"),
+        P(
+            """
+            This marks a significant turning point in manufacturing sector performance,
+            with expansion returning after over 2 years of contraction.
+            """
         ),
+        P(
+            """
+            Key Highlights:
+                ✅ New Orders: 55.1 (+3.0)
+                ✅ Production: 52.5 (+2.6)
+                ✅ Employment: 50.3 (+4.9)
+                ✅ Prices Index: 54.9 (+2.4)
+            """
+        ),
+        P(
+            """
+            Top Growing Industries (Level):
+                1. Textile Mills (+8)
+                2. Primary Metals (+7)
+                3. Petroleum & Coal Products (+6)
+                4. Chemical Products (+5)
+                5. Machinery (+4)
+            """
+        ),
+        """
+            Notable Industry Comments:
+            🧵 Textile Mills: "Looking forward to a year of strong customer demand and higher sales than 2024."
+            🏗️ Primary Metals: "Automotive order demand continues to be consistent and on a steady pace. Beginning to look at hiring additional team members once again. Pricing is holding firm."
+            ⛽ Chemical Products: "Customer orders slightly stronger than expected. Seeing more general price increases for chemicals/raw materials. No International Longshoremen's strike is a tremendous help."
+            🔧 Machinery: "Although we are in our busy season, our demand for the first two weeks of 2025 has outpaced normal levels for this period of time."
+            🚗 Transportation Equipment: "Alleviating supply chain conditions are noticeably pivoting back into acute shortage situations. Critical minerals supply chains tightening dramatically due to Chinese restrictions."
+            💻 Computer & Electronic Products: "China stimulus is helping us win orders and increase use of services and consumables. Cost pressures remain for all materials and parts but are starting to stabilize."
+            🏭 Fabricated Metal Products: "Capital equipment sales are starting off 2025 strong. Normally, we see a soft start to the year, so this strong start is unusual."
+            📦 Miscellaneous Manufacturing: "New orders are still good but decreasing compared to previous quarters. Working through current backlog."
+            🍔 Food & Beverage: "Volume in 2025 is targeting 2-percent growth. Organization is mindful of potential tariffs and what to do with re-routing or cost increases in supply chains that are impacted."
+        """,
         cls="wlv-details",
         header="ISM Manufacturing PMI",
         footer=Ul(
