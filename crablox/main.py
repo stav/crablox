@@ -1,16 +1,12 @@
-import os
 from types import ModuleType
 
 from fasthtml.common import fast_app, Titled, ScriptX, serve, Div, Img
 
+from config import env, fast_config, USERNAME
+
 import hauls
 from blocks import stack
 
-env = os.getenv("CRB", "production")
-if env == "production":
-    from config.prod import fast_config
-else:
-    from config.dev import fast_config
 
 app, rt = fast_app(**fast_config)
 print(f'Using "{env}" environment for {app}')
