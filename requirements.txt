@@ -8,6 +8,7 @@ bpyutils==0.5.8
 certifi==2024.12.14
 charset-normalizer==3.4.1
 click==8.1.8
+fa6-icons==0.0.2
 fastcore==1.7.28
 fastlite==0.1.1
 fh-altair==0.1.0
