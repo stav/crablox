@@ -1,8 +1,8 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2
+from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, H3, H4, P
 
 id = "IsmSrvPmi"
 path = "/ism/srv"
-title = "ISM Srv 54.1"
+title = "ISM Srv 52.8"
 
 
 def content():
@@ -11,45 +11,47 @@ def content():
     url2 = "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
 
     details = Card(
-        H1("54.1"),
-        H2("ISM Services: December Beat but Inflation Coming in Hot 🔥"),
+        H1("52.8"),
+        H2("ISM Services: PMI Growth Slows, but Sector Remains in Expansion"),
+        P(
+            """
+        😮‍💨 Business Activity: 54.5 (-3.5) - biggest yikes of the day
+        📉 New Orders: 51.3 (-3.1) - barely keeping its head above water
+        🌊 Employment: 52.3 (+1.0) - finally some good news!
+        💪 Prices: 60.4 - cooling off (Jerome Powell breathing easier) but still elevated
         """
-        Services PMI crushed expectations - printing 54.1 vs 52.1 last month. The market was looking for 53.3. The service sector is straight up refusing to cool down! This marks the 10th time we're in expansion territory.
-        Breaking it down:
-        📈 Business Activity: Absolutely ripped higher to 58.2
-        🏷️ Prices: Major red flag here - jumped to 64.4 (up 6.2 points). Fed's not gonna like this...
-        👥 Employment: Holding steady at 51.4 (tiny -0.1 dip)
-        📦 New Orders: Still growing at 54.2
-        Rate cut party might get delayed folks. That prices number is no joke - 91 straight months of increases. Powell's probably sweating looking at this report. This may or may not move the needle of FedWatch Futures pricing the next rate cut in June right now, but it can help give us a clue.
-        Sector Notes:
-        Finance & Insurance leading the pack
-        Real Estate getting crushed (no surprise with these higher for longer rates)
-        Only 9 sectors growing vs 14 last month - some serious divergence to play with here
-        STRONGEST SECTORS:
-        🏦 Finance & Insurance: Consistently growing
-        🎭 Arts & Entertainment: Solid 13 point jump in Nov, holding strong
-        🛍️ Retail: Major comeback story - from contraction to 7 points growth
-        WEAKEST LINKS:
-        🏠 Real Estate: In the dumps (-6 points) - rates are killing it
-        🎓 Education: Dropped hard to -5
-        🌾 Agriculture: Whipsawed from +10 to -4 (weird move)
-        INTERESTING MOVES:
-        🏨 Hotels & Food: Killing it lately (+14 to +3)
-        📦 Wholesale: Nice turnaround from -6 in July to +2 now
-        💼 Management Services: Can't make up its mind - keeps flip-flopping
-        Things I'm Watching:
-
-            Backlogs dropping hard (44.3) - something's not adding up here
-            Everyone's freaking about tariffs in the comments (overplayed by some, underplayed by others?)
-            Healthcare still can't get their IV supplies straight
-            Some offshore moves happening in finance (might be worth digging into)
-
-        Bottom Line: Services sector's still got juice, but there's some complexity in the details. That prices number is the real story here - might shake up the rates timeline everyone's betting on.
-        Who's getting macro inspiration from this? Drop your thoughts below 🎯
+        ),
+        H3("Sector Highlights 🎢"),
+        H4("Growth Standouts:"),
+        """
+            Ag/Forestry/Fishing +14 (from red to leading the pack in growth this month)
+            Hotels/Restaurants +13 (people still living their best lives)
+            Mining +12 (comeback kid)
+            Wholesale Trade +11 (despite the weather fiascos)
         """,
-        Img(
-            src="/static/ism-srv-glance-2024-dec.png",
-            alt="Employment Situation Chart",
+        H4("Industries in Contraction Standouts:"),
+        """
+            Professional Services: -1 (oof)
+            Real Estate: -2 (double oof)
+            Other Services: -3 (triple oof)
+        """,
+        H3("INDUSTRY COMMENTS 💬"),
+        industry_comments,
+        P(
+            Img(
+                src="/static/ism-mfg-srv.png",
+                alt="Employment Situation Chart",
+                cls="cbx_image",
+                onclick="openLightbox('/static/ism-mfg-srv.png')",
+            ),
+        ),
+        P(
+            Img(
+                src="/static/ism-srv-heatmap.png",
+                alt="Employment Situation Chart",
+                cls="cbx_image",
+                onclick="openLightbox('/static/ism-srv-heatmap.png')",
+            ),
         ),
         cls="wlv-details",
         header="ISM Service PMI",
@@ -68,3 +70,44 @@ def content():
         ),
         id=id,
     )
+
+
+industry_comments = Div(
+    """
+#### Wholesale Trade ™
+"Business is picking up but still slower than expected for January. We have had a lot of warehouse closures due to weather." 🌨️
+
+#### Healthcare 🏥
+"Seeing letters announcing higher pricing from suppliers for 2025. Relying more on analytics to find the lowest impact on cost while keeping the quality high" 💸
+
+#### Educational Services 🏫
+"Business conditions seem to be stable for us at this time."
+
+#### Transportation & Warehousing 🚚
+“The employment market is softening as we are seeing less natural turn and getting more and better-qualified applicants. Also, requests for our services have continued to increase.”
+
+#### Retail Trade 🏪
+“Holiday sales not as robust as hoped for. Will need to adjust future planning.”
+
+#### Information ℹ️
+“The paper market is starting to tighten up on the groundwood grades. All the North American mills are pushing dates into late February. It’s not causing any shortages yet, but it’s the first time in over a year that dates are moving out.”
+
+#### Construction 🚧
+“Expecting considerable new projects to move to execution by second quarter in the energy market within the U.S.
+
+#### Management of Companies & Support Services 🕴️
+“Some apprehension exists with stakeholders and suppliers with government changes and potential tariff burdens.” [Management of Companies & Support Services]
+
+#### Professional, Scientific & Technical Services 🥼
+“The threat of tariffs is causing prices to rise. The threat of unstable international markets is resulting in shortages for various materials.”
+
+#### Real Estate, Rental & Leasing 🌇
+“Concern going forward is the cost of materials and project work, if any tariffs go into effect.”
+
+### The ISM Divergence 🔄
+Manufacturing just hit into growth territory (first time in 2 years!) while services is still hanging on but growing slower. Talk about a divergence.
+
+Trading Take 💡: That cooling price trend might be the move to watch. But that business activity drop? We'll have to keep an eye on that next month as well as this manufacturing/services split.
+""",
+    cls="marked",
+)
