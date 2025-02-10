@@ -1,4 +1,4 @@
-from fasthtml.common import Div, H3, H5, Img, P
+from fasthtml.common import Div, H3, H5, Img, P, I
 
 from bot import get_rows_format_1
 from . import wrap
@@ -12,7 +12,10 @@ path = "/um/index"
 title = "UM Index"
 details = Div(
     H3("The Index of Consumer Sentiment"),
-    H5("Consumer Sentiment Dropped: Inflation Alert 🚨"),
+    H5("Consumer Sentiment Drops"),
+    P(
+        I("""Well, the Fed's "soft landing" narrative just hit some turbulence."""),
+    ),
     P(
         """
         The first UMCSI reading of 2025 shows some concerning divergences that warrant attention. Headline sentiment dropped to 73.2 (vs. 74.0 prior and 73.8 expected)
@@ -22,11 +25,23 @@ details = Div(
         Current conditions vs expectations spread widening too. Consumers feel OK now but getting worried about what's ahead.
         Fed won't like this print on top of the Prices segment of Services ISM going higher too.
         There is risk we might not even see another rate cut or two this year now based on these two leading indicators.
-    """
+        """
     ),
-    Img(
-        src="/static/um_featured-chart_large-2b6130ca.png",
-        alt="Consumers Express Rising Uncertainty Over Path of Inflation",
+    P(
+        Img(
+            src="/static/um_featured-chart_large-2b6130ca.png",
+            alt="Consumers Express Rising Uncertainty Over Path of Inflation",
+            cls="cbx_image",
+            onclick="openLightbox('/static/um_featured-chart_large-2b6130ca.png')",
+        ),
+    ),
+    P(
+        Img(
+            src="/static/um-index.png",
+            alt="United States Michigan Consumer Sentiment",
+            cls="cbx_image",
+            onclick="openLightbox('/static/um-index.png')",
+        ),
     ),
 )
 
