@@ -1,7 +1,7 @@
 import configparser
 import os
 
-from fasthtml.common import Link
+from fasthtml.common import Link, MarkdownJS
 from fh_altair import altair_headers
 from style import styles
 
@@ -11,6 +11,7 @@ base_config = {
         Link(rel="icon", href="/static/favicon.ico"),
         altair_headers,
         styles,
+        MarkdownJS(),
     ],
     "static_path": "./crablox",
 }
