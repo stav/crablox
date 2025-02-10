@@ -45,6 +45,8 @@ def content():
         Img(
             src="/static/US_Non_Farm_Payrolls.png",
             alt="Employment Situation Chart",
+            cls="cbx_image",
+            onclick="openLightbox(this.src, this.alt)",
         ),
         id=id,
     )

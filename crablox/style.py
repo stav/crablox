@@ -38,6 +38,7 @@ styles = Style(
     .lightbox {
         display: none;
         position: fixed;
+        flex-direction: column;
         top: 0;
         left: 0;
         width: 100%;
@@ -50,6 +51,11 @@ styles = Style(
     .lightbox-image {
         max-width: 90%;
         max-height: 80%;
+    }
+    .lightbox-caption {
+        text-align: center;
+        margin-top: 0.5em;
+        font-size: xx-large;
     }
     .lightbox-close {
         position: absolute;

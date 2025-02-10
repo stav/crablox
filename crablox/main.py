@@ -101,7 +101,8 @@ def index(req: Request):
             ),
         ),
         Div(
-            Div(Img(id="lightbox-img", cls="lightbox-image")),
+            Div(Img(id="lightbox-img"), cls="lightbox-image"),
+            Div(id="lightbox-cap", cls="lightbox-caption"),
             Div("X", cls="lightbox-close", onclick="closeLightbox()"),
             cls="lightbox",
             id="lightbox",

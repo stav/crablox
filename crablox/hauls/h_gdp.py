@@ -1,4 +1,4 @@
-from fasthtml.common import *
+from fasthtml.common import Card, H2, H3, H5, P, Ul, Li, A, Img, Div
 
 id = "GDP"
 path = "/gdp"
@@ -26,7 +26,7 @@ def content():
         P(
             """
         There was also massive inventory drawdown shaving almost a full point
-        off GDP. Reflecting on what ISM corespendants were saying in Q4,
+        off GDP. Reflecting on what ISM corespondents were saying in Q4,
         businesses were unsure about elections and then had tariff concerns.
         With both fears behind us, this could be setting up for a forced
         inventory rebuild that could give us a head fake later.
@@ -52,9 +52,9 @@ def content():
             Img(
                 src="/static/2024-q4-gdp.png",
                 alt="US GDP Growth Rate Chart",
+                cls="cbx_image",
+                onclick="openLightbox(this.src, this.alt)",
             ),
-            href=url1,
-            target="_blank",
         ),
         id=id,
     )

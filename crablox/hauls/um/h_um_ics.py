@@ -32,7 +32,7 @@ details = Div(
             src="/static/um_featured-chart_large-2b6130ca.png",
             alt="Consumers Express Rising Uncertainty Over Path of Inflation",
             cls="cbx_image",
-            onclick="openLightbox('/static/um_featured-chart_large-2b6130ca.png')",
+            onclick="openLightbox(this.src, this.alt)",
         ),
     ),
     P(
@@ -40,7 +40,7 @@ details = Div(
             src="/static/um-index.png",
             alt="United States Michigan Consumer Sentiment",
             cls="cbx_image",
-            onclick="openLightbox('/static/um-index.png')",
+            onclick="openLightbox(this.src, this.alt)",
         ),
     ),
 )

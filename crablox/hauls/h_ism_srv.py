@@ -40,17 +40,17 @@ def content():
         P(
             Img(
                 src="/static/ism-mfg-srv.png",
-                alt="Employment Situation Chart",
+                alt="ISM Manufacturing vs Services Chart",
                 cls="cbx_image",
-                onclick="openLightbox('/static/ism-mfg-srv.png')",
+                onclick="openLightbox(this.src, this.alt)",
             ),
         ),
         P(
             Img(
                 src="/static/ism-srv-heatmap.png",
-                alt="Employment Situation Chart",
+                alt="ISM Services Heatmap",
                 cls="cbx_image",
-                onclick="openLightbox('/static/ism-srv-heatmap.png')",
+                onclick="openLightbox(this.src, this.alt)",
             ),
         ),
         cls="wlv-details",
@@ -64,9 +64,9 @@ def content():
         details,
         Img(
             src="/static/ism-srv-pmi.png",
-            alt="Employment Situation Chart",
+            alt="ISM Services PMI Chart",
             cls="cbx_image",
-            onclick="openLightbox('/static/ism-srv-pmi.png')",
+            onclick="openLightbox(this.src, this.alt)",
         ),
         id=id,
     )

@@ -39,8 +39,9 @@ function crbOpenBlock (id, path) {
 }
 
 // https://www.bualabs.com/archives/5073/displaying-cloudinary-images-in-fasthtml-ep-3/
-function openLightbox (imageUrl) {
+function openLightbox (imageUrl, caption) {
   document.getElementById('lightbox-img').src = imageUrl
+  document.getElementById('lightbox-cap').innerHTML = caption
   document.getElementById('lightbox').style.display = 'flex'
 }
 function closeLightbox () {

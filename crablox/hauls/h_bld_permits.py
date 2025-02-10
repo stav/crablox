@@ -54,9 +54,9 @@ def content():
             Img(
                 src="/static/US_Building_Permits.png",
                 alt="United States Building Permits Chart",
+                cls="cbx_image",
+                onclick="openLightbox(this.src, this.alt)",
             ),
-            href=url2,
-            target="_blank",
         ),
         id=id,
     )

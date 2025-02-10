@@ -63,9 +63,9 @@ def content():
         details,
         Img(
             src="/static/ism-mfg-pmi.png",
-            alt="Employment Situation Chart",
+            alt="ISM Manufacturing PMI Chart",
             cls="cbx_image",
-            onclick="openLightbox('/static/ism-mfg-pmi.png')",
+            onclick="openLightbox(this.src, this.alt)",
         ),
         id=id,
     )
