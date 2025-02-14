@@ -53,3 +53,9 @@ document.addEventListener('keydown', function (event) {
     closeLightbox()
   }
 })
+
+// Swapy
+const container = document.querySelector('.swapy-container')
+const swapy = Swapy.createSwapy(container)
+console.log(swapy)
+swapy.enable(true)

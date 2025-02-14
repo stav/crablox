@@ -1,7 +1,7 @@
 import configparser
 import os
 
-from fasthtml.common import Link, MarkdownJS, StyleX
+from fasthtml.common import Link, MarkdownJS, Script, StyleX
 from fh_altair import altair_headers
 
 
@@ -11,6 +11,7 @@ base_config = {
         altair_headers,
         StyleX("crablox/main.css"),
         MarkdownJS(),
+        Script(src="https://unpkg.com/swapy/dist/swapy.min.js"),
     ],
     "static_path": "./crablox",
 }
