@@ -61,11 +61,13 @@ def content():
     )
     return Div(
         details,
-        Img(
-            src="/static/ism-mfg-pmi.png",
-            alt="ISM Manufacturing PMI Chart",
-            cls="cbx_image",
-            onclick="openLightbox(this.src, this.alt)",
+        Div(
+            Img(
+                src="/static/ism-mfg-pmi.png",
+                alt="ISM Manufacturing PMI Chart",
+                cls="cbx_image",
+            ),
+            onclick="openLightbox(this)",
         ),
         id=id,
     )

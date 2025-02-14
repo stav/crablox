@@ -42,16 +42,16 @@ def content():
                 src="/static/ism-mfg-srv.png",
                 alt="ISM Manufacturing vs Services Chart",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
             ),
+            onclick="openLightbox(this)",
         ),
         P(
             Img(
                 src="/static/ism-srv-heatmap.png",
                 alt="ISM Services Heatmap",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
             ),
+            onclick="openLightbox(this)",
         ),
         cls="wlv-details",
         header="ISM Service PMI",
@@ -62,11 +62,13 @@ def content():
     )
     return Div(
         details,
-        Img(
-            src="/static/ism-srv-pmi.png",
-            alt="ISM Services PMI Chart",
-            cls="cbx_image",
-            onclick="openLightbox(this.src, this.alt)",
+        Div(
+            Img(
+                src="/static/ism-srv-pmi.png",
+                alt="ISM Services PMI Chart",
+                cls="cbx_image",
+            ),
+            onclick="openLightbox(this)",
         ),
         id=id,
     )

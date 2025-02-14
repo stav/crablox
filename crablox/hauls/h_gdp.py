@@ -48,13 +48,13 @@ def content():
     )
     return Div(
         details,
-        A(
+        Div(
             Img(
                 src="/static/2024-q4-gdp.png",
                 alt="US GDP Growth Rate Chart",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
             ),
+            onclick="openLightbox(this)",
         ),
         id=id,
     )

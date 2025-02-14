@@ -39,7 +39,10 @@ function crbOpenBlock (id, path) {
 }
 
 // https://www.bualabs.com/archives/5073/displaying-cloudinary-images-in-fasthtml-ep-3/
-function openLightbox (imageUrl, caption) {
+function openLightbox (wrapper) {
+  const image = wrapper.querySelector('img')
+  const imageUrl = image.getAttribute('src')
+  const caption = image.getAttribute('alt')
   document.getElementById('lightbox-img').src = imageUrl
   document.getElementById('lightbox-cap').innerHTML = caption
   document.getElementById('lightbox').style.display = 'flex'
@@ -56,6 +59,12 @@ document.addEventListener('keydown', function (event) {
 
 // Swapy
 const container = document.querySelector('.swapy-container')
-const swapy = Swapy.createSwapy(container)
-console.log(swapy)
+const swapy = Swapy.createSwapy(container, {
+  animation: 'dynamic',
+  // swapMode: 'drop',
+  // autoScrollOnDrag: true,
+  // enabled: true,
+  // dragAxis: 'x',
+  // dragOnHold: true
+})
 swapy.enable(true)

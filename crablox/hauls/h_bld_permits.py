@@ -23,23 +23,23 @@ def content():
             """
         ),
         P(
-            A(
+            Div(
                 Img(
                     src="/static/US_Building_Permits-vs-Housing_starts.png",
                     alt="Building permits Vs Housing starts Chart",
+                    cls="cbx_image",
                 ),
-                href="/static/US_Building_Permits-vs-Housing_starts.png",
-                target="_blank",
+                onclick="openLightbox(this)",
             ),
         ),
         P(
-            A(
+            Div(
                 Img(
                     src="/static/NewResidentialConstruction.png",
                     alt="New Residential Construction Chart",
+                    cls="cbx_image",
                 ),
-                href=url1,
-                target="_blank",
+                onclick="openLightbox(this)",
             ),
         ),
         cls="wlv-details",
@@ -50,13 +50,13 @@ def content():
     )
     return Div(
         details,
-        A(
+        Div(
             Img(
                 src="/static/US_Building_Permits.png",
                 alt="United States Building Permits Chart",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
             ),
+            onclick="openLightbox(this)",
         ),
         id=id,
     )

@@ -16,6 +16,7 @@ from fasthtml.common import (
     ScriptX,
     serve,
     Titled,
+    Svg,
 )
 from fa6_icons import svgs
 
@@ -88,17 +89,19 @@ def index(req: Request):
     return (
         Titled(
             "Indicator Megaboard Dashboard",
-            # hauls.hello_block(rt),
-            # hauls.example_block(rt),
-            # hauls.tradesties_block(rt),
-            *block_stacker(),
-            # [o for o in svgs],
-            A(
-                svgs.arrow_right_from_bracket.solid,
-                href="/logout",
-                title="Logout",
-                style="width: 2em; display: inline-block;",
+            Div(
+                *block_stacker(),
+                A(
+                    Svg(
+                        svgs.arrow_right_from_bracket.solid,
+                    ),
+                    href="/logout",
+                    title="Logout",
+                    style="width: 22em; display: flex;",
+                ),
+                cls="swapy-container",
             ),
+            cls="flex flex-col lg:p-10 p-5 dark:bg-[hsl(220.91deg,39.29%,8%)] bg-[hsl(220.91deg,30.29%,94%)] rounded-lg",
         ),
         Div(
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
