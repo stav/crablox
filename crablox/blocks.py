@@ -1,22 +1,9 @@
-from fasthtml.common import Button, Card, Div, Script
+from fasthtml.common import Button, Card, Div
 
 
 def stack(path, id, title=None):
 
     client_open_func = f"crbOpenBlock('{id}', '{path}')"
-
-    load_script = Script(
-        f"""
-        document.addEventListener("DOMContentLoaded", async function() {{
-            console.log('Opening 1:', "{client_open_func}", crbOpenBlock)
-            await {client_open_func};
-            // setTimeout(function() {{
-            //     console.log('Opening 2:', "{client_open_func}", crbOpenBlock)
-            //     {client_open_func};
-            // }}, 3000);
-        }});
-        """
-    )
 
     return (
         Card(
@@ -44,5 +31,4 @@ def stack(path, id, title=None):
                 ),
             ),
         ),
-        # load_script,
     )

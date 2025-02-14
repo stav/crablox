@@ -142,6 +142,7 @@ def login_page(req: Request):
             action="/login",
             method="post",
         ),
+        style="max-width: 400px; margin: auto;",
     )
 
 
