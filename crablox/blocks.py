@@ -11,16 +11,9 @@ def stack(path, id, title=None):
                 Div(  # Buttons
                     Button(
                         title or id,
-                        # We're not using hx_get because we want a callback to enable the toggle button.
-                        # hx_get=path,
-                        # hx_target=f"#wlv-{id}-data",
+                        hx_get=path,
+                        hx_target=f"#wlv-{id}-data",
                         onclick=client_open_func,
-                    ),
-                    Button(
-                        "Details",
-                        id=f"wlv-{id}-toggle-button",
-                        cls="wlv-toggle",
-                        onclick=f"crbToggleDetails('{id}')",
                     ),
                     Button(
                         "X",

@@ -49,6 +49,7 @@ def content():
                 cls="cbx_image",
             ),
             onclick="openLightbox(this)",
+            data_id=id,
         ),
         id=id,
     )

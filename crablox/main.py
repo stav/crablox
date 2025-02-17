@@ -106,6 +106,7 @@ def index(req: Request):
         Div(
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
             Div(id="lightbox-cap", cls="lightbox-caption"),
+            Div(id="lightbox-det", cls="lightbox-details"),
             Div("X", cls="lightbox-close"),  # Dummy close button
             onclick="closeLightbox()",  # Clicking anywhere closes the lightbox
             cls="lightbox",
