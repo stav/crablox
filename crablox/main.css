@@ -104,8 +104,8 @@
   background-image: url(/static/handle.svg);
   opacity: 0.5;
   position: absolute;
+  right: 10px;
   top: 14px;
-  left: 10px;
 }
 
 /* .item[data-swapy-dragging] {
