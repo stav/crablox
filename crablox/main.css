@@ -75,30 +75,6 @@
   margin: 0 auto;
 }
 
-.slot.top {
-  height: 200px;
-}
-
-.middle {
-  height: 250px;
-  display: flex;
-  gap: 10px;
-}
-
-.slot.middle-left {
-  height: 100%;
-  flex: 1;
-}
-
-.slot.middle-right {
-  height: 100%;
-  flex: 2;
-}
-
-.slot.bottom {
-  height: 150px;
-}
-
 .slot {
   border-radius: 10px;
   height: 400px;
@@ -108,42 +84,12 @@
 }
 
 .item {
-  /* display: flex;
-  flex-direction: row; */
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  overflow-y: auto;
   width: 400px;
   height: 100%;
-}
-
-.item-a {
-  background: rgba(255, 0, 0, 0.5);
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.item-a {
-  background: #10b981;
-}
-
-.item-b {
-  background: #be123c;
-}
-
-.item-c {
-  background: #4338ca;
-}
-
-.item-d {
-  background: #7e22ce;
 }
 
 .item:has(.handle) {
