@@ -107,8 +107,17 @@ def index(req: Request):
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
             Div(id="lightbox-cap", cls="lightbox-caption"),
             Div(id="lightbox-det", cls="lightbox-details"),
-            Div("X", cls="lightbox-close"),  # Dummy close button
-            onclick="closeLightbox()",  # Clicking anywhere closes the lightbox
+            # X closes lightbox, also escape key listener in main.js
+            Div(
+                Button(
+                    "X",
+                    cls="crb-close",
+                    data_swapy_no_drag=True,
+                    title="Try me, or hit escape key",
+                ),
+                cls="lightbox-close",
+                onclick="closeLightbox()",
+            ),
             cls="lightbox",
             id="lightbox",
         ),

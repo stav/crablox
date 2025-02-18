@@ -28,6 +28,12 @@
   margin-left: 1em;
   background-color: #c44336;
 }
+.crb-close {
+  background-color: #c44336;
+  opacity: 0.5;
+  position: fixed;
+  right: 20px;
+}
 
 /* (Lightbox) */
 .lightbox {
