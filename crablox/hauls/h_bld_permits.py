@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, H3, H5, Img, Li, P, Ul
 id = "BuildingPermits"
 path = "/building_permits"
 title = "Building Permits"
+caption = "United States Building Permits"
 
 
 def content():
@@ -26,8 +27,9 @@ def content():
             Div(
                 Img(
                     src="/static/US_Building_Permits-vs-Housing_starts.png",
-                    alt="Building permits Vs Housing starts Chart",
                     cls="cbx_image",
+                    alt="Building permits Vs Housing starts",
+                    title="Building permits Vs Housing starts",
                 ),
                 onclick="openLightbox(this)",
             ),
@@ -36,8 +38,9 @@ def content():
             Div(
                 Img(
                     src="/static/NewResidentialConstruction.png",
-                    alt="New Residential Construction Chart",
                     cls="cbx_image",
+                    alt="New Residential Construction for the Last Five Years",
+                    title="New Residential Construction for the Last Five Years",
                 ),
                 onclick="openLightbox(this)",
             ),
@@ -53,8 +56,9 @@ def content():
         Div(
             Img(
                 src="/static/US_Building_Permits.png",
-                alt="United States Building Permits Chart",
+                alt=caption,
                 cls="cbx_image",
+                title=caption,
             ),
             onclick="openLightbox(this)",
             data_id=id,

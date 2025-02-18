@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
 id = "IsmMfgPmi"
 path = "/ism/mfg"
 title = "ISM Mfg 50.9"
+caption = "ISM Manufacturing PMI"
 
 
 def content():
@@ -64,8 +65,9 @@ def content():
         Div(
             Img(
                 src="/static/ism-mfg-pmi.png",
-                alt="ISM Manufacturing PMI Chart",
+                alt=caption,
                 cls="cbx_image",
+                title=caption,
             ),
             onclick="openLightbox(this)",
             data_id=id,

@@ -3,6 +3,7 @@ from fasthtml.common import Card, H2, H3, H5, P, Ul, Li, A, Img, Div
 id = "GDP"
 path = "/gdp"
 title = "Gross Domestic Product"
+caption = "US GDP Growth Rate"
 
 
 def content():
@@ -51,8 +52,9 @@ def content():
         Div(
             Img(
                 src="/static/2024-q4-gdp.png",
-                alt="US GDP Growth Rate Chart",
+                alt=caption,
                 cls="cbx_image",
+                title=caption,
             ),
             onclick="openLightbox(this)",
             data_id=id,
