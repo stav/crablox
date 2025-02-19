@@ -37,7 +37,7 @@ def stack(path, id, title=None):
                 data_swapy_item=id,
                 cls="item",
             ),
-            data_swapy_slot=id,
+            data_swapy_slot=True,  # or maybe some hash(id)
             cls="wlv-block slot",
         ),
     )
