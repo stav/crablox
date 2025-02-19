@@ -30,7 +30,7 @@ def stack(path, id, title=None):
                     cls="crb-buttons",
                 ),
                 Div(  # Data
-                    Div(id=f"wlv-{id}-data"),
+                    id=f"wlv-{id}-data",
                     cls="wlv-data",
                     data_swapy_no_drag=True,
                 ),
