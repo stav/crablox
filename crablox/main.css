@@ -69,10 +69,6 @@
 }
 
 /* (Swapy) */
-* {
-  box-sizing: border-box;
-}
-
 .swapy-container {
   width: 100%;
   display: flex;
