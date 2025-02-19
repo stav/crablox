@@ -63,8 +63,7 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
-        details,
+    return (
         Div(
             Img(
                 src="/static/ism-srv-pmi.png",
@@ -75,7 +74,7 @@ def content():
             onclick="openLightbox(this)",
             data_id=id,
         ),
-        id=id,
+        details,
     )
 
 

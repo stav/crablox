@@ -60,7 +60,7 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
+    return (
         Div(
             Img(
                 src="/static/ism-mfg-pmi.png",
@@ -72,5 +72,4 @@ def content():
             data_id=id,
         ),
         details,
-        id=id,
     )
