@@ -51,7 +51,7 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
+    return (
         details,
         Div(
             Img(
@@ -63,5 +63,5 @@ def content():
             onclick="openLightbox(this)",
             data_id=id,
         ),
-        id=id,
+        # id=id,  Do we still need this? IS this a remnant from the details button?
     )
