@@ -61,7 +61,6 @@ def content():
         ),
     )
     return Div(
-        details,
         Div(
             Img(
                 src="/static/ism-mfg-pmi.png",
@@ -72,5 +71,6 @@ def content():
             onclick="openLightbox(this)",
             data_id=id,
         ),
+        details,
         id=id,
     )
