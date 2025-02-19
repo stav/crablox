@@ -16,7 +16,6 @@
   cursor: pointer;
 }
 .wlv-details {
-  display: none;
   max-width: 400px;
 }
 .wlv-toggle {
