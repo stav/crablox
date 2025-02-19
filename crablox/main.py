@@ -101,7 +101,7 @@ def index(req: Request):
                 ),
                 cls="swapy-container",
             ),
-            cls="flex flex-col lg:p-10 p-5 dark:bg-[hsl(220.91deg,39.29%,8%)] bg-[hsl(220.91deg,30.29%,94%)] rounded-lg",
+            cls="flex flex-col lg:p-10 p-5 rounded-lg",
         ),
         Div(
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
