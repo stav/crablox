@@ -14,14 +14,12 @@ def stack(path, id, title=None):
                         hx_get=path,
                         hx_target=f"#wlv-{id}-data",
                         onclick=client_open_func,
-                        data_swapy_no_drag=True,
                     ),
                     Button(
                         "X",
                         id=f"wlv-{id}-close-button",
                         cls="wlv-close",
                         onclick=f"crbCloseBlock('{id}')",
-                        data_swapy_no_drag=True,
                     ),
                     Div(  # Handle
                         cls="handle",
