@@ -1,4 +1,6 @@
-from fasthtml.common import Button, Card, Div
+import hashlib
+
+from fasthtml.common import Button, Div
 
 
 def stack(path, id, title=None):
@@ -35,7 +37,11 @@ def stack(path, id, title=None):
                 data_swapy_item=id,
                 cls="item",
             ),
-            data_swapy_slot=id,
+            data_swapy_slot=create_short_hash(id),
             cls="wlv-block slot",
         ),
     )
+
+
+def create_short_hash(input_string):
+    return hashlib.md5(input_string.encode()).hexdigest()[:8]
