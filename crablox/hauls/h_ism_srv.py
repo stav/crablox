@@ -14,6 +14,7 @@ def content():
     details = Card(
         H1("52.8"),
         H2("ISM Services: PMI Growth Slows, but Sector Remains in Expansion"),
+        P("5 February 2025"),
         P(
             """
         😮‍💨 Business Activity: 54.5 (-3.5) - biggest yikes of the day

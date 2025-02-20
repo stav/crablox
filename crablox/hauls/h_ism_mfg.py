@@ -14,6 +14,7 @@ def content():
     details = Card(
         H1("50.9"),
         H2("📊 Manufacturing sector expands for first time in 26 months!"),
+        P("4 February 2025"),
         P("🔑 Headline: 50.9 (up from 49.2 in December)"),
         P("📈 Direction: Expanding"),
         P(

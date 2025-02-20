@@ -1,4 +1,4 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, P
+from fasthtml.common import A, Card, Div, Img, Li, Ul, P, H3
 
 id = "BLS_ESR"
 path = "/esr"
@@ -12,6 +12,7 @@ def content():
     url2 = "https://www.bls.gov/news.release/empsit.nr0.htm"
 
     details = Card(
+        P("10 January 2025"),
         P(
             """Total nonfarm payroll employment increased by 256,000 in December, and the unemployment rate
             changed little at 4.1 percent, the U.S. Bureau of Labor Statistics reported today. Employment
@@ -19,15 +20,15 @@ def content():
             December, following a job loss in November.
             """,
         ),
+        H3("NonFarm Payrolls - Good but Bad"),
+        P("NFP Dec: 256K vs 160K exp (Nov revised to 212K)"),
+        Ul(
+            Li("Healthcare +46K"),
+            Li("Retail +43K"),
+            Li("Gov't +33K"),
+            Li("Manufacturing -13K"),
+        ),
         """
-        NonFarm Payrolls - Good but Bad
-        NFP Dec: 256K vs 160K exp (Nov revised to 212K)
-
-            Healthcare +46K
-            Retail +43K
-            Gov't +33K
-            Manufacturing -13K
-
         Key points: Huge beat - not even close to estimates.
         Nov got revised down but doesn't matter, labor market's still cooking. Retail bounced back hard after that weak Nov.
         2024 avg monthly gains = 186K vs 251K in 2023.
@@ -35,7 +36,7 @@ def content():
         Rates staying higher for even longer.
         """,
         cls="wlv-details",
-        header="Employment Situation Report - 10 January 2025",
+        header=H3("Employment Situation Report"),
         footer=Ul(
             Li(A(url1, href=url1, target="_blank")),
             Li(A(url2, href=url2, target="_blank")),

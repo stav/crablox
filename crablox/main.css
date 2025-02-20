@@ -1,6 +1,9 @@
 .container {
   max-width: 95%;
 }
+article > header {
+  text-align: center  ;
+}
 .wlv-block {
   border: 1px solid #ccc;
   padding: 1em;

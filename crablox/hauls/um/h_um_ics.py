@@ -12,13 +12,15 @@ path = "/um/index"
 title = "UM Index"
 details = Div(
     H3("The Index of Consumer Sentiment"),
-    H5("Consumer Sentiment Drops"),
+    P("7 February 2025"),
+    H5("Sentiment Drops to 73.2 (vs. 74.0 prior and 73.8 expected)"),
     P(
         I("""Well, the Fed's "soft landing" narrative just hit some turbulence."""),
     ),
     P(
         """
-        The first UMCSI reading of 2025 shows some concerning divergences that warrant attention. Headline sentiment dropped to 73.2 (vs. 74.0 prior and 73.8 expected)
+        The first UMCSI reading of 2025 shows some concerning divergences that warrant attention.
+
         The big story isn't the headline miss - it's inflation expectations ripping higher.
         Both near-term and long-run jumped to 3.3% (from 2.8%/3.0%).
         That's a huge 1-month move we've only seen twice in 4 years.
