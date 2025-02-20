@@ -29,20 +29,22 @@ def generate_chart(rows, y1, y2=None):
     return Div(altair2fasthtml(chart), cls="wlv-chart")
 
 
-def render(url: str, series: tuple, header: str, func: callable):
+def render(url: str, series: tuple, details: str, func: callable):
     rows = list(func(url))
 
     chart = generate_chart(rows, *series)
 
     card = Card(
-        A(url, href=url, target="_blank"),
         Pre(rows),
+        details,
         cls="wlv-details",
-        header=header,
-        footer=A(
-            "http://www.sca.isr.umich.edu/",
-            href="http://www.sca.isr.umich.edu/",
-            target="_blank",
+        footer=(
+            A(url, href=url, target="_blank"),
+            A(
+                "http://www.sca.isr.umich.edu/",
+                href="http://www.sca.isr.umich.edu/",
+                target="_blank",
+            ),
         ),
     )
 

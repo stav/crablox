@@ -13,6 +13,7 @@ def content():
     details = Card(
         H2("Q4 GDP: 2.3%"),
         H3("🚨 The Consumer Camouflage"),
+        P("25 January 2025"),
         H5(
             """2024 Q4 GDP printed today at 2.3%, missing estimates and confirming
            what our ISM charts have been screaming since Q3."""

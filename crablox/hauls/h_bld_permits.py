@@ -13,6 +13,7 @@ def content():
 
     details = Card(
         H3("United States Building Permits"),
+        P("17 January 2025"),
         H5("🏗️ Housing Starts: Analysts Called It Wrong"),
         P(
             """
