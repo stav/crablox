@@ -24,26 +24,24 @@ def content():
             """
         ),
         P(
-            Div(
-                Img(
-                    src="/static/US_Building_Permits-vs-Housing_starts.png",
-                    cls="cbx_image",
-                    alt="Building permits Vs Housing starts",
-                    title="Building permits Vs Housing starts",
-                ),
-                onclick="openLightbox(this)",
+            Img(
+                src="/static/US_Building_Permits-vs-Housing_starts.png",
+                cls="cbx_image",
+                alt="Building permits Vs Housing starts",
+                title="Building permits Vs Housing starts",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         P(
-            Div(
-                Img(
-                    src="/static/NewResidentialConstruction.png",
-                    cls="cbx_image",
-                    alt="New Residential Construction for the Last Five Years",
-                    title="New Residential Construction for the Last Five Years",
-                ),
-                onclick="openLightbox(this)",
+            Img(
+                src="/static/NewResidentialConstruction.png",
+                cls="cbx_image",
+                alt="New Residential Construction for the Last Five Years",
+                title="New Residential Construction for the Last Five Years",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         cls="wlv-details",
         footer=Ul(
