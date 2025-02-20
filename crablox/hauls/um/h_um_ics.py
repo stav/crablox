@@ -34,6 +34,7 @@ details = Div(
             cls="cbx_image",
         ),
         onclick="openLightbox(this)",
+        data_id=id,
     ),
     P(
         Img(
@@ -42,6 +43,7 @@ details = Div(
             cls="cbx_image",
         ),
         onclick="openLightbox(this)",
+        data_id=id,
     ),
 )
 

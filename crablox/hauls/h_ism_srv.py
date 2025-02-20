@@ -46,6 +46,7 @@ def content():
                 title="ISM Manufacturing vs Services",
             ),
             onclick="openLightbox(this)",
+            data_id=id,
         ),
         P(
             Img(
@@ -55,6 +56,7 @@ def content():
                 title="ISM Services Heatmap",
             ),
             onclick="openLightbox(this)",
+            data_id=id,
         ),
         cls="wlv-details",
         header="ISM Service PMI",
@@ -63,8 +65,7 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
-        details,
+    return (
         Div(
             Img(
                 src="/static/ism-srv-pmi.png",
@@ -75,7 +76,7 @@ def content():
             onclick="openLightbox(this)",
             data_id=id,
         ),
-        id=id,
+        details,
     )
 
 

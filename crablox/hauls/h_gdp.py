@@ -47,8 +47,7 @@ def content():
             Li(A(url1, href=url1, target="_blank")),
         ),
     )
-    return Div(
-        details,
+    return (
         Div(
             Img(
                 src="/static/2024-q4-gdp.png",
@@ -59,5 +58,5 @@ def content():
             onclick="openLightbox(this)",
             data_id=id,
         ),
-        id=id,
+        details,
     )

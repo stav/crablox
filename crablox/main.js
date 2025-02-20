@@ -17,10 +17,11 @@ function openLightbox (wrapper) {
   const imageUrl = image.getAttribute('src')
   const caption = image.getAttribute('alt')
   const id = wrapper.getAttribute('data-id')
-  const details = document.getElementById(id).querySelector('article')
+  const details = document.getElementById(id)
+  const article = details.querySelector('article')
   document.getElementById('lightbox-img').src = imageUrl
   document.getElementById('lightbox-cap').innerHTML = caption
-  document.getElementById('lightbox-det').innerHTML = details.innerHTML
+  document.getElementById('lightbox-det').innerHTML = article.innerHTML
   document.getElementById('lightbox').style.display = 'flex'
 }
 function closeLightbox () {

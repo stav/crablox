@@ -1,4 +1,6 @@
-from fasthtml.common import Button, Card, Div
+import hashlib
+
+from fasthtml.common import Button, Div
 
 
 def stack(path, id, title=None):
@@ -14,14 +16,12 @@ def stack(path, id, title=None):
                         hx_get=path,
                         hx_target=f"#wlv-{id}-data",
                         onclick=client_open_func,
-                        data_swapy_no_drag=True,
                     ),
                     Button(
                         "X",
                         id=f"wlv-{id}-close-button",
                         cls="wlv-close",
                         onclick=f"crbCloseBlock('{id}')",
-                        data_swapy_no_drag=True,
                     ),
                     Div(  # Handle
                         cls="handle",
@@ -30,14 +30,19 @@ def stack(path, id, title=None):
                     cls="crb-buttons",
                 ),
                 Div(  # Data
-                    Div(id=f"wlv-{id}-data"),
+                    id=f"wlv-{id}-data",
                     cls="wlv-data",
                     data_swapy_no_drag=True,
                 ),
                 data_swapy_item=id,
                 cls="item",
+                id=id,
             ),
-            data_swapy_slot=id,
+            data_swapy_slot=create_short_hash(id),
             cls="wlv-block slot",
         ),
     )
+
+
+def create_short_hash(input_string):
+    return hashlib.md5(input_string.encode()).hexdigest()[:8]
