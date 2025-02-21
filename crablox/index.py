@@ -43,32 +43,50 @@ def route(rt):
 
     def block_stacker():
         """
-        Generator function that processes hauls and yields a container for each
-        block's: path, id, and title.
+        Generator function that processes hauls and yields a button for each block's title.
 
         Yields:
-            The result of the stack function for each block.
+            A button element for each block.
         """
         for block in hauls.blocks:
             print(f"Registering {block.path}")
             create_route(block)
-            yield stack(block.path, block.id, block.title)
+            yield Button(
+                block.title,
+                cls="block-button button",
+                hx_get=f"/api/blocks/{block.id}",
+                hx_target="#block-grid",
+                hx_swap="afterend",
+            )
+
+    @rt("/api/blocks/{id}")
+    def get_blocks(id:str):
+        print(f"Getting block {id}")
+        for block in hauls.blocks:
+            if block.id == id:
+                return stack(block.path, block.id, block.title)
+        return f"Block not found: {id}", 404
 
     return (
         Titled(
             "Indicator Megaboard Dashboard",
             Div(
                 *block_stacker(),
-                A(
-                    Svg(
-                        svgs.arrow_right_from_bracket.solid,
-                    ),
-                    href="/logout",
-                    title="Logout",
-                    style="width: 22em; display: flex;",
-                ),
-                cls="swapy-container",
+                cls="button-container",
             ),
+            Div(
+                id="block-grid",
+                cls="block-grid",
+            ),
+            A(
+                Svg(
+                    svgs.arrow_right_from_bracket.solid,
+                ),
+                href="/logout",
+                title="Logout",
+                style="width: 22em; display: flex;",
+            ),
+            cls="swapy-container",
         ),
         Div(
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
