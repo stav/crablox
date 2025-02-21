@@ -15,28 +15,30 @@ def content():
         H1("52.8"),
         H2("ISM Services: PMI Growth Slows, but Sector Remains in Expansion"),
         P("5 February 2025"),
-        P(
-            """
-        😮‍💨 Business Activity: 54.5 (-3.5) - biggest yikes of the day
-        📉 New Orders: 51.3 (-3.1) - barely keeping its head above water
-        🌊 Employment: 52.3 (+1.0) - finally some good news!
-        💪 Prices: 60.4 - cooling off (Jerome Powell breathing easier) but still elevated
-        """
+        Ul(
+            Li("😮‍💨 Business Activity: 54.5 (-3.5) - biggest yikes of the day"),
+            Li("📉 New Orders: 51.3 (-3.1) - barely keeping its head above water"),
+            Li("🌊 Employment: 52.3 (+1.0) - finally some good news!"),
+            Li(
+                "💪 Prices: 60.4 - cooling off (Jerome Powell breathing easier) but still elevated"
+            ),
         ),
         H3("Sector Highlights 🎢"),
         H4("Growth Standouts:"),
-        """
-            Ag/Forestry/Fishing +14 (from red to leading the pack in growth this month)
-            Hotels/Restaurants +13 (people still living their best lives)
-            Mining +12 (comeback kid)
-            Wholesale Trade +11 (despite the weather fiascos)
-        """,
+        Ul(
+            Li(
+                "Ag/Forestry/Fishing +14 (from red to leading the pack in growth this month)"
+            ),
+            Li("Hotels/Restaurants +13 (people still living their best lives)"),
+            Li("Mining +12 (comeback kid)"),
+            Li("Wholesale Trade +11 (despite the weather fiascos)"),
+        ),
         H4("Industries in Contraction Standouts:"),
-        """
-            Professional Services: -1 (oof)
-            Real Estate: -2 (double oof)
-            Other Services: -3 (triple oof)
-        """,
+        Ul(
+            Li("Professional Services: -1 (oof)"),
+            Li("Real Estate: -2 (double oof)"),
+            Li("Other Services: -3 (triple oof)"),
+        ),
         H3("INDUSTRY COMMENTS 💬"),
         industry_comments,
         P(
