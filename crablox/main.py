@@ -7,6 +7,7 @@ from config import env, fast_config
 
 app, rt = fast_app(before=auth.beforeware, **fast_config)
 print(f'Using "{env}" environment for {app}')
+serve()
 
 
 @rt("/")
@@ -27,6 +28,3 @@ async def _(request: Request):
 @rt("/logout")
 def _(request: Request):
     return auth.logout(request)
-
-
-serve()
