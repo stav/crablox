@@ -53,11 +53,19 @@ def route(rt):
             create_route(block)
             yield Button(
                 block.title,
-                cls="block-button",
-                onclick=f"addBlock('{block.path}', '{block.id}', '{block.title}')"
+                cls="block-button button",
+                hx_get=f"/api/blocks/{block.id}",
+                hx_target="#block-grid",
+                hx_swap="afterend",
             )
 
-    # register_blocks(),
+    @rt("/api/blocks/{id}")
+    def get_blocks(id:str):
+        print(f"Getting block {id}")
+        for block in hauls.blocks:
+            if block.id == id:
+                return stack(block.path, block.id, block.title)
+        return f"Block not found: {id}", 404
 
     return (
         Titled(
