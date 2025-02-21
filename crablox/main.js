@@ -27,6 +27,25 @@ function openLightbox (wrapper) {
 function closeLightbox () {
   document.getElementById('lightbox').style.display = 'none'
 }
+
+function addBlock(path, id, title) {
+    const blockGrid = document.getElementById('block-grid');
+    const blockContainer = document.createElement('div');
+    blockContainer.className = 'block-container';
+    blockContainer.innerHTML = `
+        <div class="block-title">${title}</div>
+        <div class="block-content" id="block-${id}"></div>
+    `;
+    blockGrid.appendChild(blockContainer);
+
+    fetch(path)
+        .then(response => response.text())
+        .then(content => {
+            document.getElementById(`block-${id}`).innerHTML = content;
+        })
+        .catch(error => console.error('Error fetching block content:', error));
+}
+
 document.addEventListener('keydown', function (event) {
   console.log(event.key)
   if (event.key === 'Escape') {
