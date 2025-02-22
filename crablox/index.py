@@ -5,9 +5,10 @@ from fasthtml.common import (
     Button,
     Div,
     Img,
+    NotStr,
     ScriptX,
-    Titled,
     Svg,
+    Titled,
 )
 from fa6_icons import svgs
 
@@ -51,16 +52,20 @@ def route(rt):
         for block in hauls.blocks:
             print(f"Registering {block.path}")
             create_route(block)
-            yield Button(
-                block.title,
-                cls="block-button button",
-                hx_get=f"/api/blocks/{block.id}",
-                hx_target="#block-grid",
-                hx_swap="afterend",
-            )
+            yield NotStr(
+                f"""
+                <button
+                    hx-get="/api/blocks/{block.id}"
+                    hx-target="#block-grid"
+                    hx-swap="afterend"
+                    hx-on:htmx:after-request="swapy.update()"
+                    class="button"
+                    style="margin: 0.2em"
+                >{block.title}</button>"""
+            ),
 
     @rt("/api/blocks/{id}")
-    def get_blocks(id:str):
+    def get_blocks(id: str):
         print(f"Getting block {id}")
         for block in hauls.blocks:
             if block.id == id:
@@ -75,8 +80,8 @@ def route(rt):
                 cls="button-container",
             ),
             Div(
-                id="block-grid",
-                cls="block-grid",
+                Div(id="block-grid", style="display: none"),
+                cls="swapy-container",
             ),
             A(
                 Svg(
@@ -86,7 +91,6 @@ def route(rt):
                 title="Logout",
                 style="width: 22em; display: flex;",
             ),
-            cls="swapy-container",
         ),
         Div(
             Div(Img(id="lightbox-img"), cls="lightbox-image"),
