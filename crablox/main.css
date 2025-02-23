@@ -2,11 +2,9 @@
   max-width: 95%;
 }
 .wlv-block {
-  display: inline-block;
   border: 1px solid #ccc;
   padding: 1em;
   margin: 0.5em;
-  max-width: 100%;
 }
 .wlv-data {
   max-width: 400px;
@@ -16,7 +14,6 @@
   cursor: pointer;
 }
 .wlv-details {
-  display: none;
   max-width: 400px;
 }
 .wlv-toggle {
@@ -28,6 +25,12 @@
   margin-left: 1em;
   background-color: #c44336;
 }
+.crb-close {
+  background-color: #c44336;
+  opacity: 0.5;
+  position: fixed;
+  right: 20px;
+}
 
 /* (Lightbox) */
 .lightbox {
@@ -38,10 +41,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: flex-start;
   align-items: center;
   z-index: 1000;
+  overflow-y: auto; /* Make the div scrollable */
 }
 .lightbox-image {
   max-width: 90%;
@@ -60,3 +64,49 @@
   color: #fff;
   cursor: pointer;
 }
+
+/* (Swapy) */
+.swapy-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.slot {
+  border-radius: 10px;
+  height: 400px;
+}
+.slot[data-swapy-highlighted] {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.item {
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow-y: auto;
+  width: 400px;
+  height: 100%;
+}
+
+.item:has(.handle) {
+  position: relative;
+}
+
+.handle {
+  cursor: grab;
+  width: 24px;
+  height: 24px;
+  background-image: url(/static/handle.svg);
+  opacity: 0.5;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+
+/* .item[data-swapy-dragging] {
+  opacity: 0.8;
+} */

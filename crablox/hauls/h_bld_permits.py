@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, H3, H5, Img, Li, P, Ul
 id = "BuildingPermits"
 path = "/building_permits"
 title = "Building Permits"
+caption = "United States Building Permits"
 
 
 def content():
@@ -23,24 +24,24 @@ def content():
             """
         ),
         P(
-            A(
-                Img(
-                    src="/static/US_Building_Permits-vs-Housing_starts.png",
-                    alt="Building permits Vs Housing starts Chart",
-                ),
-                href="/static/US_Building_Permits-vs-Housing_starts.png",
-                target="_blank",
+            Img(
+                src="/static/US_Building_Permits-vs-Housing_starts.png",
+                cls="cbx_image",
+                alt="Building permits Vs Housing starts",
+                title="Building permits Vs Housing starts",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         P(
-            A(
-                Img(
-                    src="/static/NewResidentialConstruction.png",
-                    alt="New Residential Construction Chart",
-                ),
-                href=url1,
-                target="_blank",
+            Img(
+                src="/static/NewResidentialConstruction.png",
+                cls="cbx_image",
+                alt="New Residential Construction for the Last Five Years",
+                title="New Residential Construction for the Last Five Years",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         cls="wlv-details",
         footer=Ul(
@@ -48,15 +49,16 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
-        details,
-        A(
+    return (
+        Div(
             Img(
                 src="/static/US_Building_Permits.png",
-                alt="United States Building Permits Chart",
+                alt=caption,
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
+                title=caption,
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
-        id=id,
+        details,
     )

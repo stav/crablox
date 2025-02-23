@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, H3, H4, P
 id = "IsmSrvPmi"
 path = "/ism/srv"
 title = "ISM Srv 52.8"
+caption = "ISM Services PMI "
 
 
 def content():
@@ -40,18 +41,22 @@ def content():
         P(
             Img(
                 src="/static/ism-mfg-srv.png",
-                alt="ISM Manufacturing vs Services Chart",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
+                alt="ISM Manufacturing vs Services",
+                title="ISM Manufacturing vs Services",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         P(
             Img(
                 src="/static/ism-srv-heatmap.png",
-                alt="ISM Services Heatmap",
                 cls="cbx_image",
-                onclick="openLightbox(this.src, this.alt)",
+                alt="ISM Services Heatmap",
+                title="ISM Services Heatmap",
             ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
         cls="wlv-details",
         header="ISM Service PMI",
@@ -60,15 +65,18 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
-        details,
-        Img(
-            src="/static/ism-srv-pmi.png",
-            alt="ISM Services PMI Chart",
-            cls="cbx_image",
-            onclick="openLightbox(this.src, this.alt)",
+    return (
+        Div(
+            Img(
+                src="/static/ism-srv-pmi.png",
+                alt=caption,
+                cls="cbx_image",
+                title=caption,
+            ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
-        id=id,
+        details,
     )
 
 

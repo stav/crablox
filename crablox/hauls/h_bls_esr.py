@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P
 id = "BLS_ESR"
 path = "/esr"
 title = "Employment Situation Report"
+caption = "US Non-Farm Payrolls"
 
 
 def content():
@@ -40,13 +41,16 @@ def content():
             Li(A(url2, href=url2, target="_blank")),
         ),
     )
-    return Div(
-        details,
-        Img(
-            src="/static/US_Non_Farm_Payrolls.png",
-            alt="Employment Situation Chart",
-            cls="cbx_image",
-            onclick="openLightbox(this.src, this.alt)",
+    return (
+        Div(
+            Img(
+                src="/static/US_Non_Farm_Payrolls.png",
+                alt=caption,
+                cls="cbx_image",
+                title=caption,
+            ),
+            onclick="openLightbox(this)",
+            data_id=id,
         ),
-        id=id,
+        details,
     )
