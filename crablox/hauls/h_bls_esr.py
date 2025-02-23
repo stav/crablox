@@ -51,7 +51,6 @@ def content():
                 title=caption,
             ),
             onclick="openLightbox(this)",
-            data_id=id,
         ),
         details,
     )
