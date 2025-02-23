@@ -1,5 +1,5 @@
 .container {
-  max-width: 95%;
+  max-width: 99%;
 }
 article > header {
   text-align: center  ;
@@ -19,14 +19,12 @@ article > header {
 .wlv-details {
   max-width: 400px;
 }
-.wlv-toggle {
-  display: none;
-  background-color: #43c436;
-}
-.wlv-close {
+.wlv-clear {
   display: none;
   margin-left: 1em;
-  background-color: #c44336;
+}
+.wlv-close {
+  margin-left: 1em;
 }
 .crb-close {
   background-color: #c44336;

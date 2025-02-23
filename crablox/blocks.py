@@ -20,8 +20,15 @@ def stack(path, id, title=None):
                         onclick="crbOpenBlock(this)",
                     ),
                     Button(
+                        "-",
+                        cls="wlv-clear outline",
+                        title="Clear",
+                        onclick="crbClearBlock(this)",
+                    ),
+                    Button(
                         "X",
-                        cls="wlv-close",
+                        cls="wlv-close outline",
+                        title="Close",
                         onclick="crbCloseBlock(this)",
                     ),
                     Div(  # Handle

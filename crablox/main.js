@@ -1,21 +1,25 @@
 // import htmx from 'htmx.org';
 
-function crbCloseBlock (closeButton) {
-  // Hide close button
-  closeButton.style.display = 'none'
+function crbOpenBlock (openButton) {
+  const item = openButton.closest('.item')
+  // Reveal data block
+  const data = item.querySelector(`.wlv-data`)
+  data.style.display = 'inline-block'
+  // Reveal clear button
+  const clearButton = item.querySelector('.wlv-clear')
+  clearButton.style.display = 'inline-block'
+}
+function crbClearBlock (clearButton) {
+  // Hide clear button
+  clearButton.style.display = 'none'
   // Hide data block
-  const item = closeButton.parentElement.parentElement
+  const item = clearButton.closest('.item')
   const data = item.querySelector(`.wlv-data`)
   data.style.display = 'none'
 }
-function crbOpenBlock (openButton) {
-  // Reveal data block
-  const item = openButton.parentElement.parentElement
-  const data = item.querySelector(`.wlv-data`)
-  data.style.display = 'inline-block'
-  // Reveal close button
-  const closeButton = openButton.parentElement.querySelector('.wlv-close')
-  closeButton.style.display = 'inline-block'
+function crbCloseBlock (closeButton) {
+  const slot = closeButton.closest('.slot')
+  slot.outerHTML = ''
 }
 
 // https://www.bualabs.com/archives/5073/displaying-cloudinary-images-in-fasthtml-ep-3/
