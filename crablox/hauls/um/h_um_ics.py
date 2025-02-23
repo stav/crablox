@@ -1,4 +1,4 @@
-from fasthtml.common import Div, H3, H5, Img, P, I
+from fasthtml.common import Div, Img, P
 
 from bot import get_rows_format_1
 from . import wrap
@@ -87,14 +87,13 @@ Hard to see strength there for with purchase intentions falling off a cliff. The
 
 
 def content():
+
+    card, chart = render(url, ("Index",), details, get_rows_format_1)
+
     return wrap(
         id,
-        *render(
-            url,
-            ("Index",),
-            details,
-            get_rows_format_1,
-        ),
+        card,
+        chart,
         cmp_content(),
         prc_content(),
     )

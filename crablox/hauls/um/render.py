@@ -35,7 +35,6 @@ def render(url: str, series: tuple, details: str, func: callable):
     chart = generate_chart(rows, *series)
 
     card = Card(
-        Pre(rows),
         details,
         cls="wlv-details",
         footer=Ul(
@@ -47,6 +46,7 @@ def render(url: str, series: tuple, details: str, func: callable):
                     target="_blank",
                 )
             ),
+            Li(Pre(rows)),
         ),
     )
 
