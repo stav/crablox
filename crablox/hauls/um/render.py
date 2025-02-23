@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 
-from fasthtml.common import A, Card, Div, Pre
+from fasthtml.common import A, Card, Div, Pre, Ul, Li
 from fh_altair import altair2fasthtml
 
 
@@ -38,12 +38,14 @@ def render(url: str, series: tuple, details: str, func: callable):
         Pre(rows),
         details,
         cls="wlv-details",
-        footer=(
-            A(url, href=url, target="_blank"),
-            A(
-                "http://www.sca.isr.umich.edu/",
-                href="http://www.sca.isr.umich.edu/",
-                target="_blank",
+        footer=Ul(
+            Li(A(url, href=url, target="_blank")),
+            Li(
+                A(
+                    "http://www.sca.isr.umich.edu/",
+                    href="http://www.sca.isr.umich.edu/",
+                    target="_blank",
+                )
             ),
         ),
     )
