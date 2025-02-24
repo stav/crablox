@@ -30,11 +30,10 @@ function openLightbox (wrapper) {
   const caption = image.getAttribute('alt')
   document.getElementById('lightbox-img').src = imageUrl
   document.getElementById('lightbox-cap').innerHTML = caption
-  // Article
+  // Details
   const item = wrapper.closest('.item')
-  const details = item.querySelector(`.wlv-data`)
-  const article = details.querySelector('article')
-  document.getElementById('lightbox-det').innerHTML = article.innerHTML
+  const details = item.querySelector('.wlv-details')
+  document.getElementById('lightbox-det').innerHTML = details.innerHTML
   document.getElementById('lightbox').style.display = 'flex'
 }
 function closeLightbox () {
