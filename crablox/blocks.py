@@ -1,11 +1,13 @@
 import hashlib
+import time
 
 from fasthtml.common import Button, Div
 
 
 def stack(path, id, title=None):
 
-    client_open_func = f"crbOpenBlock('{id}', '{path}')"
+    hash = create_short_hash()
+    itemId = f"""{id}-{hash}"""
 
     return (
         Div(  # Slot
@@ -14,14 +16,13 @@ def stack(path, id, title=None):
                     Button(
                         title or id,
                         hx_get=path,
-                        hx_target=f"#wlv-{id}-data",
-                        onclick=client_open_func,
+                        hx_target=f"#{itemId}>.wlv-data",
+                        onclick="crbOpenBlock(this)",
                     ),
                     Button(
                         "X",
-                        id=f"wlv-{id}-close-button",
                         cls="wlv-close",
-                        onclick=f"crbCloseBlock('{id}')",
+                        onclick="crbCloseBlock(this)",
                     ),
                     Div(  # Handle
                         cls="handle",
@@ -30,19 +31,20 @@ def stack(path, id, title=None):
                     cls="crb-buttons",
                 ),
                 Div(  # Data
-                    id=f"wlv-{id}-data",
                     cls="wlv-data",
                     data_swapy_no_drag=True,
                 ),
-                data_swapy_item=id,
                 cls="item",
-                id=id,
+                id=itemId,
+                data_swapy_item=hash,
             ),
-            data_swapy_slot=create_short_hash(id),
+            data_swapy_slot=create_short_hash(),
             cls="wlv-block slot",
         ),
     )
 
 
-def create_short_hash(input_string):
-    return hashlib.md5(input_string.encode()).hexdigest()[:8]
+def create_short_hash():
+    input_string = str(time.time())
+    hash = hashlib.sha256(input_string.encode()).hexdigest()
+    return "H" + hash[:8]

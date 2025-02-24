@@ -40,7 +40,6 @@ While single-family construction won't budge for the most part until Powell lowe
                 title="Building permits Vs Housing starts",
             ),
             onclick="openLightbox(this)",
-            data_id=id,
         ),
         P(
             Img(
@@ -50,7 +49,6 @@ While single-family construction won't budge for the most part until Powell lowe
                 title="New Residential Construction for the Last Five Years",
             ),
             onclick="openLightbox(this)",
-            data_id=id,
         ),
     )
 
@@ -63,7 +61,6 @@ While single-family construction won't budge for the most part until Powell lowe
                 title=caption,
             ),
             onclick="openLightbox(this)",
-            data_id=id,
         ),
         Card(
             details,

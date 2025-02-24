@@ -72,7 +72,6 @@ Hard to see strength there for with purchase intentions falling off a cliff. The
             cls="cbx_image",
         ),
         onclick="openLightbox(this)",
-        data_id=id,
     ),
     P(
         Img(
@@ -81,7 +80,6 @@ Hard to see strength there for with purchase intentions falling off a cliff. The
             cls="cbx_image",
         ),
         onclick="openLightbox(this)",
-        data_id=id,
     ),
 )
 
