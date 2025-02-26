@@ -58,6 +58,7 @@ def login_page():
                     name="username",
                     type="text",
                     required=True,
+                    autofocus=True,
                 ),
             ),
             Div(Button("Login", type="submit")),
