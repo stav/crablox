@@ -9,15 +9,23 @@
   "cSpell.words": [
     "afterend",
     "Beforeware",
+    "bpyutils",
     "Crablox",
+    "devel",
+    "drwxr",
     "fasthtml",
     "hdrs",
     "htmx",
+    "manylinux",
     "Megaboard",
+    "pipupgrade",
     "sess",
+    "setuptools",
     "svgs",
     "swapy",
     "tradesties",
-    "UMCSI"
+    "UMCSI",
+    "Uvicorn",
+    "venv"
   ]
 }

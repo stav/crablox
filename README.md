@@ -25,20 +25,20 @@
 ### Dependencies
 
     ┌─(venv)[stav][legion][±][master ✓][~/.../FastHTML/crablox]
-    └─▪ pip install python-fasthtml fh_altair requests pandas
+    └─▪ pip install python-fasthtml fh_altair requests pandas fa6-icons
 
       Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
       Collecting python-fasthtml
-        Downloading python_fasthtml-0.10.3-py3-none-any.whl.metadata (6.5 kB)
+        Downloading python_fasthtml-0.12.1-py3-none-any.whl.metadata (8.8 kB)
       Collecting fh_altair
         Using cached fh_altair-0.1.0-py2.py3-none-any.whl.metadata (1.5 kB)
       Collecting requests
         Using cached requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
       Collecting pandas
-        Using cached pandas-2.2.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
+        Downloading pandas-2.2.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
         ...
 
-    [notice] A new release of pip is available: 24.2 -> 24.3.1
+    [notice] A new release of pip is available: 24.3.1 -> 25.0.1
     [notice] To update, run: pip install --upgrade pip
 
 ### Upgrade Pip
@@ -80,12 +80,15 @@ Development environment is on Python version 3.12 which removed setuptools.
     └─▪ pip install pipupgrade setuptools
 
       Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
+      Collecting pipupgrade
+        Using cached pipupgrade-1.12.0-py3-none-any.whl.metadata (11 kB)
       Collecting setuptools
-        Downloading setuptools-75.7.0-py3-none-any.whl.metadata (6.7 kB)
-      Downloading setuptools-75.7.0-py3-none-any.whl (1.2 MB)
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 4.5 MB/s eta 0:00:00
-      Installing collected packages: setuptools
-      Successfully installed setuptools-75.7.0
+        Downloading setuptools-75.8.1-py3-none-any.whl.metadata (6.7 kB)
+      Requirement already satisfied: pip in ./venv/lib/python3.13/site-packages (from pipupgrade) (25.0.1)
+      Collecting bpyutils (from pipupgrade)
+        Using cached bpyutils-0.5.8-py3-none-any.whl.metadata (4.5 kB)
+      Using cached pipupgrade-1.12.0-py3-none-any.whl (34 kB)
+      Downloading setuptools-75.8.1-py3-none-any.whl (1.2 MB)
 
 Source the virtual environment:
 
@@ -94,16 +97,17 @@ Source the virtual environment:
 
 Explicit environment variables:
 
-    $ export PORT=5001; export CRB=devel; python crablox/main.py
+    ┌─(venv)[stav][legion][±][trunk {1} U:3 ✗][~/.../FastHTML/crablox]
+    └─▪ export PORT=5001; export CRB=devel; python crablox/main.py
 
-      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7f61c44c7d40>
+      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7f9dba9e5010>
       Link: http://localhost:5001
-      INFO:     Will watch for changes in these directories: ['FastHTML/crablox']
+      INFO:     Will watch for changes in these directories: ['/home/stav/Work/Python/FastHTML/crablox']
       INFO:     Uvicorn running on http://0.0.0.0:5001 (Press CTRL+C to quit)
-      INFO:     Started reloader process [1235952] using WatchFiles
-      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7ff8def092b0>
-      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7ff8afae18e0>
-      INFO:     Started server process [1235969]
+      INFO:     Started reloader process [12207] using WatchFiles
+      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7f1bc6765550>
+      Using "devel" environment for <fasthtml.live_reload.FastHTMLWithLiveReload object at 0x7f1bc5d0d590>
+      INFO:     Started server process [12224]
       INFO:     Waiting for application startup.
       INFO:     Application startup complete.
 
@@ -111,9 +115,10 @@ Explicit environment variables:
 
 ### Development
 
-    ┌─(venv)[stav][legion][±][master ↑3 {1} U:1 ?:1 ✗][~/.../FastHTML/crablox]
+    ┌─(venv)[stav][legion][±][trunk {1} U:3 ✗][~/.../FastHTML/crablox]
     └─▪ python --version
-    Python 3.12.7
+
+      Python 3.13.1
 
     ┌─(venv)[stav][legion][±][master ?:1 ✗][~/.../FastHTML/crablox]
     └─▪ CRB=devel python crablox/main.py
@@ -123,10 +128,10 @@ Explicit environment variables:
 Copy `config.ini`.
 
     (venv) stav@bullet:.../services.pmx.mega/crablox$ python --version
-    └─▪ Python 3.11.2
 
-    (venv) stav@bullet:.../services.pmx.mega/crablox$
-    └─▪ PORT=5001 python crablox/main.py
+      Python 3.11.2
+
+    (venv) stav@bullet:.../services.pmx.mega/crablox$ PORT=5001 python crablox/main.py
 
 ## Sites
 
