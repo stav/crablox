@@ -20,6 +20,7 @@ def stack(path, id, title=None):
                             hx-target="#{itemId}>.wlv-data"
                             hx-on:htmx:after-request="crbOpenBlock(this)"
                             hx-trigger="revealed,click"
+                            class="truncate-text"
                         >{title or id}</button>"""
                     ),
                     Button(
