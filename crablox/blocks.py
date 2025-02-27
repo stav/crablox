@@ -1,7 +1,7 @@
 import hashlib
 import time
 
-from fasthtml.common import Button, Div
+from fasthtml.common import Button, Div, NotStr
 
 
 def stack(path, id, title=None):
@@ -13,11 +13,14 @@ def stack(path, id, title=None):
         Div(  # Slot
             Div(  # Item
                 Div(  # Buttons
-                    Button(
-                        title or id,
-                        hx_get=path,
-                        hx_target=f"#{itemId}>.wlv-data",
-                        onclick="crbOpenBlock(this)",
+                    NotStr(
+                        f"""
+                        <button
+                            hx-get="{path}"
+                            hx-target="#{itemId}>.wlv-data"
+                            hx-on:htmx:after-request="crbOpenBlock(this)"
+                            hx-trigger="revealed,click"
+                        >{title or id}</button>"""
                     ),
                     Button(
                         "-",

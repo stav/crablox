@@ -52,6 +52,7 @@ def route(rt):
         for block in hauls.blocks:
             print(f"Registering {block.path}")
             create_route(block)
+            # Add hx-trigger revealed to open all blocks on page load
             yield NotStr(
                 f"""
                 <button
@@ -59,9 +60,9 @@ def route(rt):
                     hx-target="#block-grid"
                     hx-swap="afterend"
                     hx-on:htmx:after-request="swapy.update()"
-                    class="button"
                     style="margin: 0.2em"
-                >{block.title}</button>"""
+                    ignore-hx-trigger="revealed,click"
+                >{block.title}</button>"""  # revealed trigger freaks swapy out
             ),
 
     @rt("/api/blocks/{id}")
