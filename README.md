@@ -127,9 +127,20 @@ Explicit environment variables:
 
 Copy `config.ini`.
 
+    [CMC]
+    API_KEY = 136991d4-...
+    [SPEECHIFY]
+    API_KEY = zBgl5nYL3T6DHa-...
+    [DEFAULT]
+    AUTH_USERNAME = ...
+
+Check Python version.
+
     (venv) stav@bullet:.../services.pmx.mega/crablox$ python --version
 
       Python 3.11.2
+
+Start the server.
 
     (venv) stav@bullet:.../services.pmx.mega/crablox$ PORT=5001 python crablox/main.py
 

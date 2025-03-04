@@ -42,9 +42,9 @@ def route(rt):
             print(f"Getting {block.path}")
             return block.content()
 
-    def block_stacker():
+    def block_buttons():
         """
-        Generator function that processes hauls and yields a button for each block's title.
+        Generator function that iterates hauls and yields a button for each block.
 
         Yields:
             A button element for each block.
@@ -66,18 +66,18 @@ def route(rt):
             ),
 
     @rt("/api/blocks/{id}")
-    def get_blocks(id: str):
+    def get_block(id: str):
         print(f"Getting block {id}")
         for block in hauls.blocks:
             if block.id == id:
-                return stack(block.path, block.id, block.title)
+                return stack(block)
         return f"Block not found: {id}", 404
 
     return (
         Titled(
-            "Indicator Megaboard Dashboard",
+            "Megaboard Indicator Dashboard",
             Div(
-                *block_stacker(),
+                *block_buttons(),
                 cls="button-container",
             ),
             Div(

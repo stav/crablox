@@ -4,24 +4,24 @@ import time
 from fasthtml.common import Button, Div, NotStr
 
 
-def stack(path, id, title=None):
+def stack(block):
 
     hash = create_short_hash()
-    itemId = f"""{id}-{hash}"""
+    itemId = f"""{block.id}-{hash}"""
 
     return (
         Div(  # Slot
             Div(  # Item
                 Div(  # Buttons
-                    NotStr(
+                    NotStr(  # Open button
                         f"""
                         <button
-                            hx-get="{path}"
+                            hx-get="{block.path}"
                             hx-target="#{itemId}>.wlv-data"
                             hx-on:htmx:after-request="crbOpenBlock(this)"
                             hx-trigger="revealed,click"
                             class="truncate-text"
-                        >{title or id}</button>"""
+                        >{block.title or block.id}</button>"""
                     ),
                     Button(
                         "-",
@@ -29,7 +29,7 @@ def stack(path, id, title=None):
                         title="Clear",
                         onclick="crbClearBlock(this)",
                     ),
-                    Button(
+                    Button(  # Close button
                         "X",
                         cls="wlv-close outline",
                         title="Close",

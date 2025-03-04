@@ -13,7 +13,7 @@ from fasthtml.common import (
     Titled,
 )
 
-from config import USERNAME
+from config import AUTH_USERNAME
 
 
 def user_auth_before(request, sess):
@@ -42,7 +42,7 @@ def logout(request: Request):
 
 def login_page():
     return Titled(
-        "Indicator Megaboard Dashboard Login",
+        "Megaboard Indicator Dashboard Login",
         P(
             A(
                 "Get the username from the group.",
@@ -71,9 +71,9 @@ def login_page():
 
 async def login(request: Request):
     form = await request.form()
-    username = form.get("username")
+    client_username = form.get("username")
 
-    if username == USERNAME:
+    if client_username.lower() == AUTH_USERNAME.lower():
         request.session["auth"] = True
 
     return RedirectResponse("/", status_code=303)

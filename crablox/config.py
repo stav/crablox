@@ -37,5 +37,5 @@ config_file_path = os.path.abspath(mixed_path)
 config = configparser.ConfigParser()
 config.read(config_file_path)
 
-API_KEY = config["CMC"]["API_KEY"]
-USERNAME = config["DEFAULT"]["USERNAME"]
+CMC_API_KEY = config["CMC"]["API_KEY"]
+AUTH_USERNAME = config["DEFAULT"]["AUTH_USERNAME"]

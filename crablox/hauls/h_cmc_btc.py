@@ -1,7 +1,7 @@
 import requests
 from fasthtml.common import H1
 
-from config import API_KEY
+from config import CMC_API_KEY
 
 id = "CMC_BTC"
 path = "/btc"
@@ -11,7 +11,7 @@ URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
 PARAMS = {"symbol": "BTC", "convert": "USD"}
 HEADERS = {
     "Accepts": "application/json",
-    "X-CMC_PRO_API_KEY": API_KEY,
+    "X-CMC_PRO_API_KEY": CMC_API_KEY,
 }
 
 
