@@ -1,7 +1,7 @@
 import hashlib
 import time
 
-from fasthtml.common import Button, Div, NotStr
+from fasthtml.common import Button, Div, NotStr, Audio
 
 
 def stack(block):
@@ -23,7 +23,7 @@ def stack(block):
                             class="truncate-text"
                         >{block.title or block.id}</button>"""
                     ),
-                    Button(
+                    Button(  # Clear button
                         "-",
                         cls="wlv-clear outline",
                         title="Clear",
@@ -40,6 +40,19 @@ def stack(block):
                         data_swapy_handle=True,
                     ),
                     cls="crb-buttons",
+                ),
+                Audio(  # Audio
+                    controls=True,
+                    src=f"/api/audio/{block.id}",
+                    type="audio/mpeg",
+                ),
+                NotStr(
+                    f"""
+                    <audio controls>
+                        <source src="/api/audio/{block.id}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    """
                 ),
                 Div(  # Data
                     cls="wlv-data",
