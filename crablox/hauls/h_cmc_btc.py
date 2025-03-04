@@ -1,5 +1,7 @@
+import datetime
+
 import requests
-from fasthtml.common import H1
+from fasthtml.common import H1, H2, Div
 
 from config import CMC_API_KEY
 
@@ -27,7 +29,12 @@ def get_btc_price():
 
 def content():
     btc_price = get_btc_price()
-    return H1(
-        f"BTC Market Price: ${btc_price:.2f}",
-        id=id,
+    return Div(
+        H1("BTC Market Price"),
+        H2("Coin Market Cap"),
+        H1(f"${btc_price:.2f}", id=id),
+        Div(
+            f"Server: {datetime.datetime.now()}",
+            cls="text-sm",
+        ),
     )
