@@ -1,4 +1,4 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
+from fasthtml.common import A, Card, Div, Img, Li, Ul
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
