@@ -23,6 +23,9 @@ async def get_audio(id: str):
     else:
         return f"Block not found: `{id}`", 404
 
+    station = block.station
+    print("Station:", station)
+
     # Check if the audio file already exists
     output_file_path = os.path.join(output_dir, f"{id}.mp3")
 
@@ -41,11 +44,16 @@ async def get_audio(id: str):
                 "Content-Type": "application/json",
             },
             json={
-                "input": "Hello, world!",
-                "voice_id": "george",
+                "input": station,
+                "voice_id": "henry",
+                "audio_format": "mp3",
+                "model": "simba-english",
             },
         )
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            return f"HTTP error occurred: {e.response.status_code} - {e.response.text}"
 
     # Save the audio file to the output directory
     with open(output_file_path, "wb") as f:

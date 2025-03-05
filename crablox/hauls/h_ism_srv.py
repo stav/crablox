@@ -3,7 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, H3, H4, P
 id = "IsmSrvPmi"
 path = "/ism/srv"
 title = "ISM Srv 52.8"
-caption = "ISM Services PMI "
+caption = "ISM Services PMI"
 
 
 def content():

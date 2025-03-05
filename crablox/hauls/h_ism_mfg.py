@@ -1,11 +1,10 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
+from fasthtml.common import A, Card, Div, Img, Li, Ul
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
 title = "ISM Mfg 50.9"
 caption = "ISM Manufacturing PMI"
-details = Div(
-    """
+markup = """
 # 50.9
 ## 📊 Manufacturing sector expands for first time in 26 months!
 4 February 2025
@@ -43,9 +42,9 @@ Notable Industry Comments:
 - 🏭 **Fabricated Metal Products***: "Capital equipment sales are starting off 2025 strong. Normally, we see a soft start to the year, so this strong start is unusual."
 - 📦 **Miscellaneous Manufacturing**: "New orders are still good but decreasing compared to previous quarters. Working through current backlog."
 - 🍔 **Food & Beverage**: "Volume in 2025 is targeting 2-percent growth. Organization is mindful of potential tariffs and what to do with re-routing or cost increases in supply chains that are impacted."
-""",
-    cls="marked",
-)
+"""
+details = Div(markup, cls="marked")
+station = f"{caption} {markup}"
 
 
 def content():
