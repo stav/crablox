@@ -1,50 +1,108 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
+from fasthtml.common import A, Card, Div, Img, Li, Ul, Audio, P
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
-title = "ISM Mfg 50.9"
+title = "ISM Mfg 50.3"
 caption = "ISM Manufacturing PMI"
-details = Div(
-    """
-# 50.9
-## 📊 Manufacturing sector expands for first time in 26 months!
-4 February 2025
+markup = """
+# 50.3
+## ISM Manufacturing PMI & Macro-Sector Clues 📊
+4 March 2025
 
-### 🔑 Headline: 50.9 (up from 49.2 in December)
+### 🔑 Headline: 50.3 (down from 50.9 in January)
 
-📈 Direction: Expanding
+📈 Direction: Expanding (barely)
 
-This marks a significant turning point in manufacturing sector performance,
-with expansion returning after over 2 years of contraction.
+The February ISM Manufacturing report just landed, and while the headline PMI
+is still in growth territory at 50.3 (down from 50.9), there's a lot happening
+beneath the surface that deserves our attention.
 
-Key Highlights:
+### Key Highlights:
 
-- ✅ New Orders: 55.1 (+3.0)
-- ✅ Production: 52.5 (+2.6)
-- ✅ Employment: 50.3 (+4.9)
-- ✅ Prices Index: 54.9 (+2.4)
+- **Index**: 50.3 vs 50.9 (-0.6) → Still growing but slower
+- **Orders**: 48.6 vs 55.1 (-6.5) → Flipped from growth to contraction
+- **Production**: 50.7 vs 52.5 (-1.8) → Growing but slowing
+- **Employment**: 47.6 vs 50.3 (-2.7) → Now contracting
+- **Prices**: 62.4 vs 54.9 (+7.5) → Sharply higher
+- **Deliveries**: 54.5 vs 50.9 (+3.6) → Slowing, faster rate
+- **Inventories**: 49.9 vs 45.9 (+4.0) → Still contracting but improving
+- **Backlog**: 46.8 vs 44.9 (+1.9) → Still contracting but improving
 
-Top Growing Industries (Level):
+The tariff impact is clearly starting to ripple through manufacturing.
+That 6.5-point drop in new orders is particularly telling - it's a significant
+reversal from January's expansion.
 
-1. Textile Mills (+8)
-2. Primary Metals (+7)
-3. Petroleum & Coal Products (+6)
-4. Chemical Products (+5)
-5. Machinery (+4)
+### Industry Breakdown (Ranked by Performance):
 
-Notable Industry Comments:
+#### Growing Industries (with Level Scores)
 
-- 🧵 **Textile Mills**: "Looking forward to a year of strong customer demand and higher sales than 2024."
-- 🏗️ **Primary Metals**: "Automotive order demand continues to be consistent and on a steady pace. Beginning to look at hiring additional team members once again. Pricing is holding firm."
-- ⛽ **Chemical Products**: "Customer orders slightly stronger than expected. Seeing more general price increases for chemicals/raw materials. No International Longshoremen's strike is a tremendous help."
-- 🔧 **Machinery**: "Although we are in our busy season, our demand for the first two weeks of 2025 has outpaced normal levels for this period of time."
-- 🚗 **Transportation Equipment**: "Alleviating supply chain conditions are noticeably pivoting back into acute shortage situations. Critical minerals supply chains tightening dramatically due to Chinese restrictions."
-- 💻 **Computer & Electronic Products**: "China stimulus is helping us win orders and increase use of services and consumables. Cost pressures remain for all materials and parts but are starting to stabilize."
-- 🏭 **Fabricated Metal Products***: "Capital equipment sales are starting off 2025 strong. Normally, we see a soft start to the year, so this strong start is unusual."
-- 📦 **Miscellaneous Manufacturing**: "New orders are still good but decreasing compared to previous quarters. Working through current backlog."
-- 🍔 **Food & Beverage**: "Volume in 2025 is targeting 2-percent growth. Organization is mindful of potential tariffs and what to do with re-routing or cost increases in supply chains that are impacted."
-""",
-    cls="marked",
+1. Petroleum & Coal Products (10) 🛢️
+1. Miscellaneous Manufacturing (9)
+1. Primary Metals (8)
+1. Wood Products (7)
+1. Food, Beverage & Tobacco Products (6)
+1. Electrical Equipment, Appliances & Components (5)
+1. Chemical Products (4)
+1. Plastics & Rubber Products (3)
+1. Fabricated Metal Products (2)
+1. Transportation Equipment (1)
+
+#### Neutral Industries (0)
+
+1. Apparel, Leather & Allied Products
+1. Printing & Related Support Activities
+1. Paper Products
+
+#### Contracting Industries (Negative Scores)
+
+1. Machinery (-1)
+1. Computer & Electronic Products (-2)
+1. Nonmetallic Mineral Products (-3)
+1. Textile Mills (-4)
+1. Furniture & Related Products (-5)
+
+#### What They're Saying: Industry Insights
+
+🛢️ **Petroleum & Coal Products**: Leading the pack with the strongest growth score (10).
+
+🏭 **Primary Metals**: "Customer volumes seem to be better than 2024. However, customers are still very hesitant to commit to long-term volumes due to the market uncertainty caused by proposed tariffs on steel/aluminum imports."
+
+🪵 **Wood Products**: Strong performance with a level score of 7.
+
+🍔 **Food & Beverage**: "Inflation and pricing pressure continue to drive uncertainty in our 2025 outlook. We are seeing volume impacts due to pricing, with customers buying less and looking for substitution options."
+
+⚡ **Electrical Equipment**: "New orders continue to be strong after picking up in December. The uncertainty about tariffs keeps us cautious on spending, despite the strong sales right now."
+
+🧪 **Chemical Products**: "The tariff environment regarding products from Mexico and Canada has created uncertainty and volatility among our customers and increased our exposure to retaliatory measures from these countries."
+
+⚙️ **Machinery (Contracting)**: "The incoming tariffs are causing our products to increase in price. Sweeping price increases are incoming from suppliers. Most are noting increases in labor costs. Vendors are indicating open capacity, inflationary concerns are a concern. Our company is working diligently to see how the new tariff will affect our business."
+
+💻 **Computer & Electronic Products (Contracting)**: "Tariff impact has been minimal to overall manufacturing and may remain slight. Limits on U.S. government spending in key organizations like the Food and Drug Administration, Environmental Protection Agency and National Institutes of Health are causing fewer orders."
+
+🧵 **Textile Mills (Contracting)**: Dramatic shift from January's strong performance (+8) to February's contraction (-4).
+
+Meanwhile, Textile Mills experienced the most dramatic reversal, going from +8
+in January to -4 in February.
+
+### Trading Implications
+
+What's interesting is the divergence between sectors:
+
+- Energy and domestic commodity plays showing remarkable resilience and even acceleration
+- Consumer-facing and tech-related industries struggling with the uncertainty
+- Price pressures returning across the board (62.4 price index)
+
+The tariff impact is creating a clear winner/loser dynamic rather than an across-the-board slowdown. Domestic supply chains appear to be benefiting while import-dependent industries are facing headwinds.
+
+With prices surging and new orders contracting, the Fed's rate cut timeline may need reconsideration by the public. Worth watching whether these manufacturing price pressures show up in broader inflation metrics.
+
+What positioning adjustments are you making based on this data? I'm particularly interested in your take.
+"""
+details = Div(markup, cls="marked")
+audio = Audio(
+    controls=True,
+    src=f"/audio/{id}",
+    type="audio/mpeg",
 )
 
 
@@ -64,7 +122,17 @@ def content():
             onclick="openLightbox(this)",
         ),
         Card(
+            audio,
             details,
+            P(
+                Img(
+                    src="/static/ism-mfg-heatmap.png",
+                    cls="cbx_image",
+                    alt="ISM Manufacturing Heatmap",
+                    title="ISM Manufacturing Heatmap",
+                ),
+                onclick="openLightbox(this)",
+            ),
             cls="wlv-details",
             header="ISM Manufacturing PMI",
             footer=Ul(
