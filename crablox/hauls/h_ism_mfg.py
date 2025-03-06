@@ -1,11 +1,10 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, H1, H2, P
+from fasthtml.common import A, Card, Div, Img, Li, Ul, Audio
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
 title = "ISM Mfg 50.3"
 caption = "ISM Manufacturing PMI"
-details = Div(
-    """
+markup = """
 # 50.3
 ## ISM Manufacturing PMI & Macro-Sector Clues 📊
 4 March 2025
@@ -98,8 +97,12 @@ The tariff impact is creating a clear winner/loser dynamic rather than an across
 With prices surging and new orders contracting, the Fed's rate cut timeline may need reconsideration by the public. Worth watching whether these manufacturing price pressures show up in broader inflation metrics.
 
 What positioning adjustments are you making based on this data? I'm particularly interested in your take.
-""",
-    cls="marked",
+"""
+details = Div(markup, cls="marked")
+audio = Audio(
+    controls=True,
+    src=f"/audio/{id}",
+    type="audio/mpeg",
 )
 
 
@@ -119,6 +122,7 @@ def content():
             onclick="openLightbox(this)",
         ),
         Card(
+            audio,
             details,
             cls="wlv-details",
             header="ISM Manufacturing PMI",
