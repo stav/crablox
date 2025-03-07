@@ -75,7 +75,7 @@ def route(rt):
 
     return (
         Titled(
-            "Megaboard Indicator Dashboard",
+            "Megaboard Indicator Blocks",
             Div(
                 *block_buttons(),
                 cls="button-container",
