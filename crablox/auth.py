@@ -42,7 +42,7 @@ def logout(request: Request):
 
 def login_page():
     return Titled(
-        "Megaboard Indicator Dashboard Login",
+        "Megaboard Indicator Blocks Login",
         P(
             A(
                 "Get the username from the group.",
