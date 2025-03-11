@@ -1,9 +1,10 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, P, H3
+from fasthtml.common import A, Card, Div, Img, Li, Ul
 
 id = "BLS_ESR"
 path = "/esr"
-title = "Employment Situation Report"
+title = "Empl Situation · 151 K"
 caption = "US Non-Farm Payrolls"
+summary = "Below forecasts, up from a downwardly revised 125K in January"
 
 
 def content():
@@ -13,17 +14,25 @@ def content():
 
     details = Div(
         """
+# 151 K
 ### Employment Situation Report
-United States Non-Farm Payrolls
+United States Non-Farm Payrolls for February 2025
+
+#### 7 March 2025
+Total nonfarm payroll employment rose by 151,000 in February, and the unemployment rate changed
+little at 4.1 percent, the U.S. Bureau of Labor Statistics reported. Employment trended
+up in health care, financial activities, transportation and warehousing, and social assistance.
+Federal government employment declined.
+
 #### 7 February 2025
 
 Total nonfarm payroll employment rose by 143,000 in January, and the unemployment rate edged down to 4.0 percent, the U.S. Bureau of Labor Statistics reported today. Job gains occurred in health care, retail trade, and social assistance. Employment declined in the mining, quarrying, and oil and gas extraction industry.
 
 #### 10 January 2025
 Total nonfarm payroll employment increased by 256,000 in December, and the unemployment rate
-    changed little at 4.1 percent, the U.S. Bureau of Labor Statistics reported today. Employment
-    trended up in health care, government, and social assistance. Retail trade added jobs in
-    December, following a job loss in November.
+changed little at 4.1 percent, the U.S. Bureau of Labor Statistics reported. Employment
+trended up in health care, government, and social assistance. Retail trade added jobs in
+December, following a job loss in November.
 
 ##### NonFarm Payrolls - Good but Bad
 NFP Dec: 256K vs 160K exp (Nov revised to 212K)
@@ -51,7 +60,7 @@ Rates staying higher for even longer.
                 src="/static/US_Non_Farm_Payrolls.png",
                 alt=caption,
                 cls="cbx_image",
-                title=caption,
+                title=summary,
             ),
             onclick="openLightbox(this)",
         ),

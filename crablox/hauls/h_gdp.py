@@ -1,9 +1,10 @@
-from fasthtml.common import Card, H2, H3, H5, P, Ul, Li, A, Img, Div
+from fasthtml.common import Card, H1, H2, H3, H5, P, Ul, Li, A, Img, Div
 
 id = "GDP"
 path = "/gdp"
-title = "Gross Domestic Product"
+title = "GDP · 2.3%"
 caption = "US GDP Growth Rate"
+summary = "Down from 2.8% in Q3. Missing Estimates, business investment just went negative for the first time in a year. Consumer spending  (up 4.2%, best since Q1 '23)"
 
 
 def content():
@@ -11,7 +12,8 @@ def content():
     url1 = "https://www.skool.com/tradingbusiness/q4-gdp-the-consumer-camouflage"
 
     details = Card(
-        H2("Q4 GDP: 2.3%"),
+        H1("Q4 2.3%"),
+        H2("Gross Domestic Product"),
         H3("🚨 The Consumer Camouflage"),
         P("25 January 2025"),
         H5(
@@ -44,6 +46,7 @@ def content():
         """
         ),
         cls="wlv-details",
+        header=caption,
         footer=Ul(
             Li(A(url1, href=url1, target="_blank")),
         ),
@@ -54,7 +57,7 @@ def content():
                 src="/static/2024-q4-gdp.png",
                 alt=caption,
                 cls="cbx_image",
-                title=caption,
+                title=summary,
             ),
             onclick="openLightbox(this)",
         ),

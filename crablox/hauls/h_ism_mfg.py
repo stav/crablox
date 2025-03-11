@@ -2,8 +2,9 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, Audio, P
 
 id = "IsmMfgPmi"
 path = "/ism/mfg"
-title = "ISM Mfg 50.3"
+title = "ISM Mfg · 50.3"
 caption = "ISM Manufacturing PMI"
+summary = "Growing, slower. New orders fell the most since March 2022 (48.6 vs 55.1). Price pressures accelerated to the highest since June 2022 (62.4 vs 54.9)"
 markup = """
 # 50.3
 ## ISM Manufacturing PMI & Macro-Sector Clues 📊
@@ -117,7 +118,7 @@ def content():
                 src="/static/ism-mfg-pmi.png",
                 alt=caption,
                 cls="cbx_image",
-                title=caption,
+                title=summary,
             ),
             onclick="openLightbox(this)",
         ),

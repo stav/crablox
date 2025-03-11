@@ -9,23 +9,26 @@ from .h_um_prc import content as prc_content
 id = "UmIndex"
 url = "http://www.sca.isr.umich.edu/files/tbcics.csv"
 path = "/um/index"
-title = "UM Index"
+title = "Sentiment · 64.7"
+summary = "from a preliminary of 67.8, reaching the lowest level since November 2023. 19% plunge in buying conditions for durables. Inflation expectations year-ahead soared to 4.3%"
 details = Div(
     P(
         Img(
             src="/static/um-index.png",
             alt="United States Michigan Consumer Sentiment",
             cls="cbx_image",
+            title=summary,
         ),
         onclick="openLightbox(this)",
     ),
     Div(
         """
-# The Index of Consumer Sentiment
+# 64.7
+## The Index of Consumer Sentiment
 
-## Consumer Sentiment Dropped: Inflation Alert
+### Consumer Sentiment Dropped: Inflation Alert
 
-### 21 February 2025
+#### 21 February 2025
 
 📈 The February UMCSI reading just came in and it's ugly. Headline sentiment dropped to 64.7 (from preliminary 67.8), hitting the lowest level since November 2023.
 

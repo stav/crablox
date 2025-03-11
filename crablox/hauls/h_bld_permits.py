@@ -2,8 +2,9 @@ from fasthtml.common import A, Card, Div, Img, Li, P, Ul
 
 id = "BuildingPermits"
 path = "/building_permits"
-title = "Building Permits"
+title = "Bld Permits · 1.47 M"
 caption = "United States Building Permits"
+summary = "Single-family permits went down by 0.2% to an annualized rate of 994 thousand, while permits for buildings with five or more units dropped by 2.5%"
 
 
 def content():
@@ -14,10 +15,13 @@ def content():
     details = (
         Div(
             """
+# 1.47 M
 ### United States Building Permits
 
-#### 19 February 2025
+#### 26 February 2025
+Building Permits Final for January 2025 is 1.473 million units.
 
+#### 19 February 2025
 Building permits in the United States inched higher by 0.1% to a seasonally adjusted annualized rate of 1.483 million in January of 2025, firmly above market expectations that they would fall to 1.46 million, according to a preliminary estimate. Permits for housing with two to four units surged by 13.2% from the earlier month to 60 thousand, offsetting the 1.4% drop in housing with five or more units (to 427 thousand), while permits for housing with one unit remained unchanged at 996 thousand. Among different regions, permits rose in the West (2.3% to 316 thousand) and the Midwest (1.8% to 223,000). These outweighed the marginal drop in the South (-0.1% to 806 thousand) and the sharper drop in the Northeast (-6.1% to 138 thousand).
 
 _source: U.S. Census Bureau_
@@ -64,7 +68,7 @@ While single-family construction won't budge for the most part until Powell lowe
                 src="/static/US_Building_Permits.png",
                 alt=caption,
                 cls="cbx_image",
-                title=caption,
+                title=summary,
             ),
             onclick="openLightbox(this)",
         ),

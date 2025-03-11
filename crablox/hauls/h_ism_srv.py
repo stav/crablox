@@ -2,11 +2,12 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P, Audio
 
 id = "IsmSrvPmi"
 path = "/ism/srv"
-title = "ISM Srv 53.5"
+title = "ISM Srv · 53.5"
 caption = "ISM Services PMI"
+summary = "Growing, faster, business activity (54.4 vs 54.5), new orders (52.2 vs 51.3)"
 markup = """
-# ISM Services PMI
-## 53.5
+# 53.5
+## ISM Services PMI
 for February 2025
 ### February Shows Surprising Strength 📈
 
@@ -116,7 +117,7 @@ def content():
                 src="/static/ism-srv-pmi.png",
                 alt=caption,
                 cls="cbx_image",
-                title=caption,
+                title=summary,
             ),
             onclick="openLightbox(this)",
         ),
