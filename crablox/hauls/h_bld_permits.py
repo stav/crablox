@@ -6,15 +6,10 @@ title = "Bld Permits · 1.47 M"
 caption = "United States Building Permits"
 summary = "Single-family permits went down by 0.2% to an annualized rate of 994 thousand, while permits for buildings with five or more units dropped by 2.5%"
 
+url1 = "https://www.census.gov/construction/nrc/pdf/newresconst.pdf"
+url2 = "https://tradingeconomics.com/united-states/building-permits"
 
-def content():
-
-    url1 = "https://www.census.gov/construction/nrc/pdf/newresconst.pdf"
-    url2 = "https://tradingeconomics.com/united-states/building-permits"
-
-    details = (
-        Div(
-            """
+markup = """
 # 1.47 M
 ### United States Building Permits
 
@@ -39,29 +34,32 @@ Northeast is absolutely ripping at +40.2% while the West actually cooled off (-0
 One the surface, it may look like commercial real estate players are betting big on multi-family. The reality is those guys just want to lock in rates now in fear rates will stay higher for longer or possibly go back up.
 
 While single-family construction won't budge for the most part until Powell lowers rates more.
-""",
-            cls="marked",
-        ),
-        P(
-            Img(
-                src="/static/US_Building_Permits-vs-Housing_starts.png",
-                cls="cbx_image",
-                alt="Building permits Vs Housing starts",
-                title="Building permits Vs Housing starts",
-            ),
-            onclick="openLightbox(this)",
-        ),
-        P(
-            Img(
-                src="/static/NewResidentialConstruction.png",
-                cls="cbx_image",
-                alt="New Residential Construction for the Last Five Years",
-                title="New Residential Construction for the Last Five Years",
-            ),
-            onclick="openLightbox(this)",
-        ),
-    )
+"""
 
+details = (
+    Div(markup, cls="marked"),
+    P(
+        Img(
+            src="/static/US_Building_Permits-vs-Housing_starts.png",
+            cls="cbx_image",
+            alt="Building permits Vs Housing starts",
+            title="Building permits Vs Housing starts",
+        ),
+        onclick="openLightbox(this)",
+    ),
+    P(
+        Img(
+            src="/static/NewResidentialConstruction.png",
+            cls="cbx_image",
+            alt="New Residential Construction for the Last Five Years",
+            title="New Residential Construction for the Last Five Years",
+        ),
+        onclick="openLightbox(this)",
+    ),
+)
+
+
+def content():
     return (
         Div(
             Img(

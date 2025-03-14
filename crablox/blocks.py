@@ -23,7 +23,7 @@ def stack(block):
                             class="truncate-text"
                         >{block.title or block.id}</button>"""
                     ),
-                    Button(
+                    Button(  # Clear button
                         "-",
                         cls="wlv-clear outline",
                         title="Clear",

@@ -9,7 +9,6 @@ from fasthtml.common import (
     Input,
     Label,
     P,
-    serve,
     Titled,
 )
 
@@ -77,6 +76,3 @@ async def login(request: Request):
         request.session["auth"] = True
 
     return RedirectResponse("/", status_code=303)
-
-
-serve()

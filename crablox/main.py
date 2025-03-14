@@ -10,9 +10,19 @@ app, rt = fast_app(before=auth.beforeware, **fast_config)
 print(f'Using "{env}" environment for {app}')
 serve()
 
+# Routes
+#######################################################
+# /                 | index  | Home page
+# /login            | auth   | Login page & service
+# /logout           | auth   | Logout service
+# /audio/{id}       | audio  | Get audio file by id
+# /static/{file}    |        | Get static files by name
+# /api/blocks/{id}  | index  | Get block by id
+# /favicon.ico      | config | /static/favicon.ico
+
 
 @rt("/")
-def _(request: Request):
+def _():
     return index.route(rt)
 
 
@@ -22,7 +32,7 @@ def _(id: str):
 
 
 @app.get("/login")
-def _(request: Request):
+def _():
     return auth.login_page()
 
 
