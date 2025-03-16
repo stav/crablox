@@ -4,6 +4,8 @@ from fasthtml.common import fast_app, serve
 import auth
 import audio
 import index
+import hauls
+from blocks import stack
 from config import env, fast_config
 
 app, rt = fast_app(before=auth.beforeware, **fast_config)
@@ -17,13 +19,21 @@ serve()
 # /logout           | auth   | Logout service
 # /audio/{id}       | audio  | Get audio file by id
 # /static/{file}    |        | Get static files by name
-# /api/blocks/{id}  | index  | Get block by id
+# /api/blocks/{id}  | main   | Get block by id
 # /favicon.ico      | config | /static/favicon.ico
 
 
 @rt("/")
 def _():
     return index.route(rt)
+
+
+@rt("/api/blocks/{id}")
+def get_block(id: str):
+    for block in hauls.blocks:
+        if block.id == id:
+            return stack(block)
+    return f"Block not found: {id}", 404
 
 
 @rt("/audio/{id}")
