@@ -23,6 +23,7 @@
     "setuptools",
     "svgs",
     "swapy",
+    "tailrisk",
     "tradesties",
     "UMCSI",
     "Uvicorn",
