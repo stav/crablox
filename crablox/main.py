@@ -9,6 +9,7 @@ from blocks import stack
 from config import env, fast_config
 
 app, rt = fast_app(before=auth.beforeware, **fast_config)
+# app.htmlkw["data-theme"] = "dark"
 print(f'Using "{env}" environment for {app}')
 serve()
 

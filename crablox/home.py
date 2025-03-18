@@ -51,6 +51,7 @@ def page():
             ),
             cls="lightbox",
             id="lightbox",
+            style="background-color: var(--pico-background-color)",
         ),
         # Main client script
         ScriptX("crablox/main.js"),
