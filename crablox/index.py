@@ -3,8 +3,6 @@ from types import ModuleType
 import hauls
 from home import page
 
-script_path = "crablox/main.js"
-
 
 def route(rt):
 
