@@ -19,19 +19,27 @@ def page():
             "Megaboard Indicator Blocks",
             Div(  # Buttons at top of page
                 *block_buttons(),
+                A(  # Button to open Brandon's dashboard
+                    Button("Indicator Dashboard", cls="button secondary"),
+                    href="https://docs.google.com/spreadsheets/d/1pla3Y7b7IkSERJRMxXPF-E4IKqpeVOro6k7Pnh8wH4s",
+                    target="_blank",
+                    title="Brandon's Dashboard",
+                    style="margin-left: 0.5em",
+                ),
+                A(  # Logout button
+                    Svg(
+                        svgs.arrow_right_from_bracket.solid,
+                    ),
+                    href="/logout",
+                    title="Logout",
+                    cls="button secondary",
+                    style="display: inline-flex; vertical-align: middle; margin-left: 1em; width: 2em; height: 2em",
+                ),
                 cls="button-container",
             ),
             Div(  # Grid for the blocks
                 Div(id="block-grid", style="display: none"),
                 cls="swapy-container",
-            ),
-            A(  # Logout button
-                Svg(
-                    svgs.arrow_right_from_bracket.solid,
-                ),
-                href="/logout",
-                title="Logout",
-                style="width: 22em; display: flex;",
             ),
         ),
         Div(  # Lightbox for images
