@@ -71,16 +71,6 @@ def content():
             cls="wlv-details",
             header="ISM Services PMI",
             footer=(
-                H3("History"),
-                Ul(
-                    Li(
-                        Button(
-                            date,
-                            hx_get=f"/api/ism/srv/history/{date}",
-                            hx_target="closest .wlv-data",
-                        )
-                    ),
-                ),
                 H3("Resources"),
                 Ul(
                     Li(A("ismworld", href=ismworld, target="_blank")),
