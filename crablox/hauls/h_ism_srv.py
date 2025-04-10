@@ -1,3 +1,5 @@
+import os
+
 from fasthtml.common import A, Card, Div, Img, Li, Ul, P, Style, H3, Button
 
 id = "IsmSrvPmi"
@@ -15,9 +17,16 @@ def details():
 
 
 def history():
-    return Div(
-        P("History"),
-    )
+    current_file = os.path.basename(__file__)
+    base_name = os.path.splitext(current_file)[0]
+    directory = os.path.dirname(__file__)
+    
+    matching_files = []
+    for filename in os.listdir(directory):
+        if filename.startswith(base_name) and filename != current_file:
+            matching_files.append(filename)
+    
+    return Ul(*[Li(filename) for filename in sorted(matching_files)])
 
 
 def content():
