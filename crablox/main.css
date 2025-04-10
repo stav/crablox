@@ -19,6 +19,10 @@
 .wlv-details header {
   text-align: center;
 }
+.wlv-history {
+  display: none;
+  margin-left: 1em;
+}
 .wlv-clear {
   display: none;
   margin-left: 1em;

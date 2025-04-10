@@ -20,6 +20,11 @@ function crbOpenBlock (openButton) {
   // Reveal clear button
   const clearButton = item.querySelector('.wlv-clear')
   clearButton.style.display = 'inline-block'
+  // Reveal history button
+  const historyButton = item.querySelector('.wlv-history')
+  if ('history' in historyButton.dataset) {
+    historyButton.style.display = 'inline-block'
+  }
 }
 
 /**
