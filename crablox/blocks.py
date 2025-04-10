@@ -23,6 +23,14 @@ def stack(block):
                             class="truncate-text"
                         >{block.title or block.id}</button>"""
                     ),
+                    Button(  # History button
+                        "H",
+                        title="History",
+                        hx_get=f"{block.path}/history",
+                        hx_target=f"#{itemId}>.wlv-data",
+                        data_history=hasattr(block, 'history'),
+                        cls="wlv-history outline",
+                    ),
                     Button(  # Clear button
                         "-",
                         title="Clear",

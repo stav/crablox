@@ -14,6 +14,12 @@ def details():
         return markup
 
 
+def history():
+    return Div(
+        P("History"),
+    )
+
+
 def content():
     date = "202502"
 

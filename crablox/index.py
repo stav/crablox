@@ -27,6 +27,10 @@ def route(rt):
         def _():
             return block.content()
 
+        @rt(f"{block.path}/history")
+        def _():
+            return block.history()
+
     # Register block routes
     for block in hauls.blocks:
         print(f"Registering {block.path}")
