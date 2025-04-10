@@ -25,14 +25,14 @@ def stack(block):
                     ),
                     Button(  # Clear button
                         "-",
-                        cls="wlv-clear outline",
                         title="Clear",
+                        cls="wlv-clear outline",
                         onclick="crbClearBlock(this)",
                     ),
                     Button(  # Close button
                         "X",
-                        cls="wlv-close outline",
                         title="Close",
+                        cls="wlv-close outline",
                         onclick="crbCloseBlock(this)",
                     ),
                     Div(  # Handle
