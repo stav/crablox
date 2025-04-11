@@ -38,8 +38,20 @@ def history():
         for filename in files:
             if filename.startswith(base_name) and filename != current_file:
                 yield filename
-    
-    return Ul(*[Li(filename) for filename in sorted(matching_files())])
+
+    return Ul(
+        *[
+            Li(
+                A(
+                    filename,
+                    hx_get=f"/api{path}/history/{filename}",
+                    hx_target="closest .wlv-data",
+                )
+            )
+            for filename in sorted(matching_files())
+        ],
+        cls="crb-history-list",
+    )
 
 
 def content():

@@ -37,10 +37,10 @@ def get_block(id: str):
     return f"Block not found: {id}", 404
 
 
-@rt("/api/ism/srv/history/{date}")
-def get_date(date: str):
-    print("Getting date:", type(date), date)
-    filename = f"crablox/hauls/h_ism_srv|{date}.md"
+@rt("/api/ism/srv/history/{filename}")
+def get_date(filename: str):
+    print("Getting date:", type(filename), filename)
+    filename = f"crablox/hauls/{filename}"
     with open(filename, "r") as file:
         markup = file.read()
         return Div(markup, cls="marked")

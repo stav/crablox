@@ -36,6 +36,9 @@
   position: fixed;
   right: 20px;
 }
+.crb-history-list {
+  margin-top: 1em;
+}
 .truncate-text {
   max-width: 240px;
   white-space: nowrap;
