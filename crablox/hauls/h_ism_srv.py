@@ -18,7 +18,7 @@ files = os.listdir(directory)
 def details():
     """
     Reads and returns the contents of the details markdown file.
-    
+
     Returns:
         str: The contents of the details markdown file specified by details_filename.
     """
@@ -26,10 +26,10 @@ def details():
         return file.read()
 
 
-def history(): 
+def history():
     """
     Generates a list of historical files related to the current module.
-    
+
     Returns:
         Ul: An unordered list (HTML) containing links to historical files that match
             the current module's base name but are not the current file.
@@ -45,7 +45,7 @@ def history():
 def content():
     """
     Generates the main content for the ISM Services PMI page.
-    
+
     Returns:
         tuple: A tuple containing:
             - A Div with the main ISM Services PMI image
