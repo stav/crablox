@@ -1,12 +1,10 @@
-from types import ModuleType
-
 import hauls
 from home import page
 
 
 def route(rt):
 
-    def create_route(block: ModuleType):
+    def create_route(block: hauls.Haul):
         """
         Creates a route for the given block.
 
