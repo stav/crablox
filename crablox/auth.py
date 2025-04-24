@@ -70,7 +70,7 @@ def login_page():
 
 async def login(request: Request):
     form = await request.form()
-    client_username = form.get("username")
+    client_username = str(form.get("username"))
 
     if client_username.lower() == AUTH_USERNAME.lower():
         request.session["auth"] = True

@@ -5,9 +5,10 @@ from fasthtml.common import (
     Img,
     NotStr,
     ScriptX,
-    Svg,
     Titled,
 )
+from fasthtml.svg import Svg
+
 from fa6_icons import svgs
 
 import hauls
@@ -27,9 +28,7 @@ def page():
                     style="margin-left: 0.5em",
                 ),
                 A(  # Logout button
-                    Svg(
-                        svgs.arrow_right_from_bracket.solid,
-                    ),
+                    Svg(svgs.arrow_right_from_bracket.solid),
                     href="/logout",
                     title="Logout",
                     cls="button secondary",

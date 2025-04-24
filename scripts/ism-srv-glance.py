@@ -11,11 +11,11 @@ def scrape_ism_report():
     response.raise_for_status()  # Raise an error for HTTP issues
 
     # Parse the HTML content
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "html.parser")  # type: ignore
 
     # Find the H3 tag with the specific text
     # h3_tag = soup.find_all('h3', string=lambda text: text and "RESULTS AT A GLANCE" in text)
-    h3_tags = soup.find_all("h3")
+    h3_tags = soup.find_all("h3")  # type: ignore
     for tag in h3_tags:
         if "RESULTS AT A GLANCE" in tag.get_text():
             h3_tag = tag
@@ -25,20 +25,21 @@ def scrape_ism_report():
         return
 
     # Find the table immediately after the H3 tag
-    table = h3_tag.find_next("table")
+    table = h3_tag.find_next("table")  # type: ignore
     if not table:
         print("Table following the H3 tag not found.")
         return
 
     # Extract table rows and cells
-    rows = table.find("tbody").find_all("tr")
+    rows = table.find("tbody").find_all("tr")  # type: ignore
     for row in rows:
-        header = row.find("th")
+        header_text = "No header"  # Default value
+        header = row.find("th")  # type: ignore
         if header:
-            header_text = header.get_text(strip=True).replace("®", "")[:30]
+            header_text = header.get_text(strip=True).replace("®", "")[:30]  # type: ignore
             header_text = f"**{header_text}**"
             header_text = header_text.ljust(34)
-        cells = row.find_all(["td"], limit=5)
+        cells = row.find_all(["td"], limit=5)  # type: ignore
         if len(cells) == 5:
             c = [cell.get_text(strip=True) for cell in cells]
             if c[0] != "N/A":
