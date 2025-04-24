@@ -1,6 +1,6 @@
 from typing import List, Any, Callable, Protocol
 
-from . import h_bls_esr, h_ism_mfg, h_ism_srv, h_bld_permits, h_cmc_btc, h_gdp, h_um_ics
+from . import h_bls_esr, h_ism_mfg, h_ism_srv, h_bld_permits, h_cmc_btc, h_gdp, h_um_ics, h_lei_us
 
 
 class Haul(Protocol):
@@ -20,6 +20,7 @@ blocks: List[Haul] = [  # type: ignore
     h_um_ics,
     h_bld_permits,
     h_bls_esr,
+    h_lei_us,
     h_gdp,
     h_cmc_btc,
 ]
