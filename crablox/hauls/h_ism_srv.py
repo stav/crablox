@@ -34,6 +34,7 @@ def history():
         Ul: An unordered list (HTML) containing links to historical files that match
             the current module's base name but are not the current file.
     """
+
     def matching_files():
         for filename in files:
             if filename.startswith(base_name) and filename != current_file:
@@ -44,7 +45,7 @@ def history():
             Li(
                 A(
                     filename,
-                    hx_get=f"/api{path}/history/{filename}",
+                    hx_get=f"/api/history/{filename}",
                     hx_target="closest .wlv-data",
                 )
             )
@@ -69,7 +70,9 @@ def content():
     """
     skool = "https://www.skool.com/tradingbusiness/macro-tailrisks?p=df25b53d"
     ismworld = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/"
-    tradingeconomics = "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
+    tradingeconomics = (
+        "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
+    )
 
     return (
         Div(

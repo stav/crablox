@@ -1,5 +1,6 @@
 from starlette.requests import Request
 from fasthtml.common import fast_app, serve, Div
+from pathlib import Path
 
 import auth
 import audio
@@ -30,21 +31,18 @@ def _():
 
 
 @rt("/api/blocks/{id}")
-def get_block(id: str):
+def _(id: str):
     for block in hauls.blocks:
         if block.id == id:
             return stack(block)
     return f"Block not found: {id}", 404
 
 
-@rt("/api/ism/srv/history/{filename}")
-def get_date(filename: str):
-    print("Getting date:", type(filename), filename)
-    filename = f"crablox/hauls/{filename}"
-    with open(filename, "r") as file:
-        markup = file.read()
-        return Div(markup, cls="marked")
-
+@rt("/api/history/{filename}")
+def _(filename: str):
+    file_path = Path("crablox/hauls") / filename
+    markup = file_path.read_text()
+    return Div(markup, cls="marked")
 
 
 @rt("/audio/{id}")
