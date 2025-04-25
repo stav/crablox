@@ -38,7 +38,7 @@ function crbClearBlock (clearButton) {
   // Hide data block
   const item = clearButton.closest('.item')
   const data = item.querySelector(`.wlv-data`)
-  data.style.display = 'none'
+  data.innerHTML = ''
 }
 
 /**
