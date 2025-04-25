@@ -6,7 +6,7 @@ id = "BuildingPermits"
 path = "/building_permits"
 title = "Bld Permits · 1.47 M"
 caption = "United States Building Permits"
-summary = "Single-family permits went down by 0.2% to an annualized rate of 994 thousand, while permits for buildings with five or more units dropped by 2.5%"
+summary = "Building permits in the United States rose by 0.5% to a seasonally adjusted annualized rate of 1.467 million in March 2025, compared to the preliminary estimate of a 1.6% increase, final data showed. This marked the first increase after three consecutive months of declines."
 
 
 def history():
@@ -21,7 +21,7 @@ def content():
     return (
         Div(
             Img(
-                src="/static/US_Building_Permits.png",
+                src="/static/US_Building_Permits.svg",
                 alt=caption,
                 cls="cbx_image",
                 title=summary,
@@ -32,19 +32,37 @@ def content():
             Div(details(), cls="marked"),
             P(
                 Img(
-                    src="/static/US_Building_Permits-vs-Housing_starts.png",
+                    src="/static/NewResidentialConstruction.png",
                     cls="cbx_image",
-                    alt="Building permits Vs Housing starts",
-                    title="Building permits Vs Housing starts",
+                    alt="New Residential Construction for the Last Five Years",
+                    title="New Residential Construction for the Last Five Years",
                 ),
                 onclick="openLightbox(this)",
             ),
             P(
                 Img(
-                    src="/static/NewResidentialConstruction.png",
+                    src="/static/US_Building_Permits-10years.png",
                     cls="cbx_image",
-                    alt="New Residential Construction for the Last Five Years",
-                    title="New Residential Construction for the Last Five Years",
+                    alt="New Residential Construction for the Last Ten Years",
+                    title="New Residential Construction for the Last Ten Years",
+                ),
+                onclick="openLightbox(this)",
+            ),
+            P(
+                Img(
+                    src="/static/NewHousingStarts.gif",
+                    cls="cbx_image",
+                    alt="New Housing Starts",
+                    title="New Housing Starts",
+                ),
+                onclick="openLightbox(this)",
+            ),
+            P(
+                Img(
+                    src="/static/US_Building_Permits-vs-Housing_starts.png",
+                    cls="cbx_image",
+                    alt="Building permits Vs Housing starts",
+                    title="Building permits Vs Housing starts",
                 ),
                 onclick="openLightbox(this)",
             ),
@@ -53,8 +71,12 @@ def content():
             footer=get_footer(
                 [
                     (
-                        "Census Bureau",
+                        "Census Bureau: New Residential Construction",
                         "https://www.census.gov/construction/nrc/pdf/newresconst.pdf",
+                    ),
+                    (
+                        "Census Bureau: Economic Indicators",
+                        "https://www.census.gov/economic-indicators/",
                     ),
                     (
                         "Trading Economics",
