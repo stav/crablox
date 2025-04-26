@@ -20,6 +20,7 @@ def stack(block):
                             hx-target="#{itemId}>.wlv-data"
                             hx-on:htmx:after-request="crbOpenBlock(this)"
                             hx-trigger="revealed,click"
+                            style="{block.style}"
                             class="truncate-text"
                         >{block.title or block.id}</button>"""
                     ),
@@ -28,7 +29,7 @@ def stack(block):
                         title="History",
                         hx_get=f"{block.path}/history",
                         hx_target=f"#{itemId}>.wlv-data",
-                        data_history=hasattr(block, 'history'),
+                        data_history=bool(block.history()),
                         cls="wlv-history outline",
                     ),
                     Button(  # Clear button

@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P
 id = "IsmMfgPmi"
 path = "/ism/mfg"
 title = "ISM Mfg · 49.0"
+style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Manufacturing PMI"
 summary = "We're seeing a significant shift from February's data. The headline PMI has dropped below the growth threshold to 49.0 (down from 50.3), indicating contraction for the first time in recent months."
 with open("crablox/hauls/h_ism_mfg.md", "r") as file:

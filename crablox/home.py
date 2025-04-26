@@ -86,7 +86,7 @@ def block_buttons():
                 hx-target="#block-grid"
                 hx-swap="afterend"
                 hx-on:htmx:after-request="swapy.update()"
-                style="margin: 0.2em"
+                style="margin: 0.2em; {block.style}"
                 ignore-hx-trigger="revealed,click"
             >{block.title}</button>"""
         )

@@ -8,6 +8,7 @@ from fh_altair import altair_headers
 base_config = {
     "hdrs": [
         Link(rel="icon", href="/static/favicon.ico"),
+        Link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.css"),
         altair_headers,
         StyleX("crablox/main.css"),
         MarkdownJS(),

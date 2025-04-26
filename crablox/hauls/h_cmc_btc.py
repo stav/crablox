@@ -8,6 +8,7 @@ from config import CMC_API_KEY
 id = "CMC_BTC"
 path = "/btc"
 title = "BTC Market Price"
+style = "background-color: unset"
 
 URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
 PARAMS = {"symbol": "BTC", "convert": "USD"}
