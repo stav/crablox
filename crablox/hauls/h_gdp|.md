@@ -1,0 +1,11 @@
+# Q1 2025 0.3%
+
+## Gross Domestic Product
+
+### 😎 Was it really unexpected though?
+
+30 April 2025
+
+Q1 GDP just came out today. contracted at an annualized rate of 0.3% in the first quarter of 2025, marking the first negative growth since the first quarter of 2022.
+
+"This was a sharp reversal from 2.4% growth in the previous quarter and came in below market expectations of 0.3% growth, according to an advance estimate. A 41.3% surge in imports contributed to the slowdown, as businesses and consumers rushed to stockpile goods in anticipation of higher costs following a series of tariff announcements by the Trump administration. Consumer spending growth also cooled to 1.8%, the slowest pace since Q2 2023, while federal government expenditures fell 5.1%, the steepest drop since Q1 2022. In contrast, fixed investment surged 7.8%, the most since Q2 2023."
