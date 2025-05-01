@@ -3,6 +3,7 @@ from fasthtml.common import Card, H1, H2, H3, H5, P, Ul, Li, A, Img, Div
 id = "GDP"
 path = "/gdp"
 title = "GDP · 2.3%"
+style = "background-color: var(--pico-color-green-700); border-color: var(--pico-color-green-500);"
 caption = "US GDP Growth Rate"
 summary = "Down from 2.8% in Q3. Missing Estimates, business investment just went negative for the first time in a year. Consumer spending  (up 4.2%, best since Q1 '23)"
 

@@ -3,7 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P, H3, Style
 id = "UsLei"
 path = "/us/lei"
 title = "US LEI · 100.5"
-style = "background-color: var(--pico-color-pumpkin-500); border-color: var(--pico-color-pumpkin-200);"
+style = "background-color: var(--pico-color-blue-500); border-color: var(--pico-color-blue-300);"
 caption = "US LEI"
 summary = "The United States Leading Economic Index increased to 100.50 in March of 2025 over the same month in the previous year."
 with open("crablox/hauls/h_lei_us.md", "r") as file:
