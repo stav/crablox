@@ -25,7 +25,10 @@
 ### Dependencies
 
     ┌─(venv)[stav][legion][±][master ✓][~/.../FastHTML/crablox]
-    └─▪ pip install python-fasthtml fh_altair requests pandas fa6-icons
+    └─▪ pip install --upgrade pip
+
+    ┌─(venv)[stav][legion][±][master ✓][~/.../FastHTML/crablox]
+    └─▪ pip install python-fasthtml fh_altair requests pandas fa6-icons openpyxl
 
       Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
       Collecting python-fasthtml
@@ -37,9 +40,6 @@
       Collecting pandas
         Downloading pandas-2.2.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
         ...
-
-    [notice] A new release of pip is available: 24.3.1 -> 25.0.1
-    [notice] To update, run: pip install --upgrade pip
 
 ### Upgrade Pip
 
@@ -73,22 +73,6 @@
       drwxr-xr-x 2 stav stav  4096 Dec 29 17:13 .vscode/
 
 ## Development
-
-Development environment is on Python version 3.12 which removed setuptools.
-
-    ┌─(venv)[stav][legion][±][re-binding {1} U:1 ✗][~/.../FastHTML/crablox]
-    └─▪ pip install pipupgrade setuptools
-
-      Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
-      Collecting pipupgrade
-        Using cached pipupgrade-1.12.0-py3-none-any.whl.metadata (11 kB)
-      Collecting setuptools
-        Downloading setuptools-75.8.1-py3-none-any.whl.metadata (6.7 kB)
-      Requirement already satisfied: pip in ./venv/lib/python3.13/site-packages (from pipupgrade) (25.0.1)
-      Collecting bpyutils (from pipupgrade)
-        Using cached bpyutils-0.5.8-py3-none-any.whl.metadata (4.5 kB)
-      Using cached pipupgrade-1.12.0-py3-none-any.whl (34 kB)
-      Downloading setuptools-75.8.1-py3-none-any.whl (1.2 MB)
 
 Source the virtual environment:
 
@@ -125,7 +109,9 @@ Explicit environment variables:
 
 ### Production
 
-Copy `config.ini`.
+Copy `config.ini` and `data/US Stock Data 4-25-25.xlsx`.
+
+`config.ini`:
 
     [CMC]
     API_KEY = 136991d4-...

@@ -6,6 +6,7 @@ import auth
 import audio
 import index
 import hauls
+import ticker
 from blocks import stack
 from config import env, fast_config
 
@@ -43,6 +44,11 @@ def _(filename: str):
     file_path = Path("crablox/hauls") / filename
     markup = file_path.read_text()
     return Div(markup, cls="marked")
+
+
+@rt("/api/lookup")
+def _(request: Request):
+    return ticker.display(request)
 
 
 @rt("/audio/{id}")

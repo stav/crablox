@@ -46,6 +46,22 @@
   text-overflow: ellipsis;
 }
 
+/* DL styling */
+dl {
+  margin: 1em 0;
+}
+dt {
+  color: var(--pico-muted-color);
+  font-size: 0.9em;
+}
+dd {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 2em;
+  margin-left: 1em;
+  margin-bottom: 0.75em;
+}
+
 /* (Lightbox) */
 .lightbox {
   display: none;

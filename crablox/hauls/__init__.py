@@ -10,6 +10,7 @@ from . import (
     h_gdp,
     h_um_ics,
     h_lei_us,
+    h_ticker,
 )
 
 
@@ -35,4 +36,5 @@ blocks: List[Haul] = [
     Haul(h_gdp),
     Haul(h_lei_us),
     Haul(h_cmc_btc),
+    Haul(h_ticker),
 ]

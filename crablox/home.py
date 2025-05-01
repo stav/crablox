@@ -32,9 +32,8 @@ def page():
                     href="/logout",
                     title="Logout",
                     cls="button secondary",
-                    style="display: inline-flex; vertical-align: middle; margin-left: 1em; width: 2em; height: 2em",
+                    style="display: inline-flex; margin-left: 1em; vertical-align: middle; width: 2em; height: 2em",
                 ),
-                cls="button-container",
             ),
             Div(  # Grid for the blocks
                 Div(id="block-grid", style="display: none"),

@@ -179,3 +179,6 @@ config.ini
 
 # Audio
 *.mp3
+
+# Data
+data/
