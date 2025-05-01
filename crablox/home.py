@@ -87,5 +87,6 @@ def block_buttons():
                 hx-on:htmx:after-request="swapy.update()"
                 style="margin: 0.2em; {block.style}"
                 ignore-hx-trigger="revealed,click"
+                title="{block.summary}"
             >{block.title}</button>"""
         )
