@@ -17,6 +17,7 @@ function crbOpenBlock (openButton) {
   // Reveal data block
   const data = item.querySelector(`.wlv-data`)
   data.style.display = 'inline-block'
+  data.scrollTop = 0
   // Reveal clear button
   const clearButton = item.querySelector('.wlv-clear')
   clearButton.style.display = 'inline-block'
