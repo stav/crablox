@@ -3,6 +3,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul
 id = "BLS_ESR"
 path = "/esr"
 title = "Empl Situation · 151 K"
+short = "ESR"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Non-Farm Payrolls"
 summary = "Below forecasts, up from a downwardly revised 125K in January"

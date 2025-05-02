@@ -5,6 +5,7 @@ from .components import get_details, get_history, get_footer
 id = "UmIndex"
 path = "/um/index"
 title = "Sentiment · 52.2"
+short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Michigan Consumer Sentiment Index"
 summary = "The Index of Consumer Sentiment fell to 52.2 in April, the lowest since 2022. This is way below the 63.1 forecast and marks the third straight monthly decline."

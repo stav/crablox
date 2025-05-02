@@ -3,6 +3,7 @@ from fasthtml.common import Card, Div, Form, Input, Button
 id = "TickerLookup"
 path = "/haul/ticker"
 title = "Lookup"
+short = "TL"
 style = "background-color: var(--pico-color-purple-800); border-color: var(--pico-color-purple-600);"
 caption = "Ticker Lookup"
 summary = "Ticker Lookup"

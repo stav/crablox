@@ -5,6 +5,7 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P, Style, H3
 id = "IsmSrvPmi"
 path = "/ism/srv"
 title = "ISM Srv · 50.8"
+short = "Srv"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Services PMI"
 summary = "Macro Tailrisks & Sector Rotation"

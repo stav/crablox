@@ -22,7 +22,7 @@ def stack(block):
                             hx-trigger="revealed,click"
                             style="{block.style}"
                             class="truncate-text"
-                        >{block.title or block.id}</button>"""
+                        >{block.short}</button>"""
                     ),
                     Button(  # History button
                         "H",
