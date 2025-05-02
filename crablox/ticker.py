@@ -18,15 +18,11 @@ def display(request: Request):
     if "error" in data:
         return Div(data["error"])
 
-    # fmt: off
     return Dl(
-        *[
-            Div(Dt(key), Dd(str(value)))
-            for key, value in data.items()
-            if value is not None
-        ]
+        Div(Dt(key), Dd(format_if_number(value)))
+        for key, value in data.items()
+        if value is not None
     )
-    # fmt: on
 
 
 def lookup(ticker: str):
@@ -50,3 +46,23 @@ def lookup(ticker: str):
             }
 
     return {"error": f"No data found for ticker: {ticker}"}
+
+
+def format_if_number(value):
+    if not isinstance(value, (int, float)):
+        return value
+
+    if value == 0:
+        return "0"
+
+    abs_value = abs(value)
+    if abs_value >= 1e12:
+        return f"{value/1e12:.3f}T"
+    elif abs_value >= 1e9:
+        return f"{value/1e9:.3f}B"
+    elif abs_value >= 1e6:
+        return f"{value/1e6:.3f}M"
+    elif abs_value >= 1e3:
+        return f"{value/1e3:.3f}K"
+    else:
+        return f"{value:.2f}"
