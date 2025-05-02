@@ -2,11 +2,11 @@ from fasthtml.common import Card, Div, Img, P
 
 from .components import get_details, get_history, get_footer
 
-title = "ISM Mfg · 49.0"
+title = "ISM Mfg · 48.7"
 short = "Mfg"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Manufacturing PMI"
-summary = "We're seeing a significant shift from February's data. The headline PMI has dropped below the growth threshold to 49.0 (down from 50.3), indicating contraction for the first time in recent months."
+summary = "Manufacturing slipped again in April, falling to 48.7 from 49 in March."
 
 
 def history():
