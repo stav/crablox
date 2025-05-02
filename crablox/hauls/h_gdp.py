@@ -2,8 +2,6 @@ from fasthtml.common import Card, Div, Img
 
 from .components import get_details, get_history, get_footer
 
-id = "GDP"
-path = "/gdp"
 title = "GDP · 0.3%"
 style = "background-color: var(--pico-color-green-700); border-color: var(--pico-color-green-500);"
 caption = "US GDP Growth Rate"

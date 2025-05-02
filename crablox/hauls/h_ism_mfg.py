@@ -1,7 +1,5 @@
 from fasthtml.common import A, Card, Div, Img, Li, Ul, P
 
-id = "IsmMfgPmi"
-path = "/ism/mfg"
 title = "ISM Mfg · 49.0"
 short = "Mfg"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"

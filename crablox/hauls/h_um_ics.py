@@ -2,8 +2,6 @@ from fasthtml.common import Card, Div, Img, P
 
 from .components import get_details, get_history, get_footer
 
-id = "UmIndex"
-path = "/um/index"
 title = "Sentiment · 52.2"
 short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"

@@ -2,8 +2,6 @@ from fasthtml.common import Card, Div, Img, P
 
 from .components import get_details, get_history, get_footer
 
-id = "BuildingPermits"
-path = "/building_permits"
 title = "Bld Permits · 1.47 M"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "United States Building Permits"

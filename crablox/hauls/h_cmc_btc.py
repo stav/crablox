@@ -5,8 +5,6 @@ from fasthtml.common import H1, H2, Div
 
 from config import CMC_API_KEY
 
-id = "CMC_BTC"
-path = "/btc"
 title = "BTC Market Price"
 style = "background-color: var(--pico-color-pumpkin-500); border-color: var(--pico-color-pumpkin-300);"
 

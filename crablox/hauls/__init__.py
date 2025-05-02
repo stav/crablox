@@ -16,8 +16,8 @@ from . import (
 
 class Haul:
     def __init__(self, module: ModuleType):
-        self.id: str = getattr(module, "id", module.__name__)
-        self.path: str = getattr(module, "path", "")
+        self.id: str = getattr(module, "id", module.__name__.replace(".", "_"))
+        self.path: str = getattr(module, "path", f"/{self.id}")
         self.title: str = getattr(module, "title", self.id)
         self.short: str = getattr(module, "short", self.title[:3])
         self.style: str = getattr(module, "style", "")
