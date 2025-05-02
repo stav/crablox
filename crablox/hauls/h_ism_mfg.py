@@ -1,20 +1,23 @@
-from fasthtml.common import A, Card, Div, Img, Li, Ul, P
+from fasthtml.common import Card, Div, Img, P
+
+from .components import get_details, get_history, get_footer
 
 title = "ISM Mfg · 49.0"
 short = "Mfg"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Manufacturing PMI"
 summary = "We're seeing a significant shift from February's data. The headline PMI has dropped below the growth threshold to 49.0 (down from 50.3), indicating contraction for the first time in recent months."
-with open("crablox/hauls/h_ism_mfg.md", "r") as file:
-    markup = file.read()
+
+
+def history():
+    return get_history(__file__)
+
+
+def details():
+    return get_details(__file__)
 
 
 def content():
-
-    url1 = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/"
-    url2 = "https://tradingeconomics.com/united-states/business-confidence#stats"
-    url3 = "https://www.skool.com/tradingbusiness/manufacturing-ism-update-march-2025?p=281abddc"
-
     return (
         Div(
             Img(
@@ -26,7 +29,7 @@ def content():
             onclick="openLightbox(this)",
         ),
         Card(
-            Div(markup, cls="marked"),
+            Div(details(), cls="marked"),
             P(
                 Img(
                     src="/static/ism-mfg-heatmap.png",
@@ -37,11 +40,23 @@ def content():
                 onclick="openLightbox(this)",
             ),
             cls="wlv-details",
-            header="ISM Manufacturing PMI",
-            footer=Ul(
-                Li(A(url1, href=url1, target="_blank")),
-                Li(A(url2, href=url2, target="_blank")),
-                Li(A(url3, href=url3, target="_blank")),
+            header=caption,
+            footer=get_footer(
+                [
+                    (
+                        "ISM Report on Business",
+                        "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+                    ),
+                    (
+                        "Trading Economics: Business Confidence",
+                        "https://tradingeconomics.com/united-states/business-confidence#stats",
+                    ),
+                    (
+                        "Manufacturing ISM Update March 2025",
+                        "https://www.skool.com/tradingbusiness/manufacturing-ism-update-march-2025?p=281abddc",
+                    ),
+                ],
+                history(),
             ),
         ),
     )
