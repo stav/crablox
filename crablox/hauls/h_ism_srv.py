@@ -1,79 +1,26 @@
-import os
+from pathlib import Path
 
-from fasthtml.common import A, Card, Div, Img, Li, Ul, P, Style, H3
+from fasthtml.common import Card, Div, Img, P
+from .components import get_history, get_footer
 
 title = "ISM Srv · 51.6"
 short = "Srv"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Services PMI"
 summary = "April Shows Mixed Recovery"
-details_filename = "crablox/hauls/h_ism_srv|2025-04.md"
-
-current_file = os.path.basename(__file__)
-base_name = os.path.splitext(current_file)[0]
-directory = os.path.dirname(__file__)
-files = os.listdir(directory)
-
-
-def details():
-    """
-    Reads and returns the contents of the details markdown file.
-
-    Returns:
-        str: The contents of the details markdown file specified by details_filename.
-    """
-    with open(details_filename, "r") as file:
-        return file.read()
 
 
 def history():
-    """
-    Generates a list of historical files related to the current module.
+    return get_history(__file__)
 
-    Returns:
-        Ul: An unordered list (HTML) containing links to historical files that match
-            the current module's base name but are not the current file.
-    """
 
-    def matching_files():
-        for filename in files:
-            if filename.startswith(base_name) and filename != current_file:
-                yield filename
-
-    return Ul(
-        *[
-            Li(
-                A(
-                    filename,
-                    hx_get=f"/api/history/{filename}",
-                    hx_target="closest .wlv-data",
-                )
-            )
-            for filename in sorted(matching_files())
-        ],
-        cls="crb-history-list",
-    )
+def details():
+    details_filename = "crablox/hauls/h_ism_srv|2025-04.md"
+    file = Path(details_filename)
+    return file.read_text()
 
 
 def content():
-    """
-    Generates the main content for the ISM Services PMI page.
-
-    Returns:
-        tuple: A tuple containing:
-            - A Div with the main ISM Services PMI image
-            - A Card component containing:
-                - The details content
-                - Multiple images related to ISM Services and Manufacturing
-                - A footer with resource links
-            - A Style component for list item spacing
-    """
-    skool = "https://www.skool.com/tradingbusiness/macro-tailrisks?p=df25b53d"
-    ismworld = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/"
-    tradingeconomics = (
-        "https://tradingeconomics.com/united-states/non-manufacturing-pmi"
-    )
-
     return (
         Div(
             Img(
@@ -132,21 +79,23 @@ def content():
                 onclick="openLightbox(this)",
             ),
             cls="wlv-details",
-            header="ISM Services PMI",
-            footer=(
-                H3("Resources"),
-                Ul(
-                    Li(A("ismworld", href=ismworld, target="_blank")),
-                    Li(A("tradingeconomics", href=tradingeconomics, target="_blank")),
-                    Li(A("skool", href=skool, target="_blank")),
-                ),
+            header=caption,
+            footer=get_footer(
+                [
+                    (
+                        "ISM Report on Business",
+                        "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/",
+                    ),
+                    (
+                        "Trading Economics",
+                        "https://tradingeconomics.com/united-states/non-manufacturing-pmi",
+                    ),
+                    (
+                        "Skool",
+                        "https://www.skool.com/tradingbusiness/macro-tailrisks?p=df25b53d",
+                    ),
+                ],
+                history(),
             ),
-        ),
-        Style(
-            """
-            ul li {
-                margin-bottom: 0.5em;
-            }
-            """
         ),
     )
