@@ -1,37 +1,26 @@
-# 151 K
+# 177 K
 ### Employment Situation Report
-United States Non-Farm Payrolls for February 2025
+United States Non-Farm Payrolls for April 2025
 
-#### 7 March 2025
-Total nonfarm payroll employment rose by 151,000 in February, and the unemployment rate changed
-little at 4.1 percent, the U.S. Bureau of Labor Statistics reported. Employment trended
-up in health care, financial activities, transportation and warehousing, and social assistance.
-Federal government employment declined.
+#### Released 2 May 2025
+The April jobs report just dropped, and it's throwing a wrench in the Fed's rate-cut calculus we discussed in last night's meeting. The economy added 177,000 jobs in April, significantly beating market expectations of 130,000.
 
-#### 7 February 2025
+##### The Key Numbers:
 
-Total nonfarm payroll employment rose by 143,000 in January, and the unemployment rate edged down to 4.0 percent, the U.S. Bureau of Labor Statistics reported today. Job gains occurred in health care, retail trade, and social assistance. Employment declined in the mining, quarrying, and oil and gas extraction industry.
+- Total Jobs Added: 177,000 vs 185,000 in March (downwardly revised)
+- Market Expectations: 130,000 (beaten by 47,000 jobs)
+- 12-Month Average: 152,000 jobs per month
 
-#### 10 January 2025
-Total nonfarm payroll employment increased by 256,000 in December, and the unemployment rate
-changed little at 4.1 percent, the U.S. Bureau of Labor Statistics reported. Employment
-trended up in health care, government, and social assistance. Retail trade added jobs in
-December, following a job loss in November.
+##### Sector Breakdown:
+- 🏥 Health Care: +51,000 (leading the pack)
+- 🚚 Transportation & Warehousing: +29,000
+- 💰 Financial Activities: +14,000
+- 🤝 Social Assistance: +8,000
+- 🏛️ Federal Government: -9,000 (notable decline)
 
-##### NonFarm Payrolls - Good but Bad
-NFP Dec: 256K vs 160K exp (Nov revised to 212K)
+##### Trading Implications: 
+Remember our discussion last night (May 1st)? This stronger-than-expected jobs report complicates the Fed's calculus on rate cuts. With the labor market showing resilience despite tariff concerns, the Fed has less justification for the four cuts markets were pricing in.
 
-- Healthcare +46K
-- Retail +43K
-- Gov't +33K
-- Manufacturing -13K
-
-##### Key points: Huge beat - not even close to estimates.
-
-Nov got revised down but doesn't matter, labor market's still cooking. Retail bounced back hard after that weak Nov.
-
-2024 avg monthly gains = 186K vs 251K in 2023.
-
-Bottom line: Labor market refuses to break. Add in today's hot Michigan inflation expectations and the Fed's got zero reason to cut.
-
-Rates staying higher for even longer. 
+###### Next Rate Cut Catalyst: 
+All eyes now turn to the Services ISM printing Monday, and upcoming inflation print. If the Consumer Price Index shows continued strength, the Fed will face a difficult stagflation-like scenario: This could force them to prioritize inflation fighting over growth concerns.
+As I mentioned in our meeting, this payroll beat pushes the Fed further from the multiple cuts scenario. The market will likely need to adjust expectations, which could create volatility in rate-sensitive sectors.

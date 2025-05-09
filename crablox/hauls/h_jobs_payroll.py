@@ -1,14 +1,12 @@
-from fasthtml.common import Card, Div, Img, P
+from fasthtml.common import Card, Div, Img
 
 from .components import get_details, get_history, get_footer
 
-id = "JobsPayroll"
-path = "/jobs_payroll"
-title = "Empl Situation · 151 K"
-short = "ESR"
+title = "Jobs · 177 K"
+short = "Jobs"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Non-Farm Payrolls"
-summary = "Below forecasts, up from a downwardly revised 125K in January"
+summary = "🧾 US Adds More Jobs: Complicates Fed's Path 🏦"
 
 
 def history():
@@ -16,7 +14,14 @@ def history():
 
 
 def details():
-    return get_details(__file__)
+    details = get_details(__file__)
+    notes = """
+### Notes
+The United State Bureau of Labor Statistics economic news release called _The Employment Situation_
+report is the most widely cited source for U.S. employment data and is released on the first 
+Friday of each month and also known as the "Jobs Report" or the "Non-farm Payrolls Report".
+        """
+    return (details, notes)
 
 
 def content():
