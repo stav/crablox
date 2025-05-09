@@ -2,12 +2,12 @@ import os
 
 from fasthtml.common import A, Card, Div, Img, Li, Ul, P, Style, H3
 
-title = "ISM Srv · 50.8"
+title = "ISM Srv · 51.6"
 short = "Srv"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Services PMI"
-summary = "Macro Tailrisks & Sector Rotation"
-details_filename = "crablox/hauls/h_ism_srv|.md"
+summary = "April Shows Mixed Recovery"
+details_filename = "crablox/hauls/h_ism_srv|2025-04.md"
 
 current_file = os.path.basename(__file__)
 base_name = os.path.splitext(current_file)[0]

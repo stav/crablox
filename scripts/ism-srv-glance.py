@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/march/"
+url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services/april/"
 
 
 def scrape_ism_report():
@@ -43,7 +43,7 @@ def scrape_ism_report():
         if len(cells) == 5:
             c = [cell.get_text(strip=True) for cell in cells]
             if c[0] != "N/A":
-                print(f"- {header_text} : {c[0]} vs {c[1]} ({c[2]}) → {c[3]} {c[4]}")
+                print(f"- {header_text} <br> {c[0]} vs {c[1]} ({c[2]}) → {c[3]} {c[4]}")
 
 
 if __name__ == "__main__":
