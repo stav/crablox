@@ -23,6 +23,9 @@ serve()
 # /audio/{id}       | audio  | Get audio file by id
 # /static/{file}    |        | Get static files by name
 # /api/blocks/{id}  | main   | Get block by id
+# /api/history/{f}  | main   | Get history markup
+# /api/lookup       | ticker | Lookup ticker data
+# /api/search       | ticker | Search ticker suggestions
 # /favicon.ico      | config | /static/favicon.ico
 
 
@@ -49,6 +52,11 @@ def _(filename: str):
 @rt("/api/lookup")
 def _(request: Request):
     return ticker.display(request)
+
+
+@rt("/api/search")
+def _(request: Request):
+    return ticker.search(request)
 
 
 @rt("/audio/{id}")

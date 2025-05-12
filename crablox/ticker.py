@@ -66,3 +66,46 @@ def format_if_number(value):
         return f"{value/1e3:.3f}K"
     else:
         return f"{value:.2f}"
+
+
+def search(request: Request):
+    query = request.query_params.get("ticker", "").upper()
+    print(f"Searching for ({query})")
+    if not query:
+        return Div("", id="ticker-suggestions")
+        
+    # Load the workbook and get the active sheet
+    workbook = load_workbook(excel_path)
+    sheet = workbook.active
+    if sheet is None:
+        return Div("No data loaded from workbook", id="ticker-suggestions")
+
+    # Get all tickers that match the query
+    matches = []
+    for r in range(2, sheet.max_row + 1):
+        current_ticker = sheet.cell(row=r, column=A).value
+        if isinstance(current_ticker, str) and current_ticker.startswith(query):
+            matches.append(current_ticker)
+            if len(matches) >= 10:  # Limit to 10 results
+                break
+
+    if not matches:
+        return Div("No matches found", id="ticker-suggestions")
+
+    return Div(
+        *[
+            Div(
+                ticker,
+                cls="ticker-suggestion",
+                style="padding: 4px 8px; cursor: pointer;",
+                hx_get=f"/api/lookup?ticker={ticker}",
+                hx_target="closest .wlv-details",
+                hx_swap="outerHTML",
+                hx_indicator="#loading-indicator",
+                hx_on_click="crbUpdateTicker(this, this.textContent)",
+            )
+            for ticker in matches
+        ],
+        id="ticker-suggestions",
+        style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; width: 100px; margin-top: 2px;",
+    )

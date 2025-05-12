@@ -55,13 +55,13 @@ function crbCloseBlock (closeButton) {
 /**
  * Updates the ticker button with the value of the ticker input.
  *
- * @param {Event} event - The event object.
+ * @param {HTMLElement} form - The form element.
+ * @param {string} ticker - The ticker value.
  */
-function crbUpdateTicker (event) {
-  const tickerInput = event.target.querySelector('input[name=ticker]')
-  const blockItem = event.target.closest('.item')
+function crbUpdateTicker (form, ticker) {
+  const blockItem = form.closest('.item')
   const tickerButton = blockItem.querySelector('.crb-buttons button')
-  tickerButton.innerHTML = tickerInput.value.toUpperCase()
+  tickerButton.innerHTML = ticker.toUpperCase()
 }
 
 // LIGHTBOX
