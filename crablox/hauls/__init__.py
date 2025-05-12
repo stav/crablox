@@ -3,7 +3,7 @@ from types import ModuleType
 
 from . import (
     h_bld_permits,
-    h_cmc_btc,
+    # h_cmc_btc,
     h_gdp,
     h_ism_mfg,
     h_ism_srv,
@@ -36,6 +36,6 @@ blocks: List[Haul] = [
     Haul(h_jobs_payroll),
     Haul(h_gdp),
     Haul(h_lei_us),
-    Haul(h_cmc_btc),
+    # Haul(h_cmc_btc),
     Haul(h_ticker),
 ]
