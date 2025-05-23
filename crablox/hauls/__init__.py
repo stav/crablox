@@ -9,7 +9,7 @@ from . import (
     jobs_payroll,
     lei,
     sentiment,
-    # h_ticker,
+    h_ticker,
     building_permits,
 )
 
@@ -36,5 +36,6 @@ blocks: List[Haul] = [
     Haul(building_permits),
     Haul(gdp),
     Haul(lei),
+    Haul(h_ticker),
     # Haul(h_cmc_btc),
 ]
