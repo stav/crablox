@@ -1,9 +1,10 @@
 from fasthtml.common import Card, Div, Form, Input, Button
+from ticker import file_name
 
 title = "Lookup"
 short = "TL"
 style = "background-color: var(--pico-color-purple-800); border-color: var(--pico-color-purple-600);"
-caption = "Brandon's US Stock Market Data Cheat Sheet"
+caption = "Brandon's Stock Market Cheat Sheet"
 summary = caption
 
 
@@ -37,6 +38,6 @@ def content():
         ),
         Div(id="ticker-result"),
         cls="wlv-details",
-        header=caption,
+        header=(caption, Div(file_name, style="font-family: monospace,monospace;")),
         footer=(),
     )

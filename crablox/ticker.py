@@ -8,7 +8,9 @@ from openpyxl.utils import column_index_from_string
 
 A: int = column_index_from_string("A")
 
-excel_path = Path(__file__).parent.parent / "data" / "US Stock Data 4-25-25.xlsx"
+file_name = "US Stock Data 5-19-25.xlsx"
+
+excel_path = Path(__file__).parent.parent / "data" / file_name
 
 
 def display(request: Request):
