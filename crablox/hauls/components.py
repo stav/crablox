@@ -3,43 +3,45 @@ from pathlib import Path
 from fasthtml.common import A, Li, Ul, H3
 
 
-def get_details(file_name: str) -> str:
+def get_details(path: str, details_file: str) -> str:
     """
     Reads and returns the contents of the details markdown file.
 
     Args:
-        file_name: The path to the caller file
+        path: The path to the caller file
+        details_file: The name of the details markdown file to read
 
     Returns:
         str: The contents of the details markdown file
     """
-    file = Path(file_name)
-    details_path = Path(file.parent) / f"{file.stem}|.md"
+    file = Path(path)
+    details_path = Path(file.parent) / details_file
     return details_path.read_text()
 
 
-def get_history(file_name: str):
+def get_history(path: str):
     """
     Generates a list of historical files.
 
     Args:
-        file_name: The path to the caller file
+        path: The path to the caller file
 
     Returns:
         Ul: An unordered list (HTML) containing links to historical files
     """
-    file = Path(file_name)
-    files = [f.name for f in file.parent.glob(f"{file.stem}*") if f.name != file.name]
+    file = Path(path)
+    parent = file.parent
+    files = [f.name for f in parent.glob("*.md")]
     return Ul(
         *[
             Li(
                 A(
                     filename,
-                    hx_get=f"/api/history/{filename}",
+                    hx_get=f"/api/history/{parent.name}/{filename}",
                     hx_target="closest .wlv-data",
                 )
             )
-            for filename in sorted(files)
+            for filename in sorted(files, reverse=True)
         ],
         cls="crb-history-list",
     )

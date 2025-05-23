@@ -1,13 +1,13 @@
-from pathlib import Path
-
 from fasthtml.common import Card, Div, Img, P
-from .components import get_history, get_footer
+
+from hauls.components import get_details, get_history, get_footer
 
 title = "ISM Srv · 51.6"
 short = "Srv"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Services PMI"
 summary = "April Shows Mixed Recovery"
+details_file = "2025-04.md"
 
 
 def history():
@@ -15,9 +15,7 @@ def history():
 
 
 def details():
-    details_filename = "crablox/hauls/h_ism_srv|2025-04.md"
-    file = Path(details_filename)
-    return file.read_text()
+    return get_details(__file__, details_file)
 
 
 def content():
@@ -98,4 +96,4 @@ def content():
                 history(),
             ),
         ),
-    )
+    ) 

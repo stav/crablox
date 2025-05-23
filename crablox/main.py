@@ -42,9 +42,9 @@ def _(id: str):
     return f"Block not found: {id}", 404
 
 
-@rt("/api/history/{filename}")
-def _(filename: str):
-    file_path = Path("crablox/hauls") / filename
+@rt("/api/history/{parent}/{filename}")
+def _(parent: str, filename: str):
+    file_path = Path("crablox/hauls") / parent / filename
     markup = file_path.read_text()
     return Div(markup, cls="marked")
 

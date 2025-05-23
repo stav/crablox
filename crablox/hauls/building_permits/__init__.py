@@ -1,11 +1,12 @@
 from fasthtml.common import Card, Div, Img, P
 
-from .components import get_details, get_history, get_footer
+from hauls.components import get_details, get_history, get_footer
 
 title = "Bld Permits · 1.47 M"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "United States Building Permits"
 summary = "Building permits in the United States rose by 0.5% to a seasonally adjusted annualized rate of 1.467 million in March 2025, compared to the preliminary estimate of a 1.6% increase, final data showed. This marked the first increase after three consecutive months of declines."
+details_file = "2025-03.md"
 
 
 def history():
@@ -13,7 +14,7 @@ def history():
 
 
 def details():
-    return get_details(__file__)
+    return get_details(__file__, details_file)
 
 
 def content():

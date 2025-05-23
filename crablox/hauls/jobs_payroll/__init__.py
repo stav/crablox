@@ -1,12 +1,13 @@
 from fasthtml.common import Card, Div, Img
 
-from .components import get_details, get_history, get_footer
+from hauls.components import get_details, get_history, get_footer
 
 title = "Jobs · 177 K"
 short = "Jobs"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Non-Farm Payrolls"
 summary = "🧾 US Adds More Jobs: Complicates Fed's Path 🏦"
+details_file = "2025-04.md"
 
 
 def history():
@@ -14,7 +15,7 @@ def history():
 
 
 def details():
-    details = get_details(__file__)
+    details = get_details(__file__, details_file)
     notes = """
 ### Notes
 The United State Bureau of Labor Statistics economic news release called _The Employment Situation_
@@ -53,4 +54,4 @@ def content():
                 history(),
             ),
         ),
-    )
+    ) 

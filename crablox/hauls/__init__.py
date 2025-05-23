@@ -2,15 +2,15 @@ from typing import List, Any, Callable
 from types import ModuleType
 
 from . import (
-    h_bld_permits,
-    # h_cmc_btc,
-    h_gdp,
-    h_ism_mfg,
-    h_ism_srv,
-    h_jobs_payroll,
-    h_lei_us,
-    h_ticker,
-    h_um_ics,
+    h_cmc_btc,
+    gdp,
+    ism_mfg,
+    ism_srv,
+    jobs_payroll,
+    lei,
+    sentiment,
+    # h_ticker,
+    building_permits,
 )
 
 
@@ -29,13 +29,12 @@ class Haul:
 
 
 blocks: List[Haul] = [
-    Haul(h_ism_mfg),
-    Haul(h_ism_srv),
-    Haul(h_um_ics),
-    Haul(h_bld_permits),
-    Haul(h_jobs_payroll),
-    Haul(h_gdp),
-    Haul(h_lei_us),
-    # Haul(h_cmc_btc),
-    Haul(h_ticker),
+    Haul(ism_mfg),
+    Haul(ism_srv),
+    Haul(sentiment),
+    Haul(jobs_payroll),
+    Haul(building_permits),
+    Haul(gdp),
+    Haul(lei),
+    Haul(h_cmc_btc),
 ]

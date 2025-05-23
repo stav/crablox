@@ -1,12 +1,13 @@
 from fasthtml.common import Card, Div, Img, P
 
-from .components import get_details, get_history, get_footer
+from hauls.components import get_details, get_history, get_footer
 
 title = "Sentiment · 52.2"
 short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Michigan Consumer Sentiment Index"
 summary = "The Index of Consumer Sentiment fell to 52.2 in April, the lowest since 2022. This is way below the 63.1 forecast and marks the third straight monthly decline."
+details_file = "2025-04.md"
 
 
 def history():
@@ -14,7 +15,7 @@ def history():
 
 
 def details():
-    return get_details(__file__)
+    return get_details(__file__, details_file)
 
 
 def content():
@@ -66,4 +67,4 @@ def content():
                 history(),
             ),
         ),
-    )
+    ) 

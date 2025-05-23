@@ -1,12 +1,13 @@
 from fasthtml.common import Card, Div, Img, P
 
-from .components import get_details, get_history, get_footer
+from hauls.components import get_details, get_history, get_footer
 
 title = "ISM Mfg · 48.7"
 short = "Mfg"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Manufacturing PMI"
 summary = "Manufacturing slipped again in April, falling to 48.7 from 49 in March."
+details_file = "2025-04.md"
 
 
 def history():
@@ -14,7 +15,7 @@ def history():
 
 
 def details():
-    return get_details(__file__)
+    return get_details(__file__, details_file)
 
 
 def content():
@@ -59,4 +60,4 @@ def content():
                 history(),
             ),
         ),
-    )
+    ) 
