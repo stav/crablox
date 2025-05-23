@@ -2,7 +2,7 @@ from typing import List, Any, Callable
 from types import ModuleType
 
 from . import (
-    h_cmc_btc,
+    # h_cmc_btc,
     gdp,
     ism_mfg,
     ism_srv,
@@ -36,5 +36,5 @@ blocks: List[Haul] = [
     Haul(building_permits),
     Haul(gdp),
     Haul(lei),
-    Haul(h_cmc_btc),
+    # Haul(h_cmc_btc),
 ]
