@@ -4,7 +4,7 @@ from hauls.components import get_details, get_history, get_footer
 
 title = "Jobs · 177 K"
 short = "Jobs"
-style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
+style = "background-color: var(--pico-color-yellow-500); border-color: var(--pico-color-yellow-300);"
 caption = "US Non-Farm Payrolls"
 summary = "🧾 US Adds More Jobs: Complicates Fed's Path 🏦"
 details_file = "2025-04.md"
