@@ -8,9 +8,15 @@
 }
 .wlv-data {
   max-width: 400px;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  position: absolute;
   overflow-y: auto;
   flex-grow: 1;
-  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
 }
 .wlv-data .cbx_image {
   max-width: 100%;
@@ -42,8 +48,16 @@
 .crb-buttons {
   flex-shrink: 0;
   width: 100%;
+  padding-top: 0.5em;
   padding-bottom: 0.5em;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(212, 212, 212, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.crb-buttons .obutton:hover {
+  background-color: white;
 }
 .crb-history-list {
   margin-top: 1em;
@@ -130,6 +144,7 @@ dd {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .item:has(.handle) {

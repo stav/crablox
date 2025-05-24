@@ -8,7 +8,7 @@ def stack(block):
 
     hash = create_short_hash()
     itemId = f"""{block.id}-{hash}"""
-
+ 
     return (
         Div(  # Slot
             Div(  # Item
@@ -28,18 +28,18 @@ def stack(block):
                         hx_get=f"{block.path}/history",
                         hx_target=f"#{itemId}>.wlv-data",
                         data_history=bool(block.history()),
-                        cls="wlv-history outline",
+                        cls="obutton wlv-history outline",
                     ),
                     Button(  # Clear button
                         "-",
                         title="Clear",
-                        cls="wlv-clear outline",
+                        cls="obutton wlv-clear outline",
                         onclick="crbClearBlock(this)",
                     ),
                     Button(  # Close button
                         "X",
                         title="Close",
-                        cls="wlv-close outline",
+                        cls="obutton wlv-close outline",
                         onclick="crbCloseBlock(this)",
                     ),
                     Div(  # Handle

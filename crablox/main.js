@@ -53,7 +53,7 @@ function crbCloseBlock (closeButton) {
 }
 
 /**
- * Updates the ticker button with the value of the ticker input.
+ * Updates the first button with the value of the ticker input.
  *
  * @param {HTMLElement} form - The form element.
  * @param {string} ticker - The ticker value.
