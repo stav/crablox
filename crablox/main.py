@@ -8,12 +8,12 @@ import index
 import hauls
 import ticker
 from blocks import stack
-from config import env, fast_config
+from config import env, fast_config, reload
 
 app, rt = fast_app(before=auth.beforeware, **fast_config)
 # app.htmlkw["data-theme"] = "dark"
 print(f'Using "{env}" environment for {app}')
-serve()
+serve(reload=reload)
 
 # Routes
 #######################################################

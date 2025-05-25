@@ -27,6 +27,8 @@ prod_config = {**base_config}
 
 env = os.getenv("CRB", "production")
 
+reload = env != "production"
+
 fast_config = prod_config if env == "production" else dev_config
 
 
