@@ -18,9 +18,15 @@ base_config = {
 }
 
 dev_config = {
+    **base_config,
     "live": True,
     "debug": True,
-    **base_config,
+    "session": {
+        "persist": True,  # Persist sessions across reloads
+        "max_age": 86400,  # 24 hours in seconds
+        "same_site": "lax",  # Allow cookies to be sent with top-level navigations
+        "secure": False,  # Allow cookies over HTTP in development
+    },
 }
 
 prod_config = {**base_config}

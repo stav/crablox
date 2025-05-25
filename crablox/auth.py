@@ -30,7 +30,14 @@ def user_auth_before(request, sess):
 
 beforeware = Beforeware(
     user_auth_before,
-    skip=[r"/favicon\.ico", r"/static/.*", r".*\.css", r".*\.js", "/login"],
+    skip=[
+        r"/favicon\.ico",
+        r"/static/.*",
+        r".*\.css",
+        r".*\.js",
+        "/login",
+        r"/live-reload",  # Skip live reload WebSocket
+    ],
 )
 
 
@@ -39,7 +46,15 @@ def logout(request: Request):
     return RedirectResponse("/login", status_code=303)
 
 
-def login_page():
+def login_page(request: Request | None = None):
+    # If we have a request and are already logged in, redirect to home
+    if request and request.session.get("auth"):
+        print(f"Login page - We're already logged in, redirecting to app")
+        return RedirectResponse("/", status_code=303)
+    
+    # Get any error message from the session
+    error_msg = request.session.pop("login_error", None) if request else None
+        
     return Titled(
         "Megaboard Indicator Blocks Login",
         P(
@@ -49,6 +64,7 @@ def login_page():
                 target="_blank",
             )
         ),
+        *([Div(error_msg, style="color: red; margin-bottom: 1em;")] if error_msg else []),
         Form(
             Label("Username:", For="username"),
             Div(
@@ -74,5 +90,25 @@ async def login(request: Request):
 
     if client_username.lower() == AUTH_USERNAME.lower():
         request.session["auth"] = True
+        print(f"Login successful - Session after set: {request.session}")
+        # Use a more direct redirect with additional headers to prevent caching and extra requests
+        response = RedirectResponse(url="/", status_code=303)
+        response.headers.update({
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "X-Accel-Buffering": "no",  # Prevent buffering
+            "Connection": "close",  # Close connection after response
+        })
+    else:
+        print(f"Login failed - Session after set: {request.session}")
+        request.session["login_error"] = "Invalid username"
+        response = RedirectResponse(url="/login", status_code=303)
+        response.headers.update({
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+        })
 
-    return RedirectResponse("/", status_code=303)
+    return response
+    

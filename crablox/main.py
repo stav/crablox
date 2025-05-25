@@ -65,8 +65,8 @@ def _(id: str):
 
 
 @app.get("/login")
-def _():
-    return auth.login_page()
+def _(request: Request):
+    return auth.login_page(request)
 
 
 @app.post("/login")
