@@ -2,12 +2,12 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, P, H3, Style
 
 from hauls.components import get_details, get_history
 
-title = "US LEI · 100.5"
+title = "US LEI · 99.4"
 short = "LEI"
 style = "background-color: var(--pico-color-blue-500); border-color: var(--pico-color-blue-300);"
 caption = "US LEI"
-summary = "The United States Leading Economic Index increased to 100.50 in March of 2025 over the same month in the previous year."
-details_file = "lei.md"
+summary = "The Conference Board Leading Economic Index for the US fell sharply by 1.0% in April 2025 to 99.4"
+details_file = "2025-04.md"
 
 
 def history():
@@ -37,7 +37,7 @@ def content():
             Div(details(), cls="marked"),
             P(
                 Img(
-                    src="/static/lei-vs-cei.png",
+                    src="/static/us-lei-apr-2025-1.png",
                     cls="cbx_image",
                     alt="US LEI vs CEI indicators over the last 25 years",
                     title="US LEI vs CEI indicators over the last 25 years",
