@@ -88,6 +88,16 @@ function openLightbox (wrapper) {
 }
 
 /**
+ * Shows the lightbox for time series data by hiding the image and caption elements.
+ */
+function showTimeSeriesLightbox() {
+  document.getElementById('lightbox-img').style.display = 'none'
+  document.getElementById('lightbox-cap').style.display = 'none'
+  document.getElementById('lightbox-det').innerHTML = '<h1 style="display: flex; align-items: center; height: 100dvh">Loading...</h1>'
+  document.getElementById('lightbox').style.display = 'flex'
+}
+
+/**
  * Hides the lightbox element by setting its display style to 'none'.
  */
 function closeLightbox () {
