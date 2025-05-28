@@ -2,7 +2,7 @@ from typing import Callable, List, Tuple
 
 from .yfinance_data import fetch_yfinance_data as yfd
 
-from ..utils import format_market_cap, format_net_income_millions, format_if_number
+from ..utils import format_market_cap, format_number, format_number_millions
 
 
 def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable]]:
@@ -21,17 +21,15 @@ def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable
     # fmt: off
     return [
         (
-            "Stock Price $",
-            "Price",
+            "Stock Price $", "Price",  # Price = Stock Price
             lambda v, y: (
-                format_if_number(avg_price_by_year.get(y))
+                format_number(avg_price_by_year.get(y))
                 if y <= current_year and avg_price_by_year.get(y) is not None
                 else ""
             ),
         ),
         (
-            "Market Cap $B",
-            "Market Cap",
+            "Market Cap $B", "Market Cap",  # Market Capitalization = Price * Shares Outstanding
             lambda v, y: (
                 format_market_cap(avg_mcap_by_year.get(y), v)
                 if y <= current_year and avg_mcap_by_year.get(y) is not None
@@ -39,47 +37,38 @@ def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable
             ),
         ),
         (
-            "EPS", 
-            "EPS", 
-            lambda v, y: format_if_number(v)
+            "EPS", "EPS",  # Earnings Per Share = Net Income / Shares Outstanding
+            lambda v, y: format_number(v)
         ),
         (
-            "Earnings Growth %",
+            "Earnings Growth %",  # Earnings Growth Rate = (FY1_EPS - FY0_EPS) / FY0_EPS * 100
             "EG",
-            lambda v, y: f"{v:.2f}%" if isinstance(v, (int, float)) and v else "",
+            lambda v, y: format_number(v, ".2%")
         ),
         (
-            "Price/Earnings", 
-            "PE", 
-            lambda v, y: format_if_number(v)
+            "Price/Earnings", "PE",  # Price-to-Earnings = Price / EPS
+            lambda v, y: format_number(v)
         ),
         (
-            "PEG", 
-            "PEG", 
-            lambda v, y: format_if_number(v)
+            "PEG", "PEG",  # Price-to-Earnings Growth Ratio = PE / EPS
+            lambda v, y: format_number(v)
         ),
         (
-            "Sales $M",
-            "Revenue",
-            lambda v, y: f"{v/1e6:.2f}" if isinstance(v, (int, float)) and v else "",
+            "Sales $M", "Revenue",  # Revenue = Sales
+            lambda v, y: format_number_millions(v)
         ),
         (
-            "Revenue Growth %",
-            "Revenue Growth",
-            lambda v, y: f"{v:.2f}%" if isinstance(v, (int, float)) and v else "",
+            "Revenue Growth %", "Revenue Growth",  # Revenue Growth Rate = (FY1_Revenue - FY0_Revenue) / FY0_Revenue * 100
+            lambda v, y: format_number(v, ".2%")
         ),
         (
-            "Revenue Multiple", 
-            "PS", 
-            lambda v, y: format_if_number(v)
+            "Revenue Multiple", "PS",  # Price-to-Sales = Price / Sales
+            lambda v, y: format_number(v)
         ),
         (
-            "Net Income $M",
-            "Net Income",
-            lambda v, y: (
-                format_net_income_millions(net_income_by_year.get(y))
-                if y <= current_year
-                else (f"{v/1e6:.2f}" if isinstance(v, (int, float)) and v else "")
+            "Net Income $M", "Net Income",  # Net Income = Revenue - Expenses (not including interest and taxes)
+            lambda v, y: format_number_millions(
+                net_income_by_year.get(y) if y <= current_year else v
             ),
         ),
     ]

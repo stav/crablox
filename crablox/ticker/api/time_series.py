@@ -43,30 +43,34 @@ def time_series_table(ticker: str):
     # Build table header
     table_rows = [
         Tr(
-            Th("Metrics", style="background: #c97c3b; color: white;"),
-            *[Th(str(y), style="background: #c97c3b; color: white;") for y in years],
+            Th("Metrics", style="background: var(--pico-color-pumpkin-500); color: white"),
+            *[Th(str(y), style="background: var(--pico-color-pumpkin-500); color: white") for y in years],
         )
     ]
 
     # Build table rows
     for display_name, metric_key, fmt in metrics:
         cells = []
+
         for year in years:
             col = find_col(metric_key, year)
             val = data.get(col) if col else None
-            # Set background for future price & market cap cells
+
+            # Set background for future: price, market cap, net income cells
             if display_name in ("Stock Price $", "Market Cap $B") and year > current_year:
-                cell_style = "background: #f8ecd9;"
+                cell_style = "background: var(--pico-color-pumpkin-50)"
             elif display_name == "Net Income $M":
                 cell_style = (
-                    "background: #fff;" if year <= current_year else "background: #f8ecd9;"
+                    "background: white" if year < current_year else "background: var(--pico-color-pumpkin-50)"
                 )
             else:
-                cell_style = "background: #f8ecd9;" if val is None else ""
+                cell_style = "background: var(--pico-color-pumpkin-50)" if val is None else ""
+
             cells.append(Td(fmt(val, year), style=cell_style))
+
         table_rows.append(
             Tr(
-                Th(display_name, style="background: #f8ecd9; text-align: left;"),
+                Th(display_name, style="background: var(--pico-color-pumpkin-100); text-align: left;"),
                 *cells
             )
         )
@@ -74,6 +78,6 @@ def time_series_table(ticker: str):
     return Table(
         Caption(f"{data['Company Name']} ({ticker})", style="font-weight: bold"),
         *table_rows,
-        style="border-collapse: collapse; width: 100%; background: #f8ecd9;",
+        style="border-collapse: collapse; width: 100%; background: white",
         cls="time-series-table",
     )

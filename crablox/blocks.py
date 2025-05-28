@@ -28,18 +28,18 @@ def stack(block):
                         hx_get=f"{block.path}/history",
                         hx_target=f"#{itemId}>.wlv-data",
                         data_history=bool(block.history()),
-                        cls="obutton wlv-history outline",
+                        cls="wlv-history outline",
                     ),
                     Button(  # Clear button
                         "-",
                         title="Clear",
-                        cls="obutton wlv-clear outline",
+                        cls="wlv-clear outline",
                         onclick="crbClearBlock(this)",
                     ),
                     Button(  # Close button
                         "X",
                         title="Close",
-                        cls="obutton wlv-close outline",
+                        cls="wlv-close outline",
                         onclick="crbCloseBlock(this)",
                     ),
                     Div(  # Handle

@@ -34,7 +34,7 @@ def content():
         Div("Loading...", id="loading-indicator", cls="htmx-indicator"),
         Div(
             id="ticker-suggestions",
-            style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; width: 100px; margin-top: 2px;",
+            style="position: absolute; z-index: 1000; background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); max-height: 200px; overflow-y: auto; width: 100px; margin-top: 2px;",
         ),
         Div(id="ticker-result"),
         cls="wlv-details",

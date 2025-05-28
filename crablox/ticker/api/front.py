@@ -2,7 +2,7 @@ from starlette.requests import Request
 from fasthtml.common import Div, Dl, Dt, Dd, Button
 
 from ..core import get_ticker_data, search_tickers
-from ..utils import format_if_number
+from ..utils import format_number
 
 
 def display(request: Request):
@@ -22,7 +22,7 @@ def display(request: Request):
             hx_on_click="showTimeSeriesLightbox()",
         ),
         Dl(
-            Div(Dt(key), Dd(format_if_number(value)))
+            Div(Dt(key), Dd(format_number(value)))
             for key, value in data.items()
             if value is not None
         ),
