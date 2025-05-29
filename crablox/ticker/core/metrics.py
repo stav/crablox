@@ -1,8 +1,6 @@
 from typing import Callable, List, Tuple
 
-from .yfinance_data import fetch_yfinance_data as yfd
-
-from ..utils import format_market_cap, format_number, format_number_millions
+from ..utils import format_number, format_number_millions
 
 
 def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable]]:
@@ -16,25 +14,15 @@ def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable
     Returns:
         List of metric tuples containing (display_name, metric_key, formatter_function)
     """
-    avg_price_by_year, avg_mcap_by_year, net_income_by_year = yfd(ticker)
-
     # fmt: off
     return [
         (
             "Stock Price $", "Price",  # Price = Stock Price
-            lambda v, y: (
-                format_number(avg_price_by_year.get(y))
-                if y <= current_year and avg_price_by_year.get(y) is not None
-                else ""
-            ),
+            lambda v, y: format_number(v)
         ),
         (
             "Market Cap $B", "Market Cap",  # Market Capitalization = Price * Shares Outstanding
-            lambda v, y: (
-                format_market_cap(avg_mcap_by_year.get(y), v)
-                if y <= current_year and avg_mcap_by_year.get(y) is not None
-                else ""
-            ),
+            lambda v, y: format_number_millions(v)
         ),
         (
             "EPS", "EPS",  # Earnings Per Share = Net Income / Shares Outstanding
@@ -67,9 +55,7 @@ def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable
         ),
         (
             "Net Income $M", "Net Income",  # Net Income = Revenue - Expenses (not including interest and taxes)
-            lambda v, y: format_number_millions(
-                net_income_by_year.get(y) if y <= current_year else v
-            ),
+            lambda v, y: format_number_millions(v)
         ),
     ]
     # fmt: on

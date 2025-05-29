@@ -86,7 +86,7 @@ def time_series_table(ticker: str):
 def time_series_table_yahoo(ticker: str):
     """Generate a time series table using only Yahoo Finance data."""
     # Get Yahoo Finance data
-    avg_price_by_year, avg_mcap_by_year, net_income_by_year = fetch_yfinance_data(ticker)
+    avg_price_by_year, avg_mcap_by_year, net_income_by_year, revenue_by_year = fetch_yfinance_data(ticker)
     
     if not avg_price_by_year:
         return Div(f"No Yahoo Finance data found for ticker: {ticker}")
@@ -95,10 +95,11 @@ def time_series_table_yahoo(ticker: str):
     import yfinance as yf
     yf_ticker = yf.Ticker(ticker)
     company_name = yf_ticker.info.get("longName", ticker)
+    shares_outstanding = yf_ticker.info.get("sharesOutstanding")
 
-    # Define the years
+    # Define the years - only show 2 years back and 2 years forward
     current_year = datetime.datetime.now().year
-    years = sorted(avg_price_by_year.keys())
+    years = [current_year - 2, current_year - 1, current_year, current_year + 1, current_year + 2]
 
     # Build table header
     table_rows = [
@@ -108,10 +109,67 @@ def time_series_table_yahoo(ticker: str):
         )
     ]
 
+    # Calculate EPS for all years
+    eps_by_year = {
+        year: (net_income_by_year.get(year) / shares_outstanding if net_income_by_year.get(year) and shares_outstanding else None)
+        for year in years
+    }
+
+    # Calculate earnings growth for all years
+    earnings_growth_by_year = {
+        year: (
+            ((eps_by_year.get(year) - eps_by_year.get(year-1)) / eps_by_year.get(year-1) * 100) # type: ignore
+            if eps_by_year.get(year) is not None and eps_by_year.get(year-1) is not None and eps_by_year.get(year-1) != 0
+            else None
+        )
+        for year in years
+    }
+
+    # Calculate P/E for all years
+    pe_by_year = {
+        year: (
+            avg_price_by_year.get(year) / eps_by_year.get(year) # type: ignore
+            if avg_price_by_year.get(year) is not None and eps_by_year.get(year) is not None and eps_by_year.get(year) != 0
+            else None
+        )
+        for year in years
+    }
+
+    # Calculate revenue growth for all years
+    revenue_growth_by_year = {
+        year: (
+            ((revenue_by_year.get(year) - revenue_by_year.get(year-1)) / revenue_by_year.get(year-1) * 100) # type: ignore
+            if revenue_by_year.get(year) is not None and revenue_by_year.get(year-1) is not None and revenue_by_year.get(year-1) != 0
+            else None
+        )
+        for year in years
+    }
+
+    # Calculate revenue multiple (P/S) for all years
+    ps_by_year = {
+        year: (
+            (avg_price_by_year.get(year) * shares_outstanding) / revenue_by_year.get(year) # type: ignore
+            if avg_price_by_year.get(year) is not None and revenue_by_year.get(year) is not None and revenue_by_year.get(year) != 0 and shares_outstanding
+            else None
+        )
+        for year in years
+    }
+
     # Define metrics to display
     metrics = [
         ("Stock Price $", lambda y: avg_price_by_year.get(y)),
         ("Market Cap $B", lambda y: avg_mcap_by_year.get(y)),
+        ("EPS $", lambda y: eps_by_year.get(y)),
+        ("Earnings Growth %", lambda y: earnings_growth_by_year.get(y)),
+        ("Price/Earnings", lambda y: pe_by_year.get(y)),
+        ("PEG", lambda y: (
+            pe_by_year.get(y) / earnings_growth_by_year.get(y) # type: ignore
+            if pe_by_year.get(y) is not None and earnings_growth_by_year.get(y) is not None and earnings_growth_by_year.get(y) != 0
+            else None
+        )),
+        ("Sales $M", lambda y: revenue_by_year.get(y)),
+        ("Revenue Growth %", lambda y: revenue_growth_by_year.get(y)),
+        ("Revenue Multiple", lambda y: ps_by_year.get(y)),
         ("Net Income $M", lambda y: net_income_by_year.get(y)),
     ]
 
@@ -120,7 +178,11 @@ def time_series_table_yahoo(ticker: str):
         cells = []
         for year in years:
             val = get_value(year)
-            cell_style = "background: var(--pico-color-pumpkin-50)" if val is None else ""
+            # Set background for future years
+            if year > current_year:
+                cell_style = "background: var(--pico-color-pumpkin-50)"
+            else:
+                cell_style = "background: var(--pico-color-pumpkin-50)" if val is None else ""
             
             if display_name == "Stock Price $":
                 formatted_val = f"{val:.2f}" if val is not None else ""
@@ -128,6 +190,20 @@ def time_series_table_yahoo(ticker: str):
                 formatted_val = f"{val/1e9:.2f}" if val is not None else ""
             elif display_name == "Net Income $M":
                 formatted_val = f"{val/1e6:.0f} M" if val is not None else ""
+            elif display_name == "EPS $":
+                formatted_val = f"{val:.2f}" if val is not None else ""
+            elif display_name == "Earnings Growth %":
+                formatted_val = f"{val:+.1f}%" if val is not None else ""
+            elif display_name == "Price/Earnings":
+                formatted_val = f"{val:.1f}" if val is not None else ""
+            elif display_name == "PEG":
+                formatted_val = f"{val:.2f}" if val is not None else ""
+            elif display_name == "Sales $M":
+                formatted_val = f"{val/1e6:.0f} M" if val is not None else ""
+            elif display_name == "Revenue Growth %":
+                formatted_val = f"{val:+.1f}%" if val is not None else ""
+            elif display_name == "Revenue Multiple":
+                formatted_val = f"{val:.1f}" if val is not None else ""
             else:
                 formatted_val = str(val) if val is not None else ""
 

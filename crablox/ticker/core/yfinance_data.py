@@ -6,7 +6,7 @@ import yfinance as yf
 
 def fetch_yfinance_data(
     ticker: str,
-) -> Tuple[Dict[int, float], Dict[int, Optional[float]], Dict[int, float]]:
+) -> Tuple[Dict[int, float], Dict[int, Optional[float]], Dict[int, float], Dict[int, float]]:
     """
     Fetch historical data from yfinance for a given ticker.
 
@@ -18,6 +18,7 @@ def fetch_yfinance_data(
         - avg_price_by_year: Dictionary mapping years to average stock prices
         - avg_mcap_by_year: Dictionary mapping years to average market caps (can be None)
         - net_income_by_year: Dictionary mapping years to net income values
+        - revenue_by_year: Dictionary mapping years to revenue values
     """
     try:
         yf_ticker = yf.Ticker(ticker)
@@ -41,20 +42,34 @@ def fetch_yfinance_data(
             for year in avg_price_by_year
         }
 
-        # Fetch Net Income from yfinance financials
+        # Fetch financial data
         fin = yf_ticker.financials
         net_income_by_year = {}
-        if not fin.empty and "Net Income" in fin.index:
-            for col in fin.columns:
-                try:
-                    year = int(str(col)[:4])
-                    net_income = fin.at["Net Income", col]
-                    if net_income not in (None, 0):
-                        net_income_by_year[year] = net_income
-                except Exception:
-                    continue
+        revenue_by_year = {}
+        if not fin.empty:
+            # Get Net Income
+            if "Net Income" in fin.index:
+                for col in fin.columns:
+                    try:
+                        year = int(str(col)[:4])
+                        net_income = fin.at["Net Income", col]
+                        if net_income not in (None, 0):
+                            net_income_by_year[year] = net_income
+                    except Exception:
+                        continue
+            
+            # Get Revenue
+            if "Total Revenue" in fin.index:
+                for col in fin.columns:
+                    try:
+                        year = int(str(col)[:4])
+                        revenue = fin.at["Total Revenue", col]
+                        if revenue not in (None, 0):
+                            revenue_by_year[year] = revenue
+                    except Exception:
+                        continue
 
-        return avg_price_by_year, avg_mcap_by_year, net_income_by_year
+        return avg_price_by_year, avg_mcap_by_year, net_income_by_year, revenue_by_year
 
     except Exception:
-        return {}, {}, {}
+        return {}, {}, {}, {}
