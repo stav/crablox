@@ -1,8 +1,10 @@
-import datetime
+from datetime import datetime
+from typing import Dict, Optional, Union
 
 from fasthtml.common import Div, Table, Tr, Th, Td, Caption
 
 from ..core import get_ticker_data, get_metrics, fetch_yfinance_data
+from ..core.yfinance_data import fetch_yfinance_data as yfd
 
 
 def time_series_table(ticker: str):
@@ -11,7 +13,7 @@ def time_series_table(ticker: str):
         return Div(f"No data found for ticker: {ticker}")
 
     # Define the years and mapping for each metric
-    current_year = datetime.datetime.now().year
+    current_year = datetime.now().year
     year_suffixes_map = {
         current_year - 2: ["FY-1"],
         current_year - 1: ["FY0", "F0"],
@@ -84,10 +86,21 @@ def time_series_table(ticker: str):
 
 
 def time_series_table_yahoo(ticker: str):
-    """Generate a time series table using only Yahoo Finance data."""
-    # Get Yahoo Finance data
-    avg_price_by_year, avg_mcap_by_year, net_income_by_year, revenue_by_year = fetch_yfinance_data(ticker)
-    
+    """
+    Generate a time series table for a given ticker using Yahoo Finance data.
+
+    Args:
+        ticker: The stock ticker symbol
+
+    Returns:
+        A FastHTML Table component containing the time series data
+    """
+    # Get current year
+    current_year = datetime.now().year
+
+    # Fetch data from Yahoo Finance
+    avg_price_by_year, avg_mcap_by_year, net_income_by_year, revenue_by_year, shares_by_year = yfd(ticker)
+
     if not avg_price_by_year:
         return Div(f"No Yahoo Finance data found for ticker: {ticker}")
 
@@ -95,11 +108,74 @@ def time_series_table_yahoo(ticker: str):
     import yfinance as yf
     yf_ticker = yf.Ticker(ticker)
     company_name = yf_ticker.info.get("longName", ticker)
-    shares_outstanding = yf_ticker.info.get("sharesOutstanding")
 
-    # Define the years - only show 2 years back and 2 years forward
-    current_year = datetime.datetime.now().year
-    years = [current_year - 2, current_year - 1, current_year, current_year + 1, current_year + 2]
+    # Get years to display (current year and 4 years back)
+    years = list(range(current_year - 3, current_year + 3))
+
+    # Calculate EPS for all years using historical shares outstanding
+    eps_by_year: Dict[int, Optional[float]] = {}
+    for year in years:
+        net_income = net_income_by_year.get(year)
+        shares = shares_by_year.get(year)
+        if net_income is not None and shares is not None and shares != 0:
+            eps_by_year[year] = net_income / shares
+        else:
+            eps_by_year[year] = None
+
+    # Calculate earnings growth rate
+    earnings_growth_by_year: Dict[int, Optional[float]] = {}
+    for i, year in enumerate(years[1:], 1):
+        prev_year = years[i - 1]
+        prev_eps = eps_by_year.get(prev_year)
+        curr_eps = eps_by_year.get(year)
+        if prev_eps is not None and curr_eps is not None and prev_eps != 0:
+            earnings_growth_by_year[year] = (curr_eps - prev_eps) / abs(prev_eps)
+        else:
+            earnings_growth_by_year[year] = None
+
+    # Calculate PE ratio
+    pe_by_year: Dict[int, Optional[float]] = {}
+    for year in years:
+        price = avg_price_by_year.get(year)
+        eps = eps_by_year.get(year)
+        if price is not None and eps is not None and eps != 0:
+            pe_by_year[year] = price / eps
+        else:
+            pe_by_year[year] = None
+
+    # Calculate PEG ratio
+    peg_by_year: Dict[int, Optional[float]] = {}
+    for year in years:
+        pe = pe_by_year.get(year)
+        growth = earnings_growth_by_year.get(year)
+        if pe is not None and growth is not None and growth != 0:
+            peg_by_year[year] = pe / (growth * 100)
+        else:
+            peg_by_year[year] = None
+
+    # Calculate revenue growth rate
+    revenue_growth_by_year: Dict[int, Optional[float]] = {}
+    for i, year in enumerate(years[1:], 1):
+        prev_year = years[i - 1]
+        prev_revenue = revenue_by_year.get(prev_year)
+        curr_revenue = revenue_by_year.get(year)
+        if prev_revenue is not None and curr_revenue is not None and prev_revenue != 0:
+            revenue_growth_by_year[year] = (curr_revenue - prev_revenue) / prev_revenue
+        else:
+            revenue_growth_by_year[year] = None
+
+    # Calculate revenue multiple (Price/Sales)
+    revenue_multiple_by_year: Dict[int, Optional[float]] = {}
+    for year in years:
+        mcap = avg_mcap_by_year.get(year)
+        revenue = revenue_by_year.get(year)
+        if mcap is not None and revenue is not None and revenue != 0:
+            revenue_multiple_by_year[year] = mcap / revenue
+        else:
+            revenue_multiple_by_year[year] = None
+
+    # Get metrics to display
+    metrics = get_metrics(ticker, current_year)
 
     # Build table header
     table_rows = [
@@ -109,105 +185,40 @@ def time_series_table_yahoo(ticker: str):
         )
     ]
 
-    # Calculate EPS for all years
-    eps_by_year = {
-        year: (net_income_by_year.get(year) / shares_outstanding if net_income_by_year.get(year) and shares_outstanding else None)
-        for year in years
-    }
-
-    # Calculate earnings growth for all years
-    earnings_growth_by_year = {
-        year: (
-            ((eps_by_year.get(year) - eps_by_year.get(year-1)) / eps_by_year.get(year-1) * 100) # type: ignore
-            if eps_by_year.get(year) is not None and eps_by_year.get(year-1) is not None and eps_by_year.get(year-1) != 0
-            else None
-        )
-        for year in years
-    }
-
-    # Calculate P/E for all years
-    pe_by_year = {
-        year: (
-            avg_price_by_year.get(year) / eps_by_year.get(year) # type: ignore
-            if avg_price_by_year.get(year) is not None and eps_by_year.get(year) is not None and eps_by_year.get(year) != 0
-            else None
-        )
-        for year in years
-    }
-
-    # Calculate revenue growth for all years
-    revenue_growth_by_year = {
-        year: (
-            ((revenue_by_year.get(year) - revenue_by_year.get(year-1)) / revenue_by_year.get(year-1) * 100) # type: ignore
-            if revenue_by_year.get(year) is not None and revenue_by_year.get(year-1) is not None and revenue_by_year.get(year-1) != 0
-            else None
-        )
-        for year in years
-    }
-
-    # Calculate revenue multiple (P/S) for all years
-    ps_by_year = {
-        year: (
-            (avg_price_by_year.get(year) * shares_outstanding) / revenue_by_year.get(year) # type: ignore
-            if avg_price_by_year.get(year) is not None and revenue_by_year.get(year) is not None and revenue_by_year.get(year) != 0 and shares_outstanding
-            else None
-        )
-        for year in years
-    }
-
-    # Define metrics to display
-    metrics = [
-        ("Stock Price $", lambda y: avg_price_by_year.get(y)),
-        ("Market Cap $B", lambda y: avg_mcap_by_year.get(y)),
-        ("EPS $", lambda y: eps_by_year.get(y)),
-        ("Earnings Growth %", lambda y: earnings_growth_by_year.get(y)),
-        ("Price/Earnings", lambda y: pe_by_year.get(y)),
-        ("PEG", lambda y: (
-            pe_by_year.get(y) / earnings_growth_by_year.get(y) # type: ignore
-            if pe_by_year.get(y) is not None and earnings_growth_by_year.get(y) is not None and earnings_growth_by_year.get(y) != 0
-            else None
-        )),
-        ("Sales $M", lambda y: revenue_by_year.get(y)),
-        ("Revenue Growth %", lambda y: revenue_growth_by_year.get(y)),
-        ("Revenue Multiple", lambda y: ps_by_year.get(y)),
-        ("Net Income $M", lambda y: net_income_by_year.get(y)),
-    ]
-
-    # Build table rows
-    for display_name, get_value in metrics:
+    # Add rows for each metric
+    for display_name, metric_key, formatter in metrics:
         cells = []
         for year in years:
-            val = get_value(year)
+            if metric_key == "Price":
+                value = avg_price_by_year.get(year)
+            elif metric_key == "Market Cap":
+                value = avg_mcap_by_year.get(year)
+            elif metric_key == "EPS":
+                value = eps_by_year.get(year)
+            elif metric_key == "EG":
+                value = earnings_growth_by_year.get(year)
+            elif metric_key == "PE":
+                value = pe_by_year.get(year)
+            elif metric_key == "PEG":
+                value = peg_by_year.get(year)
+            elif metric_key == "Revenue":
+                value = revenue_by_year.get(year)
+            elif metric_key == "Revenue Growth":
+                value = revenue_growth_by_year.get(year)
+            elif metric_key == "PS":
+                value = revenue_multiple_by_year.get(year)
+            elif metric_key == "Net Income":
+                value = net_income_by_year.get(year)
+            else:
+                value = None
+
             # Set background for future years
             if year > current_year:
                 cell_style = "background: var(--pico-color-pumpkin-50)"
             else:
-                cell_style = "background: var(--pico-color-pumpkin-50)" if val is None else ""
-            
-            if display_name == "Stock Price $":
-                formatted_val = f"{val:.2f}" if val is not None else ""
-            elif display_name == "Market Cap $B":
-                formatted_val = f"{val/1e9:.2f}" if val is not None else ""
-            elif display_name == "Net Income $M":
-                formatted_val = f"{val/1e6:.0f} M" if val is not None else ""
-            elif display_name == "EPS $":
-                formatted_val = f"{val:.2f}" if val is not None else ""
-            elif display_name == "Earnings Growth %":
-                formatted_val = f"{val:+.1f}%" if val is not None else ""
-            elif display_name == "Price/Earnings":
-                formatted_val = f"{val:.1f}" if val is not None else ""
-            elif display_name == "PEG":
-                formatted_val = f"{val:.2f}" if val is not None else ""
-            elif display_name == "Sales $M":
-                formatted_val = f"{val/1e6:.0f} M" if val is not None else ""
-            elif display_name == "Revenue Growth %":
-                formatted_val = f"{val:+.1f}%" if val is not None else ""
-            elif display_name == "Revenue Multiple":
-                formatted_val = f"{val:.1f}" if val is not None else ""
-            else:
-                formatted_val = str(val) if val is not None else ""
+                cell_style = "background: var(--pico-color-pumpkin-50)" if value is None else ""
 
-            cells.append(Td(formatted_val, style=cell_style))
+            cells.append(Td(formatter(value, year), style=cell_style))
 
         table_rows.append(
             Tr(
