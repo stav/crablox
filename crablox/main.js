@@ -101,6 +101,8 @@ function showTimeSeriesLightbox() {
  * Hides the lightbox element by setting its display style to 'none'.
  */
 function closeLightbox () {
+  document.getElementById('lightbox-img').style.display = ''
+  document.getElementById('lightbox-cap').style.display = ''
   document.getElementById('lightbox').style.display = 'none'
 }
 

@@ -26,14 +26,14 @@ def time_series_table(ticker: str):
     Generate a hybrid time series table combining data from both Excel and Yahoo Finance.
 
     This function combines data from both sources according to specific rules:
-    - Stock price and market cap: Yahoo (2023-2024), Excel (2025), blank (2026-2027)
+    - Stock price and market cap: Yahoo (current_year-2 to current_year-1), Excel (current_year), blank (current_year+1 to current_year+2)
     - EPS: Excel for all years
-    - Earnings Growth: Yahoo (2023), Excel (2024-2027)
-    - PEG: Yahoo (2023-2024), Excel (2025-2027)
+    - Earnings Growth: Yahoo (current_year-2), Excel (current_year-1 to current_year+2)
+    - PEG: Yahoo (current_year-2 to current_year-1), Excel (current_year to current_year+2)
     - Sales: Excel for all years
-    - Revenue Growth: Yahoo (2023), Excel (2024-2027)
+    - Revenue Growth: Yahoo (current_year-2), Excel (current_year-1 to current_year+2)
     - Revenue Multiple: Excel for all years
-    - Net Income: Yahoo (2023-2024), blank (2025-2027)
+    - Net Income: Yahoo (current_year-2 to current_year-1), blank (current_year to current_year+2)
     - Shares: Yahoo for all years
 
     Args:
@@ -47,8 +47,8 @@ def time_series_table(ticker: str):
     if excel_data is None:
         return Div(f"No Excel data found for ticker: {ticker}")
 
-    # Set current year to 2025 as specified
-    current_year = 2025
+    # Get current year dynamically
+    current_year = datetime.now().year
     year_suffixes_map = get_year_suffixes(current_year)
     years = get_year_range(current_year)
 
@@ -208,8 +208,8 @@ def time_series_table_yahoo(ticker: str):
     calculated from the raw data.
 
     Note: To calculate growth rates and ratios for the earliest year, we need data
-    from the previous year. For example, to calculate 2023 growth rates, we need 2022
-    data as a baseline.
+    from the previous year. For example, to calculate growth rates for current_year-2,
+    we need current_year-3 data as a baseline.
 
     Args:
         ticker: The stock ticker symbol
