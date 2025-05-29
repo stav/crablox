@@ -16,7 +16,7 @@ def display(request: Request):
         Button(
             "View Time Series",
             cls="ticker-suggestion",
-            style="margin-top: 2em; background-color: var(--pico-color-blue-500); border-color: var(--pico-color-blue-300);",
+            style="background-color: var(--pico-primary); border: 1px solid var(--pico-secondary)",
             hx_get=f"/timeseries?ticker={ticker}",
             hx_target="#lightbox-det",
             hx_on_click="showTimeSeriesLightbox()",
