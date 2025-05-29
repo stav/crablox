@@ -1,10 +1,9 @@
 from datetime import datetime
-from typing import Dict, Optional, Union
+from typing import Dict, Optional
 
 from fasthtml.common import Div, Table, Tr, Th, Td, Caption
 
 from ..core import get_ticker_data, get_metrics, fetch_yfinance_data
-from ..core.yfinance_data import fetch_yfinance_data as yfd
 
 
 def time_series_table(ticker: str):
@@ -99,15 +98,17 @@ def time_series_table_yahoo(ticker: str):
     current_year = datetime.now().year
 
     # Fetch data from Yahoo Finance
-    avg_price_by_year, avg_mcap_by_year, net_income_by_year, revenue_by_year, shares_by_year = yfd(ticker)
+    (
+        avg_price_by_year,
+        avg_mcap_by_year,
+        net_income_by_year,
+        revenue_by_year,
+        shares_by_year,
+        company_name,
+    ) = fetch_yfinance_data(ticker)
 
     if not avg_price_by_year:
         return Div(f"No Yahoo Finance data found for ticker: {ticker}")
-
-    # Get company info from yfinance
-    import yfinance as yf
-    yf_ticker = yf.Ticker(ticker)
-    company_name = yf_ticker.info.get("longName", ticker)
 
     # Get years to display (current year and 4 years back)
     years = list(range(current_year - 3, current_year + 3))
@@ -209,6 +210,8 @@ def time_series_table_yahoo(ticker: str):
                 value = revenue_multiple_by_year.get(year)
             elif metric_key == "Net Income":
                 value = net_income_by_year.get(year)
+            elif metric_key == "Shares":
+                value = shares_by_year.get(year)
             else:
                 value = None
 

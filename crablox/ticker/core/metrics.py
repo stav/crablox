@@ -57,5 +57,9 @@ def get_metrics(ticker: str, current_year: int) -> List[Tuple[str, str, Callable
             "Net Income $M", "Net Income",  # Net Income = Revenue - Expenses (not including interest and taxes)
             lambda v, y: format_number_millions(v)
         ),
+        (
+            "Shares Outstanding M", "Shares",  # Number of shares issued
+            lambda v, y: format_number_millions(v)
+        ),
     ]
     # fmt: on
