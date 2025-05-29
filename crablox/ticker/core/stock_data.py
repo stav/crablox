@@ -33,12 +33,15 @@ def get_ticker_data(ticker: str):
 
 
 def search_tickers(query: str, limit: int = 10):
-    """Search for tickers matching the query."""
+    """Search for tickers matching the query in either ticker symbol or company name.
+    Returns a list of tuples containing (ticker, company_name)."""
     df = load_dataframe()
-    # Filter rows where Ticker starts with query
-    filtered_df = df[df["Ticker"].str.startswith(query, na=False)]
-    # Get just the Ticker column
-    ticker_series = filtered_df["Ticker"]
-    # Convert to list and limit results
-    matches = ticker_series.tolist()[:limit]
+    # Filter rows where Ticker starts with query or Company Name contains query
+    ticker_matches = df["Ticker"].str.startswith(query, na=False)
+    company_matches = df.iloc[:, B - 1].str.contains(query, case=False, na=False)  # B-1 is company name column
+    filtered_df = df[ticker_matches | company_matches]
+    # Get both Ticker and Company Name columns
+    result_df = filtered_df[["Ticker", filtered_df.columns[B - 1]]]
+    # Convert to list of tuples and limit results
+    matches = list(zip(result_df["Ticker"], result_df.iloc[:, 1]))[:limit]
     return matches

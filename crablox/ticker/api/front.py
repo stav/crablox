@@ -50,17 +50,17 @@ def search(request: Request):
     return Div(
         *[
             Div(
-                ticker,
+                f"{ticker} - {company_name}",
                 cls="ticker-suggestion",
                 style="padding: 4px 8px; cursor: pointer;",
                 hx_get=f"/api/lookup?ticker={ticker}",
                 hx_target="closest .wlv-details",
                 hx_swap="outerHTML",
                 hx_indicator="#loading-indicator",
-                hx_on_click="crbUpdateTicker(this, this.textContent)",
+                hx_on_click=f"crbUpdateTicker(this, '{ticker}')",
             )
-            for ticker in matches
+            for ticker, company_name in matches
         ],
         id="ticker-suggestions",
-        style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; width: 100px; margin-top: 2px;",
+        style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; margin-top: 2px;",
     )

@@ -17,7 +17,7 @@ def content():
                 required=True,
                 autofocus=True,
                 placeholder="Ticker",
-                style="width: 100px; margin-right: 0.5em; display: inline-flex;",
+                style="margin-right: 0.5em; display: inline-flex; width: 6em",
                 hx_get="/api/search",
                 hx_trigger="keyup changed delay:200ms",
                 hx_target="#ticker-suggestions",
@@ -34,7 +34,7 @@ def content():
         Div("Loading...", id="loading-indicator", cls="htmx-indicator"),
         Div(
             id="ticker-suggestions",
-            style="position: absolute; z-index: 1000; background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); max-height: 200px; overflow-y: auto; width: 100px; margin-top: 2px;",
+            style="position: absolute; z-index: 1000; background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); max-height: 200px; overflow-y: auto; margin-top: 2px; text-overflow: ellipsis; white-space: nowrap;",
         ),
         Div(id="ticker-result"),
         cls="wlv-details",
