@@ -2,12 +2,15 @@ from fasthtml.common import A, Card, Div, Img, Li, Ul, H3, Style
 
 from hauls.components import get_details, get_history
 
-title = "Dur Goods · -0.4%"
+title = "Dur Goods · 0.2%"
 short = "Goods"
 style = "background-color: var(--pico-color-yellow-500); border-color: var(--pico-color-yellow-300);"
 caption = "Durable Goods"
-summary = "Durable Goods Orders Excluding Transportation in the United States decreased 0.4% month-over-month in March 2025, compared to initial estimates of a flat reading."
-details_file = "2025-03.md"
+summary = "Durable goods orders excluding transportation in the United States rose by 0.2% month-over-month in April 2025."
+details_file = "2025-04.md"
+description = """### Description
+Durable goods orders excluding transportation, often called "core durable goods orders," measure the change in new orders for long-lasting manufactured goods, excluding transportation equipment. This metric is used to gauge trends in manufacturing activity and economic conditions.
+"""
 
 
 def history():
@@ -30,7 +33,7 @@ def content():
             onclick="openLightbox(this)",
         ),
         Card(
-            Div(details(), cls="marked"),
+            Div(details(), description, cls="marked"),
             cls="wlv-details",
             header="US Durable Goods",
             footer=(
@@ -47,6 +50,13 @@ def content():
                         A(
                             "Trading Economics",
                             href="https://tradingeconomics.com/united-states/durable-goods-orders-ex-transportation",
+                            target="_blank",
+                        )
+                    ),
+                    Li(
+                        A(
+                            "Skool",
+                            href="https://www.skool.com/tradingbusiness/when-airlines-stop-buying-planes-aprils-durable-goods?p=a394713d",
                             target="_blank",
                         )
                     ),
