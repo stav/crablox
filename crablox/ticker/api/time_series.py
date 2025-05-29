@@ -80,7 +80,8 @@ def time_series_table_yahoo(ticker: str):
     """
     # Get current year and year range
     current_year = datetime.now().year
-    years = get_year_range(current_year)
+    # We need 3 years of data to calculate growth rates and ratios for the earliest year
+    years = get_year_range(current_year, lookback_years=3)
 
     # Fetch data from Yahoo Finance
     (
@@ -127,7 +128,7 @@ def time_series_table_yahoo(ticker: str):
     return create_time_series_table(
         ticker=ticker,
         company_name=company_name,
-        years=years,
+        years=years[1:],  # Skip the first year because it was ust used to calulate EPS
         metrics=metrics,
         get_metric_value=get_metric_value,
         current_year=current_year,

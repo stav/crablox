@@ -14,18 +14,10 @@ def display(request: Request):
 
     return (
         Button(
-            "View Spreadsheet Time Series",
+            "View Time Series",
             cls="ticker-suggestion",
             style="background-color: var(--pico-primary); border: 1px solid var(--pico-secondary)",
             hx_get=f"/timeseries?ticker={ticker}",
-            hx_target="#lightbox-det",
-            hx_on_click="showTimeSeriesLightbox()",
-        ),
-        Button(
-            "View Yahoo Time Series",
-            cls="ticker-suggestion",
-            style="background-color: var(--pico-secondary); border: 1px solid var(--pico-primary); margin-top: 0.5em",
-            hx_get=f"/timeseries2?ticker={ticker}",
             hx_target="#lightbox-det",
             hx_on_click="showTimeSeriesLightbox()",
         ),

@@ -1,4 +1,4 @@
-from typing import Callable, List, Tuple, Dict, Optional, Any
+from typing import Callable, List, Dict, Optional, Any
 from dataclasses import dataclass
 from enum import Enum, auto
 
@@ -47,7 +47,7 @@ def get_metrics(ticker: str, current_year: int) -> List[Metric]:
             calculation="Average closing price for the year"
         ),
         Metric(
-            display_name="Market Cap $B",
+            display_name="Market Cap $M",
             key="Market Cap",
             formatter=lambda v, y: format_number_millions(v),
             source=MetricSource.YAHOO,
@@ -125,7 +125,7 @@ def get_metrics(ticker: str, current_year: int) -> List[Metric]:
             calculation="Revenue - Expenses (excluding interest and taxes)"
         ),
         Metric(
-            display_name="Shares Outstanding M",
+            display_name="Shares M",
             key="Shares",
             formatter=lambda v, y: format_number_millions(v),
             source=MetricSource.YAHOO,

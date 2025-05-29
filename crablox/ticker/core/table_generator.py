@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Dict, List, Optional, Callable, Any, Tuple
+from typing import Dict, List, Optional, Callable, Any
 
-from fasthtml.common import Div, Table, Tr, Th, Td, Caption
+from fasthtml.common import Table, Tr, Th, Td, Caption
 
 from .metrics import Metric, MetricSource
 
@@ -31,7 +31,7 @@ def create_time_series_table(
     future_year_style: str = "background: var(--pico-color-pumpkin-50)",
     empty_cell_style: str = "background: var(--pico-color-pumpkin-50)",
     source: MetricSource = MetricSource.YAHOO,
-) -> Table:
+) -> str:
     """
     Create a time series table with the given data.
 
