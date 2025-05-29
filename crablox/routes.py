@@ -54,4 +54,9 @@ def register_routes(app, rt):
     @rt("/timeseries")
     def _(request: Request):
         ticker_param = request.query_params.get("ticker", "X")
-        return ticker.time_series_table(ticker=ticker_param.upper()) 
+        return ticker.time_series_table(ticker=ticker_param.upper())
+
+    @rt("/timeseries2")
+    def _(request: Request):
+        ticker_param = request.query_params.get("ticker", "X")
+        return ticker.time_series_table_yahoo(ticker=ticker_param.upper()) 

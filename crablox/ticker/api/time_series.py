@@ -2,7 +2,7 @@ import datetime
 
 from fasthtml.common import Div, Table, Tr, Th, Td, Caption
 
-from ..core import get_ticker_data, get_metrics
+from ..core import get_ticker_data, get_metrics, fetch_yfinance_data
 
 
 def time_series_table(ticker: str):
@@ -77,6 +77,71 @@ def time_series_table(ticker: str):
 
     return Table(
         Caption(f"{data['Company Name']} ({ticker})", style="font-weight: bold"),
+        *table_rows,
+        style="border-collapse: collapse; width: 100%; background: white",
+        cls="time-series-table",
+    )
+
+
+def time_series_table_yahoo(ticker: str):
+    """Generate a time series table using only Yahoo Finance data."""
+    # Get Yahoo Finance data
+    avg_price_by_year, avg_mcap_by_year, net_income_by_year = fetch_yfinance_data(ticker)
+    
+    if not avg_price_by_year:
+        return Div(f"No Yahoo Finance data found for ticker: {ticker}")
+
+    # Get company info from yfinance
+    import yfinance as yf
+    yf_ticker = yf.Ticker(ticker)
+    company_name = yf_ticker.info.get("longName", ticker)
+
+    # Define the years
+    current_year = datetime.datetime.now().year
+    years = sorted(avg_price_by_year.keys())
+
+    # Build table header
+    table_rows = [
+        Tr(
+            Th("Metrics", style="background: var(--pico-color-pumpkin-500); color: white"),
+            *[Th(str(y), style="background: var(--pico-color-pumpkin-500); color: white") for y in years],
+        )
+    ]
+
+    # Define metrics to display
+    metrics = [
+        ("Stock Price $", lambda y: avg_price_by_year.get(y)),
+        ("Market Cap $B", lambda y: avg_mcap_by_year.get(y)),
+        ("Net Income $M", lambda y: net_income_by_year.get(y)),
+    ]
+
+    # Build table rows
+    for display_name, get_value in metrics:
+        cells = []
+        for year in years:
+            val = get_value(year)
+            cell_style = "background: var(--pico-color-pumpkin-50)" if val is None else ""
+            
+            if display_name == "Stock Price $":
+                formatted_val = f"{val:.2f}" if val is not None else ""
+            elif display_name == "Market Cap $B":
+                formatted_val = f"{val/1e9:.2f}" if val is not None else ""
+            elif display_name == "Net Income $M":
+                formatted_val = f"{val/1e6:.0f} M" if val is not None else ""
+            else:
+                formatted_val = str(val) if val is not None else ""
+
+            cells.append(Td(formatted_val, style=cell_style))
+
+        table_rows.append(
+            Tr(
+                Th(display_name, style="background: var(--pico-color-pumpkin-100); text-align: left;"),
+                *cells
+            )
+        )
+
+    return Table(
+        Caption(f"{company_name} ({ticker})", style="font-weight: bold"),
         *table_rows,
         style="border-collapse: collapse; width: 100%; background: white",
         cls="time-series-table",
