@@ -3,29 +3,52 @@ from typing import Dict, List, Optional, Callable, Any, Tuple
 
 from fasthtml.common import Div, Table, Tr, Th, Td, Caption
 
+from .metrics import Metric, MetricSource
+
+
+def get_year_range(current_year: int, lookback_years: int = 2, forward_years: int = 2) -> List[int]:
+    """
+    Get a range of years centered around the current year.
+
+    Args:
+        current_year: The current year
+        lookback_years: Number of years to look back (default: 2)
+        forward_years: Number of years to look forward (default: 2)
+
+    Returns:
+        List of years from (current_year - lookback_years) to (current_year + forward_years)
+    """
+    return list(range(current_year - lookback_years, current_year + forward_years + 1))
+
 
 def create_time_series_table(
     ticker: str,
     company_name: str,
     years: List[int],
-    metrics: List[Tuple[str, str, Callable]],
+    metrics: List[Metric],
     get_metric_value: Callable[[str, int], Optional[float]],
     current_year: Optional[int] = None,
     future_year_style: str = "background: var(--pico-color-pumpkin-50)",
     empty_cell_style: str = "background: var(--pico-color-pumpkin-50)",
+    source: MetricSource = MetricSource.YAHOO,
 ) -> Table:
     """
     Create a time series table with the given data.
+
+    This function generates a table showing financial metrics over time. The table
+    includes a header row with years and rows for each metric. Future years are
+    styled differently to indicate they are projections.
 
     Args:
         ticker: The stock ticker symbol
         company_name: The company name to display
         years: List of years to display
-        metrics: List of metric tuples (display_name, metric_key, formatter)
+        metrics: List of Metric objects to display
         get_metric_value: Function to get metric value for a given metric key and year
         current_year: Current year for styling future values (defaults to current year)
         future_year_style: CSS style for future year cells
         empty_cell_style: CSS style for empty cells
+        source: Data source for styling rules (default: YAHOO)
 
     Returns:
         A FastHTML Table component containing the time series data
@@ -42,23 +65,35 @@ def create_time_series_table(
     ]
 
     # Build table rows
-    for display_name, metric_key, fmt in metrics:
+    for metric in metrics:
         cells = []
 
         for year in years:
-            value = get_metric_value(metric_key, year)
+            value = get_metric_value(metric.key, year)
 
-            # Set cell style based on year and value
-            if year > current_year:
-                cell_style = future_year_style
+            # Set cell style based on year, value, and data source
+            if source == MetricSource.EXCEL:
+                # Excel-specific styling rules
+                if metric.display_name in ("Stock Price $", "Market Cap $B") and year > current_year:
+                    cell_style = future_year_style
+                elif metric.display_name == "Net Income $M":
+                    cell_style = (
+                        "background: white" if year < current_year else future_year_style
+                    )
+                else:
+                    cell_style = empty_cell_style if value is None else ""
             else:
-                cell_style = empty_cell_style if value is None else ""
+                # Yahoo Finance styling rules
+                if year > current_year:
+                    cell_style = future_year_style
+                else:
+                    cell_style = empty_cell_style if value is None else ""
 
-            cells.append(Td(fmt(value, year), style=cell_style))
+            cells.append(Td(metric.formatter(value, year), style=cell_style))
 
         table_rows.append(
             Tr(
-                Th(display_name, style="background: var(--pico-color-pumpkin-100); text-align: left;"),
+                Th(metric.display_name, style="background: var(--pico-color-pumpkin-100); text-align: left;"),
                 *cells
             )
         )
