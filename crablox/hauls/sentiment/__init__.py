@@ -6,8 +6,8 @@ title = "Sentiment · 52.2"
 short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Michigan Consumer Sentiment Index"
-summary = "The Index of Consumer Sentiment fell to 52.2 in April, the lowest since 2022. This is way below the 63.1 forecast and marks the third straight monthly decline."
-details_file = "2025-04.md"
+summary = "Consumer sentiment was unchanged from April, ending four consecutive months of plunging declines."
+details_file = "2025-05.md"
 
 
 def history():
@@ -62,6 +62,10 @@ def content():
                     (
                         "University of Michigan: Surveys of Consumers",
                         "https://www.sca.isr.umich.edu/",
+                    ),
+                    (
+                        "Trading Economics",
+                        "https://tradingeconomics.com/united-states/consumer-confidence",
                     ),
                 ],
                 history(),
