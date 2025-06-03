@@ -2,12 +2,12 @@ from fasthtml.common import Card, Div, Img, P
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "ISM Mfg · 48.7"
+title = "ISM Mfg · 48.5"
 short = "Mfg"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Manufacturing PMI"
-summary = "Manufacturing slipped again in April, falling to 48.7 from 49 in March."
-details_file = "2025-04.md"
+summary = "🏭 ISM Manufacturing: The month of May Extends Contraction Streak 📉"
+details_file = "2025-05.md"
 
 
 def history():
@@ -22,7 +22,7 @@ def content():
     return (
         Div(
             Img(
-                src="/static/ism-mfg-pmi.png",
+                src="/static/US_Business_Confidence.svg",
                 alt=caption,
                 cls="cbx_image",
                 title=summary,
@@ -40,6 +40,15 @@ def content():
                 ),
                 onclick="openLightbox(this)",
             ),
+            P(
+                Img(
+                    src="/static/mfg_pmi-vs-gdp.png",
+                    cls="cbx_image",
+                    alt="ISM Manufacturing PMI vs GDP",
+                    title="ISM Manufacturing PMI vs GDP",
+                ),
+                onclick="openLightbox(this)",
+            ),
             cls="wlv-details",
             header=caption,
             footer=get_footer(
@@ -53,8 +62,8 @@ def content():
                         "https://tradingeconomics.com/united-states/business-confidence#stats",
                     ),
                     (
-                        "Manufacturing ISM Update March 2025",
-                        "https://www.skool.com/tradingbusiness/manufacturing-ism-update-march-2025?p=281abddc",
+                        "Skool",
+                        "https://www.skool.com/tradingbusiness/ism-manufacturing-may-extends-contraction-streak?p=1d116b3c",
                     ),
                 ],
                 history(),
