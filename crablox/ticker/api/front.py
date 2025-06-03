@@ -62,5 +62,5 @@ def search(request: Request):
             for ticker, company_name in matches
         ],
         id="ticker-suggestions",
-        style="position: absolute; z-index: 1000; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; margin-top: 2px;",
+        style="position: absolute; z-index: 1000; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; margin-top: 2px;",
     )

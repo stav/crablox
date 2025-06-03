@@ -28,8 +28,6 @@ def create_time_series_table(
     metrics: List[Metric],
     get_metric_value: Callable[[str, int], Optional[float]],
     current_year: Optional[int] = None,
-    future_year_style: str = "background: var(--pico-color-pumpkin-50)",
-    empty_cell_style: str = "background: var(--pico-color-pumpkin-50)",
     source: MetricSource = MetricSource.YAHOO,
 ) -> str:
     """
@@ -46,8 +44,6 @@ def create_time_series_table(
         metrics: List of Metric objects to display
         get_metric_value: Function to get metric value for a given metric key and year
         current_year: Current year for styling future values (defaults to current year)
-        future_year_style: CSS style for future year cells
-        empty_cell_style: CSS style for empty cells
         source: Data source for styling rules (default: YAHOO)
 
     Returns:
@@ -70,30 +66,11 @@ def create_time_series_table(
 
         for year in years:
             value = get_metric_value(metric.key, year)
-
-            # Set cell style based on year, value, and data source
-            if source == MetricSource.EXCEL:
-                # Excel-specific styling rules
-                if metric.display_name in ("Stock Price $", "Market Cap $B") and year > current_year:
-                    cell_style = future_year_style
-                elif metric.display_name == "Net Income $M":
-                    cell_style = (
-                        "background: white" if year < current_year else future_year_style
-                    )
-                else:
-                    cell_style = empty_cell_style if value is None else ""
-            else:
-                # Yahoo Finance styling rules
-                if year > current_year:
-                    cell_style = future_year_style
-                else:
-                    cell_style = empty_cell_style if value is None else ""
-
-            cells.append(Td(metric.formatter(value, year), style=cell_style))
+            cells.append(Td(metric.formatter(value, year)))
 
         table_rows.append(
             Tr(
-                Th(metric.display_name, style="background: var(--pico-color-pumpkin-100); text-align: left;"),
+                Th(metric.display_name),
                 *cells
             )
         )
@@ -101,7 +78,7 @@ def create_time_series_table(
     return Table(
         Caption(f"{company_name} ({ticker})", style="font-weight: bold"),
         *table_rows,
-        style="border-collapse: collapse; width: 100%; background: white",
+        style="border-collapse: collapse; width: 100%",
         cls="time-series-table",
     )
 

@@ -156,7 +156,7 @@ def time_series_table(ticker: str):
         metrics=metrics,
         get_metric_value=get_metric_value,
         current_year=current_year,
-        source=MetricSource.EXCEL,  # Using EXCEL as source for styling rules to keep white backgrounds for cells with data
+        source=MetricSource.EXCEL,
     )
 
 

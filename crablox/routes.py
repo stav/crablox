@@ -9,33 +9,33 @@ import hauls
 import index
 import ticker
 
-def register_routes(app, rt):
-    @rt("/")
+def register(app):
+    @app.route("/")
     def _():
-        return index.route(rt)
+        return index.route(app.route)
 
-    @rt("/api/blocks/{id}")
+    @app.route("/api/blocks/{id}")
     def _(id: str):
         for block in hauls.blocks:
             if block.id == id:
                 return blocks.stack(block)
         return f"Block not found: {id}", 404
 
-    @rt("/api/history/{parent}/{filename}")
+    @app.route("/api/history/{parent}/{filename}")
     def _(parent: str, filename: str):
         file_path = Path("crablox/hauls") / parent / filename
         markup = file_path.read_text()
         return Div(markup, cls="marked")
 
-    @rt("/api/lookup")
+    @app.route("/api/lookup")
     def _(request: Request):
         return ticker.display(request)
 
-    @rt("/api/search")
+    @app.route("/api/search")
     def _(request: Request):
         return ticker.search(request)
 
-    @rt("/audio/{id}")
+    @app.route("/audio/{id}")
     def _(id: str):
         return audio.get_audio_file(id)
 
@@ -47,21 +47,21 @@ def register_routes(app, rt):
     async def _(request: Request):
         return await auth.login(request)
 
-    @rt("/logout")
+    @app.route("/logout")
     def _(request: Request):
         return auth.logout(request)
 
-    @rt("/timeseries")
+    @app.route("/timeseries")
     def _(request: Request):
         ticker_param = request.query_params.get("ticker", "")
         return ticker.time_series_table(ticker=ticker_param.upper())
 
-    @rt("/timeseries1")
+    @app.route("/timeseries1")
     def _(request: Request):
         ticker_param = request.query_params.get("ticker", "")
         return ticker.time_series_table_excel(ticker=ticker_param.upper())
 
-    @rt("/timeseries2")
+    @app.route("/timeseries2")
     def _(request: Request):
         ticker_param = request.query_params.get("ticker", "")
         return ticker.time_series_table_yahoo(ticker=ticker_param.upper()) 
