@@ -28,7 +28,7 @@
     └─▪ pip install --upgrade pip
 
     ┌─(venv)[stav][legion][±][master ✓][~/.../FastHTML/crablox]
-    └─▪ pip install python-fasthtml fh_altair requests pandas fa6-icons openpyxl
+    └─▪ pip install python-fasthtml fh_altair requests pandas fa6-icons openpyxl yfinance
 
       Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
       Collecting python-fasthtml
@@ -40,23 +40,6 @@
       Collecting pandas
         Downloading pandas-2.2.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (89 kB)
         ...
-
-### Upgrade Pip
-
-    ┌─(venv)[stav][legion][±][master ✓][~/.../FastHTML/crablox]
-    └─▪ pip install --upgrade pip
-
-      Looking in indexes: https://pypi.org/simple, https://packagecloud.io/github/git-lfs/pypi/simple
-      Requirement already satisfied: pip in ./venv/lib/python3.12/site-packages (24.2)
-      Collecting pip
-        Using cached pip-24.3.1-py3-none-any.whl.metadata (3.7 kB)
-      Using cached pip-24.3.1-py3-none-any.whl (1.8 MB)
-      Installing collected packages: pip
-        Attempting uninstall: pip
-          Found existing installation: pip 24.2
-          Uninstalling pip-24.2:
-            Successfully uninstalled pip-24.2
-      Successfully installed pip-24.3.1
 
 ### Structure
 
