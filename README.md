@@ -55,12 +55,14 @@
       drwxr-xr-x 5 stav stav  4096 Dec 29 15:44 venv/
       drwxr-xr-x 2 stav stav  4096 Dec 29 17:13 .vscode/
 
-## Development
+## Usage
 
 Source the virtual environment:
 
     ┌─[stav][legion][±][master ✓][~/.../FastHTML/crablox]
     └─▪ . venv/bin/activate
+
+## Development
 
 Explicit environment variables:
 
@@ -77,6 +79,26 @@ Explicit environment variables:
       INFO:     Started server process [12224]
       INFO:     Waiting for application startup.
       INFO:     Application startup complete.
+
+## Scripts
+
+These scripts automate data extraction.
+
+### ISM Manufacturing
+
+Run the script:
+
+    python scripts/ism-mfg.py
+
+### ISM Services
+
+Change the `url` at the top to reflect the desired month:
+
+    url = ".../ism-report-on-business/services/may/"
+
+Run the script:
+
+    python scripts/ism-srv.py
 
 ## Environments
 
