@@ -2,12 +2,12 @@ from fasthtml.common import Card, Div, Img
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "Jobs · 177 K"
+title = "Jobs · 139 K"
 short = "Jobs"
 style = "background-color: var(--pico-color-yellow-500); border-color: var(--pico-color-yellow-300);"
 caption = "US Non-Farm Payrolls"
-summary = "🧾 US Adds More Jobs: Complicates Fed's Path 🏦"
-details_file = "2025-04.md"
+summary = "Jobs Report: Still Holding Up (For Now) 📈"
+details_file = "2025-05.md"
 
 
 def history():
@@ -29,7 +29,7 @@ def content():
     return (
         Div(
             Img(
-                src="/static/US_Non_Farm_Payrolls.png",
+                src="/static/US_Non_Farm_Payrolls.svg",
                 alt=caption,
                 cls="cbx_image",
                 title=summary,
@@ -43,12 +43,12 @@ def content():
             footer=get_footer(
                 [
                     (
-                        "Trading Economics: Non-Farm Payrolls",
-                        "https://tradingeconomics.com/united-states/non-farm-payrolls",
-                    ),
-                    (
                         "BLS: Employment Situation Summary",
                         "https://www.bls.gov/news.release/empsit.nr0.htm",
+                    ),
+                    (
+                        "Trading Economics: Non-Farm Payrolls",
+                        "https://tradingeconomics.com/united-states/non-farm-payrolls",
                     ),
                 ],
                 history(),
