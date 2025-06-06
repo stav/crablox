@@ -18,6 +18,11 @@ function crbOpenBlock (openButton) {
   const data = item.querySelector(`.wlv-data`)
   data.style.display = 'inline-block'
   data.scrollTop = 0
+  // Reveal lightbox button
+  if (item.querySelector('.cbx_image')) {
+    const lightboxButton = item.querySelector('.wlv-lightbox')
+    lightboxButton.style.display = 'inline-block'
+  }
   // Reveal clear button
   const clearButton = item.querySelector('.wlv-clear')
   clearButton.style.display = 'inline-block'
@@ -40,6 +45,23 @@ function crbClearBlock (clearButton) {
   const item = clearButton.closest('.item')
   const data = item.querySelector(`.wlv-data`)
   data.innerHTML = ''
+  // Hide lightbox button
+  const lightboxButton = item.querySelector('.wlv-lightbox')
+  lightboxButton.style.display = 'none'
+}
+
+function doLightbox (lightboxButton) {
+  // Open lightbox
+  const item = lightboxButton.closest('.item')
+  const image = item.querySelector('.cbx_image')
+  openLightbox(image.parentElement)
+}
+
+function crbOpenHistory (historyButton) {
+  // Hide lightbox button
+  const item = historyButton.closest('.item')
+  const lightboxButton = item.querySelector('.wlv-lightbox')
+  lightboxButton.style.display = 'none'
 }
 
 /**

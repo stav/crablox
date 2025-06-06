@@ -29,6 +29,9 @@
 .wlv-details header {
   text-align: center;
 }
+.wlv-lightbox {
+  margin-left: 1em;
+}
 .wlv-history {
   display: none;
   margin-left: 1em;

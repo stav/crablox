@@ -8,7 +8,7 @@ def stack(block):
 
     hash = create_short_hash()
     itemId = f"""{block.id}-{hash}"""
- 
+
     return (
         Div(  # Slot
             Div(  # Item
@@ -20,7 +20,7 @@ def stack(block):
                         hx_on_htmx_after_request="crbOpenBlock(this)",
                         hx_trigger="revealed,click",
                         style=block.style,
-                        cls="truncate-text"
+                        cls="truncate-text",
                     ),
                     Button(  # History button
                         "H",
@@ -29,6 +29,13 @@ def stack(block):
                         hx_target=f"#{itemId}>.wlv-data",
                         data_history=bool(block.history()),
                         cls="wlv-history outline",
+                        onclick=f"crbOpenHistory(this)",
+                    ),
+                    Button(  # Lightbox button
+                        "⬆︎",
+                        title="Lightbox",
+                        cls="wlv-lightbox outline",
+                        onclick=f"doLightbox(this)",
                     ),
                     Button(  # Clear button
                         "-",
