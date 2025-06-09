@@ -133,7 +133,7 @@ Check Python version.
 
 Start the server.
 
-    (venv) stav@bullet:.../services.pmx.mega/crablox$ PORT=5001 python crablox/main.py
+    pm2 start ecosystem.config.cjs
 
 ## Sites
 
