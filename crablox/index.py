@@ -1,6 +1,9 @@
 import hauls
+import logging
 from home import page
 
+# Get a logger for this module
+logger = logging.getLogger(__name__)
 
 def route(rt):
 
@@ -31,7 +34,7 @@ def route(rt):
 
     # Register block routes
     for block in hauls.blocks:
-        print(f"Registering {block.path}")
         create_route(block)
 
+    logger.info(f"Registered {len(hauls.blocks)} blocks")
     return page()

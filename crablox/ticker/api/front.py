@@ -1,8 +1,11 @@
 from starlette.requests import Request
 from fasthtml.common import Div, Dl, Dt, Dd, Button
+import logging
 
 from ..core import get_ticker_data, search_tickers
 from ..utils import format_number
+
+logger = logging.getLogger(__name__)
 
 
 def display(request: Request):
@@ -38,7 +41,6 @@ def lookup(ticker: str):
 
 def search(request: Request):
     query = request.query_params.get("ticker", "").upper()
-    print(f"Searching for ({query})")
     if not query:
         return Div("", id="ticker-suggestions")
 

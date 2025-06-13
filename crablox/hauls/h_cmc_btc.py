@@ -1,9 +1,12 @@
 import datetime
+import logging
 
 import requests
 from fasthtml.common import H1, H2, Div
 
 from config import CMC_API_KEY
+
+logger = logging.getLogger(__name__)
 
 title = "BTC Market Price"
 style = "background-color: var(--pico-color-pumpkin-500); border-color: var(--pico-color-pumpkin-300);"
@@ -22,7 +25,7 @@ def get_btc_price():
     try:
         return data["data"]["BTC"]["quote"]["USD"]["price"]
     except Exception as e:
-        print("ERROR::", e, data)
+        logger.error("Error processing data: %s", e, exc_info=True)
         return 0
 
 

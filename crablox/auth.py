@@ -11,8 +11,11 @@ from fasthtml.common import (
     P,
     Titled,
 )
+import logging
 
 from config import AUTH_USERNAME
+
+logger = logging.getLogger(__name__)
 
 
 def user_auth_before(request, sess):
@@ -49,7 +52,7 @@ def logout(request: Request):
 def login_page(request: Request | None = None):
     # If we have a request and are already logged in, redirect to home
     if request and request.session.get("auth"):
-        print(f"Login page - We're already logged in, redirecting to app")
+        logger.info("Login page - We're already logged in, redirecting to app")
         return RedirectResponse("/", status_code=303)
     
     # Get any error message from the session
@@ -90,7 +93,7 @@ async def login(request: Request):
 
     if client_username.lower() == AUTH_USERNAME.lower():
         request.session["auth"] = True
-        print(f"Login successful - Session after set: {request.session}")
+        logger.info(f"Login successful - Session after set: {request.session}")
         # Use a more direct redirect with additional headers to prevent caching and extra requests
         response = RedirectResponse(url="/", status_code=303)
         response.headers.update({
@@ -101,7 +104,7 @@ async def login(request: Request):
             "Connection": "close",  # Close connection after response
         })
     else:
-        print(f"Login failed - Session after set: {request.session}")
+        logger.info(f"Login failed - Session after set: {request.session}")
         request.session["login_error"] = "Invalid username"
         response = RedirectResponse(url="/login", status_code=303)
         response.headers.update({

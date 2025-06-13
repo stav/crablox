@@ -1,6 +1,9 @@
 from pathlib import Path
 import pandas as pd
 from openpyxl.utils import column_index_from_string
+import logging
+
+logger = logging.getLogger(__name__)
 
 A: int = column_index_from_string("A")
 B: int = column_index_from_string("B")
@@ -16,6 +19,7 @@ def load_dataframe():
     """Load and cache the stock data DataFrame."""
     global _df_cache
     if _df_cache is None:
+        logger.info(f"Cache miss: Loading stock data from '{excel_path}'")
         _df_cache = pd.read_excel(excel_path)
     return _df_cache
 
