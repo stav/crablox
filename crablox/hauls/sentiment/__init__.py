@@ -2,12 +2,12 @@ from fasthtml.common import Card, Div, Img, P
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "Sentiment · 52.2"
+title = "Sentiment · 60.5"
 short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Michigan Consumer Sentiment Index"
-summary = "Consumer sentiment was unchanged from April, ending four consecutive months of plunging declines."
-details_file = "2025-05.md"
+summary = "🚨 Consumer Sentiment: Dead Cat Bounce or Real Recovery?"
+details_file = "2025-06.md"
 
 
 def history():
@@ -41,14 +41,6 @@ def content():
             ),
             P(
                 Img(
-                    src="/static/um-index-data.png",
-                    alt="UM Index Data",
-                    cls="cbx_image",
-                ),
-                onclick="openLightbox(this)",
-            ),
-            P(
-                Img(
                     src="/static/um-index-10years.png",
                     alt="UM Index 10 years",
                     cls="cbx_image",
@@ -66,6 +58,10 @@ def content():
                     (
                         "Trading Economics",
                         "https://tradingeconomics.com/united-states/consumer-confidence",
+                    ),
+                    (
+                        "Skool",
+                        "https://www.skool.com/tradingbusiness/consumer-sentiment-dead-cat-bounce-or-real-recovery?p=8c069ef4",
                     ),
                 ],
                 history(),
