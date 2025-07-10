@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 A: int = column_index_from_string("A")
 B: int = column_index_from_string("B")
 
-file_name = "US Stock Data 5-19-25.xlsx"
+file_name = "US Stock Data 7-3-25.xlsx"
 excel_path = Path(__file__).parent.parent.parent.parent / "data" / file_name
 
 # Module-level DataFrame cache
