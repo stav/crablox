@@ -2,12 +2,12 @@ from fasthtml.common import Card, Div, Img, P
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "ISM Srv · 49.9"
+title = "ISM Srv · 50.8"
 short = "Srv"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "ISM Services PMI"
 summary = "🏢 ISM Services: First Contraction Since June 2024 📉"
-details_file = "2025-05.md"
+details_file = "2025-06.md"
 
 
 def history():
@@ -42,7 +42,7 @@ def content():
             ),
             P(
                 Img(
-                    src="/static/ism-mfg-srv.png",
+                    src="/static/pmi-vs-gdp_srv.png",
                     cls="cbx_image",
                     alt="ISM Manufacturing vs Services",
                     title="ISM Manufacturing vs Services",
