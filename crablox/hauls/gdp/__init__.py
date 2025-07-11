@@ -1,11 +1,11 @@
-from fasthtml.common import Card, Div, Img
+from fasthtml.common import Card, Div, Img, P
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "GDP · -0.3%"
+title = "GDP · -0.5%"
 style = "background-color: var(--pico-color-orange-700); border-color: var(--pico-color-orange-500);"
 caption = "US GDP Growth Rate"
-summary = "first negative growth since the first quarter of 22. from 2.4% growth in the previous quarter. 41.3% surge in imports, Consumer spending growth cooled to 1.8%,slowest pace since Q2 23. Federal government expenditures fell 5.1%, steepest drop since Q1 22. In contrast, fixed investment surged 7.8%, the most since Q2 23."
+summary = "The decrease in real GDP in the first quarter primarily reflected an increase in imports..."
 details_file = "2025-Q1.md"
 
 
@@ -21,7 +21,7 @@ def content():
     return (
         Div(
             Img(
-                src="/static/us-gdp-growth-rate.png",
+                src="/static/US_GDP_Growth_Rate.svg",
                 alt=caption,
                 cls="cbx_image",
                 title=summary,
@@ -30,6 +30,33 @@ def content():
         ),
         Card(
             Div(details(), cls="marked"),
+            P(
+                Img(
+                    src="/static/NQ-weekly.png",
+                    cls="cbx_image",
+                    alt="NQ Weekly",
+                    title="NQ Weekly",
+                ),
+                onclick="openLightbox(this)",
+            ),
+            P(
+                Img(
+                    src="/static/QQQ-weekly.png",
+                    cls="cbx_image",
+                    alt="QQQ Weekly",
+                    title="QQQ Weekly",
+                ),
+                onclick="openLightbox(this)",
+            ),
+            P(
+                Img(
+                    src="/static/us-gdp.png",
+                    cls="cbx_image",
+                    alt="US GDP Growth Rate",
+                    title="US GDP Growth Rate",
+                ),
+                onclick="openLightbox(this)",
+            ),
             cls="wlv-details",
             header=caption,
             footer=get_footer(
@@ -39,8 +66,12 @@ def content():
                         "https://www.bea.gov/data/gdp/gross-domestic-product",
                     ),
                     (
-                        "Skool: Q4 2024 GDP: The Consumer Camouflage",
-                        "https://www.skool.com/tradingbusiness/q4-gdp-the-consumer-camouflage",
+                        "Skool: Q1 2025 GDP: Final Worse Than Expected",
+                        "https://www.skool.com/tradingbusiness/q1-gdp-final-worse-than-expected-yet-new-index-highs",
+                    ),
+                    (
+                        "Trading Economics: United States GDP Growth Rate",
+                        "https://tradingeconomics.com/united-states/gdp-growth",
                     ),
                 ],
                 history(),
