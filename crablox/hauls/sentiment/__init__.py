@@ -2,7 +2,7 @@ from fasthtml.common import Card, Div, Img, P
 
 from hauls.components import get_details, get_history, get_footer
 
-title = "Sentiment · 60.5"
+title = "Sentiment · 60.7"
 short = "ICS"
 style = "background-color: var(--pico-color-jade-500); border-color: var(--pico-color-jade-300);"
 caption = "US Michigan Consumer Sentiment Index"
